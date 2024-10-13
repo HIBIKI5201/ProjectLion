@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -18,5 +16,13 @@ public class PlayerController : MonoBehaviour
     {
         Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         transform.position += (Vector3)input * _moveSpeed * Time.deltaTime;
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.TryGetComponent<EnemyManager>(out var component))
+        {
+            component.AddDamage(100 * Time.deltaTime);
+        }
     }
 }
