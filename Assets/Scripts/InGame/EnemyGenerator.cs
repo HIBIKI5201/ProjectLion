@@ -27,7 +27,7 @@ public class EnemyGenerator : MonoBehaviour
         _enemyPool = new ObjectPool<EnemyManager>(
             createFunc: () => Instantiate(_enemyPrefab, transform).GetComponent<EnemyManager>(),
             actionOnGet: obj => obj.Init(() => _enemyPool.Release(obj)),
-            actionOnRelease: obj => Debug.Log($"{obj.gameObject.name} Release"),
+            actionOnRelease: obj => obj.gameObject.SetActive(false),
             actionOnDestroy: obj => Destroy(obj.gameObject),
             collectionCheck: true,
             defaultCapacity: 10,
@@ -38,12 +38,11 @@ public class EnemyGenerator : MonoBehaviour
     {
         while (true)
         {
-            Debug.Log(transform.childCount);
             if (_enemyPool.CountActive <= _generateLimit)
             {
                 _enemyPool.Get();
             }
-            yield return new WaitForSeconds(_generateIntarval);
+            yield return GameLogics.PausalbeWaitForSecond(_generateIntarval);
         }
     }
     #endregion

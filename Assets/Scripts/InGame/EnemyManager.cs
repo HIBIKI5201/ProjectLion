@@ -71,7 +71,6 @@ public class EnemyManager : MobBase
     protected override void DeathBehaviour()
     {
         DeathAction?.Invoke();
-        gameObject.SetActive(false);
     }
 
     private IEnumerator Attack(PlayerController player)
