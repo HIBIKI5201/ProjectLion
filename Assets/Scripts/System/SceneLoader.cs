@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
-    private static Dictionary<SceneKind, string> _sceneNames = new()
+    private readonly static Dictionary<SceneKind, string> _sceneNames = new()
     {
         {SceneKind.Title, "" },
         {SceneKind.Home, "" },
