@@ -1,16 +1,22 @@
+using NUnit.Framework;
+using System;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
+using Range = UnityEngine.RangeAttribute;
 
 public class AudioManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    private AudioMixer _audioMixer;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [SerializeField]
+    private List<AudioData> _soundEffectData = new(); 
+}
+
+[Serializable]
+public struct AudioData
+{
+    public AudioClip clip;
+    [Range(0, 1)]
+    public float volume;
 }
