@@ -9,7 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
-  m_Name: DefaultVolumeProfile
+  m_Script: {fileID: 11500000, guid: 32b474387d1fabf4fa397bc2b1129807, type: 3}
+  m_Name: PlayerData
   m_EditorClassIdentifier: 
-  components: []
+  _maxHealth: 100
+  _attack: 5
+  _defense: 10
+  _agility: 20
+  _attackSpeed: 10
+  _attackRange: 10
