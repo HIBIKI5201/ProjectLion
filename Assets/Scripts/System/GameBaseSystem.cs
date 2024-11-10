@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -26,5 +28,18 @@ public class GameBaseSystem : MonoBehaviour
     public async void ChangeScene(SceneKind kind)
     {
         await SceneLoader.LoadSceneAsync(kind);
+    }
+}
+
+public class GameLogics
+{
+    public static IEnumerator PausalbeWaitForSecond(float time)
+    {
+        float timer = 0;
+        while (timer > time)
+        {
+            timer += Time.deltaTime;
+            yield return null;
+        }
     }
 }
