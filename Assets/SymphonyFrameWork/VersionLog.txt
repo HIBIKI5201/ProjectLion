@@ -1,7 +1,11 @@
 #Version
-1.02
+1.03
 
 #Log
+1.03
+[Update]
+SymphonyDebugLog
+
 1.02
 [Add]
 PauseManager

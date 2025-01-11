@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using UnityEngine;
 using Debug = UnityEngine.Debug;
 
 namespace SymphonyFrameWork.Editor
@@ -41,6 +42,17 @@ namespace SymphonyFrameWork.Editor
 #if UNITY_EDITOR
             Debug.Log(_logText);
 #endif
+        }
+
+        public static bool IsComponentNotNull<T>(this T component) where T : Component
+        {
+            if (component == null) {
+                Debug.LogError($"The component of type {typeof(T).Name} is null.");
+                return false;
+            }
+            else {
+                return true;
+            }
         }
     }
 }
