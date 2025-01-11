@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlayerData
   m_EditorClassIdentifier: 
   _maxHealth: 100
-  _attack: 5
+  _attack: 50
   _defense: 10
   _agility: 20
   _attackSpeed: 10

@@ -1,0 +1,90 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e6fedc2472449cead18ef23b5cb30d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Library:
+  - m_Name: Right
+    m_Hash: 889936400
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Sebas
+      m_Hash: 198189081
+      m_Sprite: {fileID: 3853880570274333366, guid: 102ba6cf000ad394b8755c071faaa53a, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 3853880570274333366, guid: 102ba6cf000ad394b8755c071faaa53a, type: 3}
+    - m_Name: Arthur
+      m_Hash: 940505909
+      m_Sprite: {fileID: -5041793852548345445, guid: d9e009fd132b8fb4caaf73f5f250bbab, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -5041793852548345445, guid: d9e009fd132b8fb4caaf73f5f250bbab, type: 3}
+    - m_Name: Player
+      m_Hash: 531988307
+      m_Sprite: {fileID: 8990976553976017604, guid: 1eea2ed531e12a44483032f01e114521, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 8990976553976017604, guid: 1eea2ed531e12a44483032f01e114521, type: 3}
+    - m_Name: Docter
+      m_Hash: 579018454
+      m_Sprite: {fileID: -8097727349830347679, guid: 14753d7f74d231b4e9c402f550f2d978, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -8097727349830347679, guid: 14753d7f74d231b4e9c402f550f2d978, type: 3}
+    - m_Name: Artist
+      m_Hash: 116757425
+      m_Sprite: {fileID: -480641208007337870, guid: fb70e65f6f4dd1c4b875263fbb976368, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -480641208007337870, guid: fb70e65f6f4dd1c4b875263fbb976368, type: 3}
+    - m_Name: Smith
+      m_Hash: 1071761647
+      m_Sprite: {fileID: 5084999330907419283, guid: 6e2f25cbe72e108438bfadd0abd5dcf2, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 5084999330907419283, guid: 6e2f25cbe72e108438bfadd0abd5dcf2, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 6
+  - m_Name: Left
+    m_Hash: 441796694
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Sebas
+      m_Hash: 198189081
+      m_Sprite: {fileID: 2484083894059433673, guid: 33e66b4f48986f641bbcd9eed1f1ea0f, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 2484083894059433673, guid: 33e66b4f48986f641bbcd9eed1f1ea0f, type: 3}
+    - m_Name: Arthur
+      m_Hash: 940505909
+      m_Sprite: {fileID: -4797749941845607508, guid: 86ad12d118d19154080e81d6a623b941, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -4797749941845607508, guid: 86ad12d118d19154080e81d6a623b941, type: 3}
+    - m_Name: Player
+      m_Hash: 531988307
+      m_Sprite: {fileID: 4759763821204902836, guid: 57d6a7b55dbb6ad42b8fd1fdb62180f8, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 4759763821204902836, guid: 57d6a7b55dbb6ad42b8fd1fdb62180f8, type: 3}
+    - m_Name: Docter
+      m_Hash: 579018454
+      m_Sprite: {fileID: -3403126691211694693, guid: ab3c21da93fe31642a110298966ed637, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -3403126691211694693, guid: ab3c21da93fe31642a110298966ed637, type: 3}
+    - m_Name: Artist
+      m_Hash: 116757425
+      m_Sprite: {fileID: -3530562136454208723, guid: 6749a7207a6a2e445896ebe657e0a806, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -3530562136454208723, guid: 6749a7207a6a2e445896ebe657e0a806, type: 3}
+    - m_Name: Smith
+      m_Hash: 1071761647
+      m_Sprite: {fileID: -7263544410424285763, guid: 404bba035b4063c4cbc789ce2145d0df, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -7263544410424285763, guid: 404bba035b4063c4cbc789ce2145d0df, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 6
+  m_PrimaryLibraryGUID: 
+  m_ModificationHash: 638706806452334959
+  m_Version: 1

@@ -1,34 +1,47 @@
+using SymphonyFrameWork.CoreSystem;
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.U2D.Animation;
 using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class EnemyManager : MobBase
+public class EnemyManager : MobBase<EnemyData>
 {
     private Rigidbody2D _rigidBody;
 
-    event Action DeathAction;
+    private event Action DeathAction;
 
+    private SpriteRenderer _spriteRenderer;
 
     private int _repopRange = 20;
 
     private Coroutine _attackCoroutine;
 
     private GameObject _player;
+    private CircleCollider2D _playerCollider;
 
     protected override void Awake_S()
     {
-        _player = PlayerController.player.gameObject;
+        _player = SingletonDirector.GetSingleton<PlayerController>().gameObject;
+        _playerCollider = _player.GetComponent<CircleCollider2D>();
         _rigidBody = GetComponent<Rigidbody2D>();
+        _spriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
+        _spriteResolver = _spriteRenderer.GetComponent<SpriteResolver>();
     }
 
     private void Update()
     {
-        if (Vector2.Distance(_player.transform.position, transform.position) <= _repopRange)
+        float distance = Vector2.Distance(_player.transform.position, transform.position);
+        if (distance <= _repopRange)
         {
-            Vector2 velocity = (_player.transform.position - transform.position).normalized * _agility / 5;
-            _rigidBody.linearVelocity = velocity;
+            if (distance > _playerCollider.radius)
+            {
+                Vector2 direction = (_player.transform.position - transform.position).normalized;
+                _rigidBody.linearVelocity = direction * _agility / 5;
+
+                ChangeSprite(direction.x >= 0 ? "Right" : "Left", Data.Name);
+            }
         }
         else
             Repop();
@@ -37,18 +50,14 @@ public class EnemyManager : MobBase
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.TryGetComponent(out PlayerController player))
-        {
-            _attackCoroutine = StartCoroutine(Attack(player));
-        }
+            if (gameObject.activeInHierarchy)
+                _attackCoroutine = StartCoroutine(PlayerAttack.Attack(player, _attack));
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.TryGetComponent<PlayerController>(out _))
-        {
+        if (collision.gameObject.TryGetComponent<PlayerController>(out _) && _attackCoroutine is not null)
             StopCoroutine(_attackCoroutine);
-        }
-
     }
 
     public void Init(Action action)
@@ -71,14 +80,25 @@ public class EnemyManager : MobBase
     protected override void DeathBehaviour()
     {
         DeathAction?.Invoke();
-        gameObject.SetActive(false);
     }
 
-    private IEnumerator Attack(PlayerController player)
+    protected override async void HitDamageBehaviour()
+    {
+        base.HitDamageBehaviour();
+
+        _spriteRenderer.color = Color.red;
+        await Awaitable.WaitForSecondsAsync(0.2f);
+        _spriteRenderer.color = Color.white;
+    }
+}
+
+public static class PlayerAttack
+{
+    public static IEnumerator Attack(PlayerController player, float damage)
     {
         while (true)
         {
-            player.AddDamage(_attack);
+            player.AddDamage(damage);
             yield return new WaitForSeconds(1);
         }
     }
