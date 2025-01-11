@@ -1,9 +1,11 @@
 using UnityEngine;
+using UnityEngine.U2D.Animation;
 
-public class MobBase : MonoBehaviour
+public class MobBase<MobDataKind> : MonoBehaviour where MobDataKind : MobData
 {
     [SerializeField]
-    private MobData _data;
+    private MobDataKind _data;
+    public MobDataKind Data { get => _data; }
 
     [SerializeField]
     protected float _maxHealth = 100;
@@ -18,6 +20,9 @@ public class MobBase : MonoBehaviour
     protected float _attackSpeed = 10;
     [SerializeField]
     protected float _attackRange = 10;
+
+    protected SpriteResolver _spriteResolver;
+    public float Attack { get => _attack; }
     private void Awake()
     {
         if (_data != null)
@@ -31,7 +36,7 @@ public class MobBase : MonoBehaviour
 
     protected virtual void Awake_S() { }
 
-    protected virtual void LoadData(MobData data)
+    public virtual void LoadData(global::MobData data)
     {
         _maxHealth = data.MaxHealth;
         _attack = data.Attack;
@@ -54,4 +59,11 @@ public class MobBase : MonoBehaviour
 
     protected virtual void HitDamageBehaviour() { }
     protected virtual void DeathBehaviour() { }
+
+    protected void ChangeSprite(string category, string label)
+    {
+        _spriteResolver.SetCategoryAndLabel(category, label);
+
+        _spriteResolver.ResolveSpriteToSpriteRenderer();
+    }
 }

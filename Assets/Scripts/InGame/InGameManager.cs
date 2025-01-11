@@ -1,3 +1,5 @@
+using SymphonyFrameWork.CoreSystem;
+using System;
 using UnityEngine;
 
 public class InGameManager : MonoBehaviour
@@ -6,7 +8,7 @@ public class InGameManager : MonoBehaviour
 
     private void Start()
     {
-        PlayerController.player.Initialize();
+        SingletonDirector.GetSingleton<PlayerController>().Initialize();
         FindAnyObjectByType<EnemyGenerator>().Initialize();
     }
 
@@ -14,7 +16,21 @@ public class InGameManager : MonoBehaviour
     {
         if (Time.time - _ingameStartTime > 10)
         {
-            
+
         }
+    }
+}
+
+[Serializable]
+public class PlayerSaveData
+{
+    public string PlayerName;
+    public string TestString;
+    public int TestInt;
+    public PlayerSaveData()
+    {
+        PlayerName = "new player";
+        TestString = "test string kun";
+        TestInt = 100;
     }
 }
