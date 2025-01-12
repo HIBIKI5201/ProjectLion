@@ -4,7 +4,8 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.UIElements;
 
-public abstract class UIElement_B : VisualElement {
+[UxmlElement]
+public abstract partial class UIElement_B : VisualElement {
     public Task InitializeTask { get; private set; }
     protected string _addressablePath = string.Empty;
 
