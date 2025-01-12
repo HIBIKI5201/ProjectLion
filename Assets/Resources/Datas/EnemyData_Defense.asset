@@ -19,4 +19,4 @@ MonoBehaviour:
   _attackSpeed: 10
   _attackRange: 20
   _dropExperience: 60
-  _name: Arthur
+  _name: Smith
