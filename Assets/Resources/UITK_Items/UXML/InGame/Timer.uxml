@@ -1,0 +1,8 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Resources/UITK_Items/UITK/TimerUITK.uss?fileID=7433441132597879392&amp;guid=e5879936642980a4d8f0a341874b472e&amp;type=3#TimerUITK" />
+    <engine:VisualElement style="height: 100%; width: 100%;">
+        <engine:VisualElement style="flex-grow: 1; justify-content: center; align-self: auto; align-items: center; height: 100%; width: 100%; position: absolute; background-image: resource(&apos;UITK_Items/UIAssets/タイム枠&apos;); align-content: center; flex-shrink: 1; background-color: rgba(0, 0, 0, 0); -unity-background-scale-mode: stretch-to-fill; background-size: 100% 100%; flex-basis: 100%;">
+            <engine:Label text="00:00" style="height: 70%; font-size: 47%; color: rgb(255, 255, 255); -unity-text-align: middle-center; -unity-font-style: bold; margin-top: 0; margin-bottom: 0; margin-right: 0; margin-left: 0; width: 90%; align-self: center; justify-content: flex-start; align-content: auto; align-items: auto; padding-top: 0; padding-bottom: 0; padding-right: 0; padding-left: 0; top: auto;" />
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>
