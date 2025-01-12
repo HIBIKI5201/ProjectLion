@@ -79,13 +79,14 @@ public class EnemyManager : MobBase<EnemyData>
 
     protected override void DeathBehaviour()
     {
+        Debug.Log("Death");
         DeathAction?.Invoke();
     }
 
     protected override async void HitDamageBehaviour()
     {
         base.HitDamageBehaviour();
-
+        Debug.Log("Hit");
         _spriteRenderer.color = Color.red;
         await Awaitable.WaitForSecondsAsync(0.2f);
         _spriteRenderer.color = Color.white;
