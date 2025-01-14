@@ -1,0 +1,26 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <engine:VisualElement style="flex-grow: 1; background-image: resource(&apos;UITK_Items/UIAssets/ステータスアイコン配置枠&apos;);">
+        <engine:VisualElement style="flex-grow: 0; flex-direction: row; flex-shrink: 0; background-size: 100% 100%; width: 74%; align-self: center; margin-top: 0; margin-bottom: 0; padding-top: 3%; height: 50%; margin-right: 0; margin-left: 0; padding-bottom: 3%;">
+            <engine:VisualElement style="flex-grow: 1; flex-shrink: 0; width: 10%;">
+                <StatusUI picking-mode="Ignore" _icon="project://database/Assets/Resources/Visual%20Resource/Sprite/%E3%82%A2%E3%83%BC%E3%82%B5%E3%83%BC%E9%80%8F%E9%81%8E2.png?fileID=2800000&amp;guid=d9e009fd132b8fb4caaf73f5f250bbab&amp;type=3#アーサー透過2" _text="aruto" style="flex-grow: 1;" />
+            </engine:VisualElement>
+            <engine:VisualElement style="flex-grow: 1; margin-left: 5%; margin-right: 5%; margin-top: 0; margin-bottom: 0; width: 10%; flex-shrink: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;">
+                <StatusUI picking-mode="Ignore" _icon="project://database/Assets/Resources/Visual%20Resource/Sprite/%E3%82%BB%E3%83%90%E3%82%B9%E3%83%87%E3%83%95%E3%82%A9%E3%83%AB%E3%83%A1%20%20%E5%B7%A6%E5%90%91%E3%81%8D.png?fileID=2800000&amp;guid=33e66b4f48986f641bbcd9eed1f1ea0f&amp;type=3#セバスデフォルメ  左向き" _text="seb" style="flex-grow: 1;" />
+            </engine:VisualElement>
+            <engine:VisualElement style="flex-grow: 1; margin-left: 0; width: 10%; flex-shrink: 0;">
+                <StatusUI _icon="project://database/Assets/Resources/Visual%20Resource/Sprite/%E3%83%9A%E3%83%B3%E3%82%AE%E3%83%B3%E9%80%8F%E9%81%8E1.png?fileID=2800000&amp;guid=2ac0765cb9a23a0479f220a28c2e99ff&amp;type=3#ペンギン透過1" _text=".p" style="flex-grow: 1;" />
+            </engine:VisualElement>
+        </engine:VisualElement>
+        <engine:VisualElement style="flex-grow: 0; flex-direction: row; flex-shrink: 0; background-size: 100% 100%; width: 74%; align-self: center; margin-top: 0; margin-bottom: 0; padding-top: 3%; height: 50%; margin-right: 0; margin-left: 0; padding-bottom: 3%;">
+            <engine:VisualElement style="flex-grow: 1; flex-shrink: 0; width: 10%;">
+                <StatusUI picking-mode="Ignore" _icon="project://database/Assets/Resources/Visual%20Resource/Sprite/%E3%82%A2%E3%83%BC%E3%82%B5%E3%83%BC%E9%80%8F%E9%81%8E2.png?fileID=2800000&amp;guid=d9e009fd132b8fb4caaf73f5f250bbab&amp;type=3#アーサー透過2" _text="aruto" style="flex-grow: 1;" />
+            </engine:VisualElement>
+            <engine:VisualElement style="flex-grow: 1; margin-left: 5%; margin-right: 5%; margin-top: 0; margin-bottom: 0; width: 10%; flex-shrink: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;">
+                <StatusUI picking-mode="Ignore" _icon="project://database/Assets/Resources/Visual%20Resource/Sprite/%E3%82%BB%E3%83%90%E3%82%B9%E3%83%87%E3%83%95%E3%82%A9%E3%83%AB%E3%83%A1%20%20%E5%B7%A6%E5%90%91%E3%81%8D.png?fileID=2800000&amp;guid=33e66b4f48986f641bbcd9eed1f1ea0f&amp;type=3#セバスデフォルメ  左向き" _text="seb" style="flex-grow: 1;" />
+            </engine:VisualElement>
+            <engine:VisualElement style="flex-grow: 1; margin-left: 0; width: 10%; flex-shrink: 0;">
+                <StatusUI _icon="project://database/Assets/Resources/Visual%20Resource/Sprite/%E3%83%9A%E3%83%B3%E3%82%AE%E3%83%B3%E9%80%8F%E9%81%8E1.png?fileID=2800000&amp;guid=2ac0765cb9a23a0479f220a28c2e99ff&amp;type=3#ペンギン透過1" _text=".p" style="flex-grow: 1;" />
+            </engine:VisualElement>
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>

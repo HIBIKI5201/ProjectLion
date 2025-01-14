@@ -7,19 +7,17 @@ using UnityEngine.UIElements;
 [UxmlElement]
 public abstract partial class UIElement_B : VisualElement {
     public Task InitializeTask { get; private set; }
-    protected string _addressablePath = string.Empty;
 
     public UIElement_B(string path)
     {
-        _addressablePath = path;
-        InitializeTask = Initialize();
+        InitializeTask = Initialize(path);
     }
 
-    private async Task Initialize()
+    private async Task Initialize(string path)
     {
         AsyncOperationHandle<VisualTreeAsset> handle = default;
-        if (!string.IsNullOrEmpty(_addressablePath)) {
-            handle = Addressables.LoadAssetAsync<VisualTreeAsset>(_addressablePath);
+        if (!string.IsNullOrEmpty(path)) {
+            handle = Addressables.LoadAssetAsync<VisualTreeAsset>(path);
         }
         else {
             Debug.LogError($"{name} failed initialize");

@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Default Local Group
+  m_Name: UXML
   m_EditorClassIdentifier: 
-  m_GroupName: Default Local Group
-  m_GUID: f42211156c1b1ee449373f8a1ff34d35
+  m_GroupName: UXML
+  m_GUID: fac991a7644062e45b03af6e30e00170
   m_SerializeEntries:
-  - m_GUID: 359fd953e8bd5144cb9e78d50a9f6000
-    m_Address: Assets/UITK_Items/UXML/InGame/EXPBar.uxml
+  - m_GUID: c14e3ca2e87748b469cacf5b8c5dff8f
+    m_Address: UXML/StatusElement
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: a7d8ca265a84a4144b4d059c33dda5fb
-    m_Address: Assets/UITK_Items/UXML/InGame/BattleUI_Master.uxml
+  - m_GUID: cf8e7b7ca72a8854a8c3e898b2b8e549
+    m_Address: UXML/LevelUpStatus.uxml
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -29,5 +29,5 @@ MonoBehaviour:
   m_Settings: {fileID: 11400000, guid: 5d770c189dbeee64e8bef378f6134cc8, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: f2afd44518084b84b98b829b6eac0236, type: 2}
-    - {fileID: 11400000, guid: 898ebb1bc17ec5942b6b5e35828581a8, type: 2}
+    - {fileID: 11400000, guid: 2cdd3480e1a438945b55671778997fdb, type: 2}
+    - {fileID: 11400000, guid: 40441d07e17968a4b89b7a448f367b48, type: 2}
