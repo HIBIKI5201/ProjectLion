@@ -9,12 +9,16 @@ public abstract partial class UIElement_B : VisualElement {
     public Task InitializeTask { get; private set; }
     protected string _addressablePath = string.Empty;
 
-    public UIElement_B() => InitializeTask = Initialize();
+    public UIElement_B(string path)
+    {
+        _addressablePath = path;
+        InitializeTask = Initialize();
+    }
 
     private async Task Initialize()
     {
         AsyncOperationHandle<VisualTreeAsset> handle = default;
-        if (string.IsNullOrEmpty(_addressablePath)) {
+        if (!string.IsNullOrEmpty(_addressablePath)) {
             handle = Addressables.LoadAssetAsync<VisualTreeAsset>(_addressablePath);
         }
         else {

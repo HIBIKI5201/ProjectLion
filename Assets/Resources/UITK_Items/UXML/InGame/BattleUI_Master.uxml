@@ -2,7 +2,6 @@
     <engine:Template name="BasicInformation" src="project://database/Assets/Resources/UITK_Items/UXML/InGame/Timer.uxml?fileID=9197481963319205126&amp;guid=9b913cf9217fdfa4c8929847bd885435&amp;type=3#Timer" />
     <engine:Template name="EXPBar" src="project://database/Assets/Resources/UITK_Items/UXML/InGame/EXPBar.uxml?fileID=9197481963319205126&amp;guid=7da7f04c42f7b1f43b2c0fa9e84d9b27&amp;type=3#EXPBar" />
     <engine:Template name="SpecialAttack" src="project://database/Assets/Resources/UITK_Items/UXML/InGame/SpecialAttack.uxml?fileID=9197481963319205126&amp;guid=e6b732df4a70bbd4685b4c090301e524&amp;type=3#SpecialAttack" />
-    <Style src="project://database/Assets/Resources/UITK_Items/UITK/TimerUITK.uss?fileID=7433441132597879392&amp;guid=e5879936642980a4d8f0a341874b472e&amp;type=3#TimerUITK" />
     <engine:VisualElement style="position: absolute; width: 35%; height: 12%; top: 3%; -unity-background-scale-mode: scale-to-fit; background-position-y: top 0; background-position-x: left 0; background-color: rgba(215, 255, 71, 0.39);">
         <engine:Instance template="BasicInformation" style="width: 100%; height: 100%;" />
     </engine:VisualElement>
@@ -10,8 +9,11 @@
         <engine:Instance template="EXPBar" style="flex-grow: 1; width: 100%; height: 100%;" />
     </engine:VisualElement>
     <engine:VisualElement style="position: absolute; width: 17%; height: 10%; top: 16%; left: 5%; background-color: rgba(100, 255, 215, 0.39);" />
-    <engine:VisualElement style="position: absolute; width: 55%; height: 15%; -unity-background-scale-mode: scale-to-fit; background-position-y: top 0; background-position-x: left 0; background-color: rgba(255, 102, 105, 0.39); bottom: 3%; left: 3%;" />
+    <engine:VisualElement style="position: absolute; width: 55%; height: 15%; -unity-background-scale-mode: scale-to-fit; background-position-y: top 0; background-position-x: left 0; background-color: rgba(255, 102, 105, 0.39); bottom: 3%; left: 3%;">
+        <LavelUpStatus style="width: 100%; height: 100%;" />
+    </engine:VisualElement>
     <engine:VisualElement style="position: absolute; width: 33%; height: 19%; -unity-background-scale-mode: scale-to-fit; background-position-y: top 0; background-position-x: left 0; background-color: rgba(249, 102, 255, 0.39); bottom: 3%; right: 3%;">
         <engine:Instance template="SpecialAttack" style="width: auto; flex-grow: 1;" />
     </engine:VisualElement>
+    <LavelUpStatus />
 </engine:UXML>

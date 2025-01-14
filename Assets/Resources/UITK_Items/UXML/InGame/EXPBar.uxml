@@ -6,6 +6,7 @@
         </engine:VisualElement>
         <engine:VisualElement name="HPBackGround" style="flex-grow: 1; background-color: rgb(255, 255, 255); align-self: flex-end; width: 100%; height: 100%; background-image: resource(&apos;UITK_Items/UIAssets/経験値バー表示枠&apos;); justify-content: center;">
             <engine:VisualElement style="flex-shrink: 0; height: 30%; align-self: center; width: 90%; background-color: rgb(255, 55, 55);">
+                <engine:VisualElement style="flex-grow: 1;" />
                 <engine:VisualElement name="HPBar" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0); height: 100%; width: 100%; scale: -1 1; align-self: flex-end; background-image: resource(&apos;UITK_Items/UIAssets/経験値バーガラス枠&apos;); justify-content: center; align-content: auto; align-items: auto; margin-right: 0; background-size: 99% 100%; -unity-background-image-tint-color: rgb(255, 255, 255);" />
             </engine:VisualElement>
         </engine:VisualElement>

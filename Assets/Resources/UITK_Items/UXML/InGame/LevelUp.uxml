@@ -1,9 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
-<engine:UXML
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:engine="UnityEngine.UIElements"
-    xmlns:editor="UnityEditor.UIElements"
-    xsi:noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd"
->
-    
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <engine:VisualElement style="flex-grow: 1; flex-shrink: 0; background-image: resource(&apos;UITK_Items/UIAssets/レベルアップ枠&apos;);">
+        <engine:VisualElement style="flex-grow: 0; background-image: resource(&apos;UITK_Items/UIAssets/レベルアップ文字枠&apos;); width: 75%; align-self: center; margin-top: 12%; height: 15%;" />
+        <engine:VisualElement style="flex-grow: 0; align-self: center; width: 63%; margin-top: 31px; height: 51%; flex-shrink: 0;">
+            <engine:VisualElement style="flex-grow: 1;" />
+            <engine:VisualElement style="flex-grow: 1;" />
+            <engine:VisualElement style="flex-grow: 1;" />
+        </engine:VisualElement>
+    </engine:VisualElement>
 </engine:UXML>
