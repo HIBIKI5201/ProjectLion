@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Default Local Group
+  m_EditorClassIdentifier: 
+  m_GroupName: Default Local Group
+  m_GUID: f42211156c1b1ee449373f8a1ff34d35
+  m_SerializeEntries:
+  - m_GUID: 359fd953e8bd5144cb9e78d50a9f6000
+    m_Address: Assets/UITK_Items/UXML/InGame/EXPBar.uxml
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a7d8ca265a84a4144b4d059c33dda5fb
+    m_Address: Assets/UITK_Items/UXML/InGame/BattleUI_Master.uxml
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 5d770c189dbeee64e8bef378f6134cc8, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: f2afd44518084b84b98b829b6eac0236, type: 2}
+    - {fileID: 11400000, guid: 898ebb1bc17ec5942b6b5e35828581a8, type: 2}

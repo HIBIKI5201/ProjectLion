@@ -1,0 +1,23 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <engine:Template name="Timer" src="project://database/Assets/UITK_Items/UXML/InGame/Timer.uxml?fileID=9197481963319205126&amp;guid=06a967d3662a05443858c054bca0f5e0&amp;type=3#Timer" />
+    <engine:Template name="EXPBar" src="project://database/Assets/UITK_Items/UXML/InGame/EXPBar.uxml?fileID=9197481963319205126&amp;guid=359fd953e8bd5144cb9e78d50a9f6000&amp;type=3#EXPBar" />
+    <engine:Template name="SpecialAttack" src="project://database/Assets/UITK_Items/UXML/InGame/SpecialAttack.uxml?fileID=9197481963319205126&amp;guid=3b6bb7fa846c4974a9de84f8eb4a50a0&amp;type=3#SpecialAttack" />
+    <engine:Template name="LevelUp" src="project://database/Assets/UITK_Items/UXML/InGame/LevelUp.uxml?fileID=9197481963319205126&amp;guid=5b291a3a65a63b84f9dd36d2e4f6d541&amp;type=3#LevelUp" />
+    <engine:Template name="Status" src="project://database/Assets/UITK_Items/UXML/InGame/Status.uxml?fileID=9197481963319205126&amp;guid=e025c1d296a6610449b6f798a616693e&amp;type=3#Status" />
+    <engine:VisualElement style="position: absolute; width: 35%; height: 12%; top: 3%; -unity-background-scale-mode: scale-to-fit; background-position-y: top 0; background-position-x: left 0; background-color: rgba(215, 255, 71, 0.39);">
+        <engine:Instance template="Timer" style="flex-grow: 1;" />
+    </engine:VisualElement>
+    <engine:VisualElement style="position: absolute; width: 62%; height: 7%; right: 0; top: 6%; -unity-background-scale-mode: scale-to-fit; background-position-y: top 0; background-position-x: right 0; background-size: contain; background-color: rgba(103, 130, 255, 0.39);">
+        <engine:Instance template="EXPBar" />
+    </engine:VisualElement>
+    <engine:VisualElement style="position: absolute; width: 17%; height: 10%; top: 16%; left: 5%; background-color: rgba(100, 255, 215, 0.39);" />
+    <engine:VisualElement style="position: absolute; width: 55%; height: 20%; -unity-background-scale-mode: scale-to-fit; background-position-y: top 0; background-position-x: left 0; background-color: rgba(255, 102, 105, 0.39); bottom: 3%; left: 3%;">
+        <engine:Instance template="Status" style="flex-grow: 1;" />
+    </engine:VisualElement>
+    <engine:VisualElement style="position: absolute; width: 33%; height: 23%; -unity-background-scale-mode: scale-to-fit; background-position-y: top 0; background-position-x: left 0; background-color: rgba(249, 102, 255, 0.39); bottom: 3%; right: 3%;">
+        <engine:Instance template="SpecialAttack" style="flex-grow: 1;" />
+    </engine:VisualElement>
+    <engine:VisualElement style="flex-grow: 0; flex-shrink: 0; align-self: center; top: 25%; height: 50%; width: 65%; background-color: rgba(255, 255, 255, 0); display: flex; opacity: 1; overflow: visible; visibility: hidden;">
+        <engine:Instance template="LevelUp" style="flex-grow: 1; visibility: visible;" />
+    </engine:VisualElement>
+</engine:UXML>
