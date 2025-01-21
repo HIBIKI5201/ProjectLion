@@ -3019,6 +3019,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1593489775}
   - component: {fileID: 1593489774}
+  - component: {fileID: 1593489776}
   m_Layer: 5
   m_Name: BattleUI
   m_TagString: Untagged
@@ -3060,6 +3061,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1593489776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1593489773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3eae50781ea0abb48ac0da64e536fb57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _uiDatas: {fileID: 11400000, guid: c98fbbe91c2639a45ba0f09b6ee1a293, type: 2}
+  _levelUpManager: {fileID: 1914408006}
+  _inGameManager: {fileID: 1914408003}
 --- !u!1 &1600755328
 GameObject:
   m_ObjectHideFlags: 0
