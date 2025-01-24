@@ -2,7 +2,15 @@ using SymphonyFrameWork.CoreSystem;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "MobData", menuName = "GameData/MobData")]
-public class MobData : ScriptableObject
+
+public class MobData_S : ScriptableObject
+{
+    [SerializeField] MobData _data;
+    public MobData Data { get => _data; }
+}
+
+[System.Serializable]
+public class MobData
 {
     [SerializeField]
     private float _maxHealth = 100;

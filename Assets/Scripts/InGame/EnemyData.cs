@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "EnemyData", menuName = "GameData/EnemyData")]
-public class EnemyData : MobData
+public class EnemyData : MobData_S
 {
     [SerializeField]
     private float _dropExperience = 60;
@@ -10,8 +10,4 @@ public class EnemyData : MobData
     [SerializeField]
     private string _name;
     public string Name { get =>  _name; }
-
-    public EnemyData(float health, float attack, float defense, float agility, float attackSpeed, float attackRange) : base(health, attack, defense, agility, attackSpeed, attackRange)
-    {
-    }
 }

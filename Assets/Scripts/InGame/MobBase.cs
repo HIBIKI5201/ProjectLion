@@ -1,11 +1,12 @@
 using UnityEngine;
 using UnityEngine.U2D.Animation;
 
-public class MobBase<MobDataKind> : MonoBehaviour where MobDataKind : MobData
+public class MobBase<MobDataKind> : MonoBehaviour where MobDataKind : MobData_S
 {
     [SerializeField]
     private MobDataKind _data;
-    public MobDataKind Data { get => _data; }
+    public MobDataKind MobData { get => _data; }
+    public MobData Data { get => _data.Data; }
 
     [SerializeField]
     protected float _maxHealth = 100;
@@ -27,7 +28,7 @@ public class MobBase<MobDataKind> : MonoBehaviour where MobDataKind : MobData
     {
         if (_data != null)
         {
-            LoadData(_data);
+            LoadData(_data.Data);
         }
         else Debug.LogWarning($"{gameObject.name}Ç…ÉfÅ[É^Ç™Ç†ÇËÇ‹ÇπÇÒ");
 
