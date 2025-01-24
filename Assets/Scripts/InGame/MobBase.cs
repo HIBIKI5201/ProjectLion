@@ -5,7 +5,7 @@ public class MobBase<MobDataKind> : MonoBehaviour where MobDataKind : MobData_S
 {
     [SerializeField]
     private MobDataKind _data;
-    public MobDataKind MobData { get => _data; }
+    public MobDataKind BaseData { get => _data; }
     public MobData Data { get => _data.Data; }
 
     [SerializeField]

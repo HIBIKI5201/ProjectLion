@@ -40,7 +40,7 @@ public class EnemyManager : MobBase<EnemyData>
                 Vector2 direction = (_player.transform.position - transform.position).normalized;
                 _rigidBody.linearVelocity = direction * _agility / 5;
 
-                ChangeSprite(direction.x >= 0 ? "Right" : "Left", MobData.Name);
+                ChangeSprite(direction.x >= 0 ? "Right" : "Left", BaseData.Name);
             }
         }
         else

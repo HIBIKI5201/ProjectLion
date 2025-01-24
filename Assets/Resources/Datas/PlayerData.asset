@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32b474387d1fabf4fa397bc2b1129807, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  _maxHealth: 100
-  _attack: 50
-  _defense: 10
-  _agility: 20
-  _attackSpeed: 10
-  _attackRange: 10
+  _data:
+    _maxHealth: 100
+    _attack: 100
+    _defense: 20
+    _agility: 100
+    _attackSpeed: 100
+    _attackRange: 20

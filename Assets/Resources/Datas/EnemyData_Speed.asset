@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd499fd7183bbb344ba8eb9e4ae8f5a7, type: 3}
   m_Name: EnemyData_Speed
   m_EditorClassIdentifier: 
-  _maxHealth: 100
-  _attack: 20
-  _defense: 0
-  _agility: 20
-  _attackSpeed: 20
-  _attackRange: 20
-  _dropExperience: 60
+  _data:
+    _maxHealth: 100
+    _attack: 20
+    _defense: 0
+    _agility: 40
+    _attackSpeed: 20
+    _attackRange: 5
+  _dropExperience: 100
   _name: Docter

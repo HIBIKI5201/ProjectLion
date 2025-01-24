@@ -41,8 +41,9 @@ public class InGameUIManager : MonoBehaviour
         var timerText = _root.Q<TimerUI>("TimerUI");
         _inGameManager.OnTimerChanged += x => timerText.OnTimerChanged(x / 60, x % 60);
 
-        var status = _root.Q<StatusUIManager>("");
-        //ToDo:Playerのデータの変更を通知して、status.OnChangeを呼び出す。
+        var status = _root.Q<StatusUIManager>("StatusUIManager");
+        if (status is null) Debug.Log("statusUIManager is null");
+        _levelUpManager.OnGetItem += () => status?.OnStatusChange(LevelUpManager.ItemHaveValue);
 
         var coinTex = _root.Q<Label>();
         var expTex = _root.Q<Label>();

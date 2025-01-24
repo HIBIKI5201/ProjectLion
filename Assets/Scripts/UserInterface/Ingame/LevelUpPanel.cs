@@ -17,7 +17,7 @@ public partial class LevelUpPanel : UIElement_B
         return Task.CompletedTask;
     }
 
-    public void OnLevelUp(IEnumerable<ItemKind> kinds, Action<int> callBack,MastorData uiDatas)
+    public void OnLevelUp(IEnumerable<ItemKind> kinds, Action<ItemKind> callBack,MastorData uiDatas)
     {
         if (kinds.Count() != _statusPanel.Count)//エラーが起きないように両方の要素の個数を確認
         {
@@ -28,7 +28,7 @@ public partial class LevelUpPanel : UIElement_B
 
         this.style.visibility = Visibility.Visible;
 
-        for (var i = 0; i < kinds.Count(); i++)
+        for (var i = 0; i < _statusPanel.Count(); i++)
         {
             //見た目の変更.
             var uiData = uiDatas.FindEnum(kinds.ElementAt(i));
@@ -38,7 +38,7 @@ public partial class LevelUpPanel : UIElement_B
             int index = i;//クロージャ
             _statusPanel[i].OnLevelUpChoiced += () =>
             {
-                callBack?.Invoke(index);
+                callBack?.Invoke(kinds.ElementAt(index));
                 this.style.visibility = Visibility.Hidden;
             };
         }

@@ -1,6 +1,5 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <engine:Template name="EXPBar" src="project://database/Assets/UITK_Items/UXML/InGame/EXPBar.uxml?fileID=9197481963319205126&amp;guid=359fd953e8bd5144cb9e78d50a9f6000&amp;type=3#EXPBar" />
-    <engine:Template name="Status" src="project://database/Assets/UITK_Items/UXML/InGame/Status.uxml?fileID=9197481963319205126&amp;guid=e025c1d296a6610449b6f798a616693e&amp;type=3#Status" />
     <engine:VisualElement style="position: absolute; width: 35%; height: 12%; top: 3%; -unity-background-scale-mode: scale-to-fit; background-position-y: top 0; background-position-x: left 0; background-color: rgba(215, 255, 71, 0.39);">
         <TimerUI picking-mode="Ignore" name="TimerUI" style="height: 100%; flex-grow: 1; width: 100%;" />
     </engine:VisualElement>
@@ -9,7 +8,7 @@
     </engine:VisualElement>
     <engine:VisualElement style="position: absolute; width: 17%; height: 10%; top: 16%; left: 5%; background-color: rgba(100, 255, 215, 0.39);" />
     <engine:VisualElement style="position: absolute; width: 55%; height: 20%; -unity-background-scale-mode: scale-to-fit; background-position-y: top 0; background-position-x: left 0; background-color: rgba(255, 102, 105, 0.39); bottom: 3%; left: 3%;">
-        <engine:Instance template="Status" style="flex-grow: 1;" />
+        <StatusUIManager picking-mode="Ignore" name="StatusUIManager" _ui-data="project://database/Assets/Resources/UITK_Items/Datas/ItemDataMastor.asset?fileID=11400000&amp;guid=c98fbbe91c2639a45ba0f09b6ee1a293&amp;type=2#ItemDataMastor" style="flex-grow: 1;" />
     </engine:VisualElement>
     <engine:VisualElement style="position: absolute; width: 33%; height: 19%; -unity-background-scale-mode: scale-to-fit; background-position-y: top 0; background-position-x: left 0; background-color: rgba(249, 102, 255, 0.39); bottom: 3%; right: 3%;">
         <SpecialAttackUI picking-mode="Ignore" style="flex-grow: 1;" />
