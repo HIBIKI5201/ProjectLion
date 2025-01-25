@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fd499fd7183bbb344ba8eb9e4ae8f5a7, type: 3}
-  m_Name: EnemyData_Explosion
+  m_Name: EnemyData_Normal
   m_EditorClassIdentifier: 
   _maxHealth: 100
   _attack: 20

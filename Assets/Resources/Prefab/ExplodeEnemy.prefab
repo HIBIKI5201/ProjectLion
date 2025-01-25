@@ -78,7 +78,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff23284f912d4a64dbc9410efb8781b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _data: {fileID: 11400000, guid: d5bc56e04f161294a9327c4ee6b6a9fa, type: 2}
+  _data: {fileID: 11400000, guid: c57e8b9b8e627dd4cbe5e33366376923, type: 2}
   _maxHealth: 100
   _attack: 10
   _defense: 10
