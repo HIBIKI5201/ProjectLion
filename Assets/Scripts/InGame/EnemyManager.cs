@@ -40,11 +40,13 @@ public class EnemyManager : MobBase<EnemyData>
                 Vector2 direction = (_player.transform.position - transform.position).normalized;
                 _rigidBody.linearVelocity = direction * _agility / 5;
 
-                ChangeSprite(direction.x >= 0 ? "Right" : "Left", Data.Name);
+                ChangeSprite(direction.x >= 0 ? "Right" : "Left", BaseData.Name);
             }
         }
         else
+        {
             Repop();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

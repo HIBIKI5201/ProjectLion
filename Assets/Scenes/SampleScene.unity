@@ -3019,6 +3019,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1593489775}
   - component: {fileID: 1593489774}
+  - component: {fileID: 1593489776}
   m_Layer: 5
   m_Name: BattleUI
   m_TagString: Untagged
@@ -3040,7 +3041,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PanelSettings: {fileID: 11400000, guid: 62ae839900ab0ec49beaaf497316ae2d, type: 2}
   m_ParentUI: {fileID: 0}
-  sourceAsset: {fileID: 9197481963319205126, guid: ff26ed6c505ef5c40a8a5b382890cd3d, type: 3}
+  sourceAsset: {fileID: 9197481963319205126, guid: a7d8ca265a84a4144b4d059c33dda5fb, type: 3}
   m_SortingOrder: 0
   m_WorldSpaceSizeMode: 1
   m_WorldSpaceWidth: 1920
@@ -3060,6 +3061,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1593489776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1593489773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3eae50781ea0abb48ac0da64e536fb57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _uiDatas: {fileID: 11400000, guid: c98fbbe91c2639a45ba0f09b6ee1a293, type: 2}
+  _levelUpManager: {fileID: 1914408006}
+  _inGameManager: {fileID: 1914408003}
 --- !u!1 &1600755328
 GameObject:
   m_ObjectHideFlags: 0

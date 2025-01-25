@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: UXML
+  m_EditorClassIdentifier: 
+  m_GroupName: UXML
+  m_GUID: fac991a7644062e45b03af6e30e00170
+  m_SerializeEntries:
+  - m_GUID: 06a967d3662a05443858c054bca0f5e0
+    m_Address: UXML/Timer
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3b6bb7fa846c4974a9de84f8eb4a50a0
+    m_Address: UXML/SpecialAttack.uxml
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5b291a3a65a63b84f9dd36d2e4f6d541
+    m_Address: UXML/LevelUpPanel.uxml
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c14e3ca2e87748b469cacf5b8c5dff8f
+    m_Address: UXML/StatusElement
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cf8e7b7ca72a8854a8c3e898b2b8e549
+    m_Address: UXML/LevelUpStatus.uxml
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d89dd57a73caef742a0ac2b448f0d580
+    m_Address: UXML/Slider.uxml
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e025c1d296a6610449b6f798a616693e
+    m_Address: UXML/Status.uxml
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 5d770c189dbeee64e8bef378f6134cc8, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 2cdd3480e1a438945b55671778997fdb, type: 2}
+    - {fileID: 11400000, guid: 40441d07e17968a4b89b7a448f367b48, type: 2}

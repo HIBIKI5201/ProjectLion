@@ -34,7 +34,7 @@ public class EnemyGenerator : MonoBehaviour
                     return Instantiate(enemy, transform).GetComponent<EnemyManager>();
                 },
             actionOnGet: obj => obj.Init(() => _enemyPool.Release(obj)),
-            actionOnRelease: obj => { obj.gameObject.SetActive(false); AddExperiance(obj.Data.DropExperience); },
+            actionOnRelease: obj => { obj.gameObject.SetActive(false); AddExperiance(obj.BaseData.DropExperience); },
             actionOnDestroy: obj => Destroy(obj.gameObject),
             collectionCheck: false, defaultCapacity: 10, maxSize: _generateLimit);
     }

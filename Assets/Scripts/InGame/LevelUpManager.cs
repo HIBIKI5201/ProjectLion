@@ -1,7 +1,6 @@
 using SymphonyFrameWork.CoreSystem;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 public class LevelUpManager : MonoBehaviour
@@ -23,16 +22,20 @@ public class LevelUpManager : MonoBehaviour
         { ItemKind.SkillPowerUp, 10 },
         { ItemKind.GetCoinValueUp, 10 },
     };
+
+    public event Action<IEnumerable<ItemKind>, Action<ItemKind>> OnLevelChanged;
+    public event Action OnGetItem;
     private void Start()
     {
         foreach (ItemKind kind in Enum.GetValues(typeof(ItemKind)))
             ItemHaveValue.Add(kind, 0);
     }
 
+    [ContextMenu("LevelUp")]
     public void GetNewItem()
     {
         HashSet<ItemKind> kinds = new();
-        while (kinds.Count < 3)
+        while (kinds.Count < 3)//レベルが最大のアイテムの量によって無限ループの可能性あり
         {
             int index = Random.Range(1, _itemKindValue);
             ItemKind kind = (ItemKind)Enum.GetValues(typeof(ItemKind)).GetValue(index);
@@ -40,7 +43,8 @@ public class LevelUpManager : MonoBehaviour
                 kinds.Add(kind);
         }
         Debug.Log($"level up and selected items are 「{string.Join(" ", kinds)}」");
-        AddItem(kinds.ElementAt(0));
+        OnLevelChanged?.Invoke(kinds, x => AddItem(x));
+        //AddItem(kinds.ElementAt(0));
     }
 
     private void AddItem(ItemKind kind)
@@ -61,9 +65,12 @@ public class LevelUpManager : MonoBehaviour
                     agility: ItemHaveValue[ItemKind.AgilityUp] * 0.1f * player.Data.Agility,
                     attackRange: ItemHaveValue[ItemKind.AttackRangeUp] * 0.1f * player.Data.AttackRange,
                     attackSpeed: ItemHaveValue[ItemKind.AttackSpeedUp] * 0.1f * player.Data.AttackSpeed);
+                player.LoadData(data);
                 break;
         }
+
         ItemHaveValue[kind]++;
+        OnGetItem?.Invoke();
         Debug.Log($"choice kind is {kind}");
     }
 }
