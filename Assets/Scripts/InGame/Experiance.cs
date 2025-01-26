@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Experiance : MonoBehaviour
@@ -5,6 +6,7 @@ public class Experiance : MonoBehaviour
     private float _expPoint = 0;
     private LevelContainer _levelContainer;
     private SpecialAttackManager _specialAttackManager;
+    public event Action OnExperiance;
 
     public void Initialize(float point)
     {
@@ -16,6 +18,7 @@ public class Experiance : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            OnExperiance?.Invoke();
             _levelContainer.AddExperiance(_expPoint);
             _specialAttackManager.AddSpecialExperiance(_expPoint);
             Destroy(gameObject);
