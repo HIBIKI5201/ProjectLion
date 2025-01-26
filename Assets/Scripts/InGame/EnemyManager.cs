@@ -21,6 +21,9 @@ public class EnemyManager : MobBase<EnemyData>
     private GameObject _player;
     private CircleCollider2D _playerCollider;
 
+    [SerializeField]
+    private GameObject _experianceObj;
+
     protected override void Awake_S()
     {
         _player = SingletonDirector.GetSingleton<PlayerController>().gameObject;
@@ -82,6 +85,9 @@ public class EnemyManager : MobBase<EnemyData>
     protected override void DeathBehaviour()
     {
         DeathAction?.Invoke();
+        //_experianceObj.GetComponent<Experiance>()._expPoint = base.BaseData.DropExperience; <= うまくうごかない
+        //この状態ではエネミーごとに経験値を変えることができない
+        Instantiate(_experianceObj, transform.position, Quaternion.identity);
     }
 
     protected override async void HitDamageBehaviour()

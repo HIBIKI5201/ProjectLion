@@ -84,3 +84,4 @@ MonoBehaviour:
   _agility: 10
   _attackSpeed: 10
   _attackRange: 10
+  _experianceObj: {fileID: 3379163876735906355, guid: 8371d16512f717140a2ba29d8d3f6426, type: 3}
