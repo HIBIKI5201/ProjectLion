@@ -5,10 +5,6 @@ public class SpecialAttackSystem : MonoBehaviour
     [SerializeField]
     private float _damageRate = 100;
     private float _attack;
-    private void Start()
-    {
-        _attack = FindAnyObjectByType<PlayerController>().Attack;
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -16,6 +12,7 @@ public class SpecialAttackSystem : MonoBehaviour
         {
             if (collision.gameObject.TryGetComponent(out EnemyManager enemy))
             {
+                _attack = FindAnyObjectByType<PlayerController>().Attack;//よくない実装、必殺技のオブジェクトを二つ用意している弊害で必殺技発動のたびに二度findしている
                 enemy.AddDamage(_damageRate * _attack);
             }
         }
