@@ -4,7 +4,10 @@ public class LevelContainer : MonoBehaviour
 {
     private int _level = 1;
     private float _experiancePoint = 0;
+    public float ExperiancePoint { get => _experiancePoint; }
     private float _nextRequirePoint = 500;
+    public float NextRequirePoint { get => _nextRequirePoint; }
+
     private LevelUpManager _manager;
 
     private void Awake()
