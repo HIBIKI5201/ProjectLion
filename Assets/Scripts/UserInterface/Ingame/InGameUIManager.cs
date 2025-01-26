@@ -10,6 +10,7 @@ public class InGameUIManager : MonoBehaviour
 
     [SerializeField] MastorData _uiDatas;
     [SerializeField] LevelUpManager _levelUpManager;
+    [SerializeField] LevelContainer _levelContainer;
     [SerializeField] InGameManager _inGameManager;
     PlayerController _playerController;
     private async void Start()
@@ -45,10 +46,8 @@ public class InGameUIManager : MonoBehaviour
         if (status is null) Debug.Log("statusUIManager is null");
         _levelUpManager.OnGetItem += () => status?.OnStatusChange(LevelUpManager.ItemHaveValue);
 
-        var coinTex = _root.Q<Label>();
-        var expTex = _root.Q<Label>();
-        var expBar = _root.Q<VisualElement>();
-        //ToDo:EXPバー及びコインの変更を通知する
+        var reward = _root.Q<RewardUIManager>("RewardUI");
+        _levelContainer.OnAddExperiance += (x, y) => reward.ChangeEXP(x, y);
 
         return Task.CompletedTask;
     }

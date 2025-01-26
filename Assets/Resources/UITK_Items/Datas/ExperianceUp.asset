@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _kind: 8
   _text: Experiance
-  _information: 
+  _information: test
   _texture: {fileID: 2800000, guid: 6424aef58e1f24c42a5311802f9f1bbe, type: 3}

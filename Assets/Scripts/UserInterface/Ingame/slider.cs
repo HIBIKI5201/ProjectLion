@@ -3,9 +3,9 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 [UxmlElement]
-public partial class SliderManager : UIElement_B
+public partial class ExpSlider : UIElement_B
 {
-    public SliderManager() : base("UXML/Slider.uxml") { }
+    public ExpSlider() : base("UXML/Slider.uxml") { }
 
     [UxmlAttribute]
     Texture2D _coverTexture;
