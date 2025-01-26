@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ba9e46ccbb51f4ebf64973098acd1b, type: 3}
   m_Name: AgilityUp
   m_EditorClassIdentifier: 
-  _kind: 4
+  _kind: 3
   _text: Attack
-  _texture: {fileID: 2800000, guid: 2bebf385c94db3a4cb21211bf6e24589, type: 3}
+  _information: 
+  _texture: {fileID: 2800000, guid: cfe26aef90c1cb44198a89af633eaf45, type: 3}

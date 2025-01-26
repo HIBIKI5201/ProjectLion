@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ba9e46ccbb51f4ebf64973098acd1b, type: 3}
   m_Name: SkillPowerUp
   m_EditorClassIdentifier: 
-  _kind: 11
+  _kind: 10
   _text: SkillPower
-  _texture: {fileID: 2800000, guid: e38d7be0b531cfa49a0594295d482342, type: 3}
+  _information: 
+  _texture: {fileID: 2800000, guid: 5f98d4434d64b0c4ea86dc752f836d40, type: 3}

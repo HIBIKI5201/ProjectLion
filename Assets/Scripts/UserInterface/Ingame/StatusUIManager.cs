@@ -24,7 +24,7 @@ public partial class StatusUIManager : UIElement_B
         _statusPanels.Add(ItemKind.SkillPowerUp, container.Q<StatusUI>("SkillPower"));
         _statusPanels.Add(ItemKind.SkillCoolTimeDown, container.Q<StatusUI>("SkillCoolTime"));
         _statusPanels.Add(ItemKind.HealOfTime, container.Q<StatusUI>("HealthRegen"));
-        _statusPanels.Add(ItemKind.NockBackUp, container.Q<StatusUI>("KnockBack"));
+        _statusPanels.Add(ItemKind.KnockBackUp, container.Q<StatusUI>("KnockBack"));
         #endregion
 
         //statusÇÃÉAÉCÉRÉìê›íË
@@ -33,7 +33,7 @@ public partial class StatusUIManager : UIElement_B
             if (_statusPanels.TryGetValue(item, out StatusUI statusPanel))
             {
                 statusPanel.SetIcon(_uiData.FindEnum(item).Texture, Color.white);
-                Debug.Log("set");
+                Debug.Log("set "+ _uiData.FindEnum(item));
             }
             Debug.Log(item.ToString());
         }

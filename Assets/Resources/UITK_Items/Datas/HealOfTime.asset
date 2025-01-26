@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ba9e46ccbb51f4ebf64973098acd1b, type: 3}
   m_Name: HealOfTime
   m_EditorClassIdentifier: 
-  _kind: 8
+  _kind: 7
   _text: Heal Of Time
-  _texture: {fileID: 2800000, guid: a83616bc8ae6787408077056225e89b7, type: 3}
+  _information: 
+  _texture: {fileID: 2800000, guid: a913cb1494625874081afea73e7a2f1b, type: 3}

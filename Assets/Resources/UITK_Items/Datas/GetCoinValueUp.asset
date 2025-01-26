@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ba9e46ccbb51f4ebf64973098acd1b, type: 3}
   m_Name: GetCoinValueUp
   m_EditorClassIdentifier: 
-  _kind: 12
+  _kind: 11
   _text: Get Coin
-  _texture: {fileID: 2800000, guid: 5ca1bf8e59c6350409c3c8a4309b6fc0, type: 3}
+  _information: 
+  _texture: {fileID: 2800000, guid: 97e3952cf763af446b32f3ce9ad526f2, type: 3}

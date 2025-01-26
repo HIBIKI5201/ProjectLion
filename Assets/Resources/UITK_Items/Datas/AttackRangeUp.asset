@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ba9e46ccbb51f4ebf64973098acd1b, type: 3}
   m_Name: AttackRangeUp
   m_EditorClassIdentifier: 
-  _kind: 6
+  _kind: 5
   _text: Attack Range
-  _texture: {fileID: 2800000, guid: 4f736c500b6121e49a1bdfd053d0476b, type: 3}
+  _information: 
+  _texture: {fileID: 2800000, guid: cf09e3e49f507af45ba478602b1a1abb, type: 3}

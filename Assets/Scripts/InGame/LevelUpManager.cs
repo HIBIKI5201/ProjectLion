@@ -11,14 +11,14 @@ public class LevelUpManager : MonoBehaviour
     {
         { ItemKind.HealthUp, 30 },
         { ItemKind.AttackUp, 30 },
-        { ItemKind.DefenseUp, 30 },
+        //{ ItemKind.DefenseUp, 30 },
         { ItemKind.AgilityUp, 30 },
         { ItemKind.AttackSpeedUp, 30 },
         { ItemKind.AttackRangeUp, 30 },
         { ItemKind.SkillCoolTimeDown, 10 },
         { ItemKind.HealOfTime, 10 },
         { ItemKind.ExperianceUp, 10 },
-        { ItemKind.NockBackUp, 10 },
+        { ItemKind.KnockBackUp, 10 },
         { ItemKind.SkillPowerUp, 10 },
         { ItemKind.GetCoinValueUp, 10 },
     };
@@ -53,7 +53,7 @@ public class LevelUpManager : MonoBehaviour
         {
             case ItemKind.HealthUp:
             case ItemKind.AttackUp:
-            case ItemKind.DefenseUp:
+            //case ItemKind.DefenseUp:
             case ItemKind.AgilityUp:
             case ItemKind.AttackSpeedUp:
             case ItemKind.AttackRangeUp:
@@ -61,7 +61,7 @@ public class LevelUpManager : MonoBehaviour
                 MobData data = new MobData(player.Data,
                     health: ItemHaveValue[ItemKind.HealthUp] * 0.1f * player.Data.MaxHealth,
                     attack: ItemHaveValue[ItemKind.AttackUp] * 0.1f * player.Data.Attack,
-                    defense: ItemHaveValue[ItemKind.DefenseUp] * 0.1f * player.Data.Defense,
+                    defense: 0,//ItemHaveValue[ItemKind.DefenseUp] * 0.1f * player.Data.Defense,
                     agility: ItemHaveValue[ItemKind.AgilityUp] * 0.1f * player.Data.Agility,
                     attackRange: ItemHaveValue[ItemKind.AttackRangeUp] * 0.1f * player.Data.AttackRange,
                     attackSpeed: ItemHaveValue[ItemKind.AttackSpeedUp] * 0.1f * player.Data.AttackSpeed);
@@ -81,7 +81,7 @@ public enum ItemKind
 
     HealthUp,
     AttackUp,
-    DefenseUp,
+    //DefenseUp,
     AgilityUp,
     AttackSpeedUp,
     AttackRangeUp,
@@ -89,7 +89,7 @@ public enum ItemKind
     SkillCoolTimeDown,
     HealOfTime,
     ExperianceUp,
-    NockBackUp,
+    KnockBackUp,
     SkillPowerUp,
     GetCoinValueUp,
 }
