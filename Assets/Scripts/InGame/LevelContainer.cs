@@ -15,7 +15,6 @@ public class LevelContainer : MonoBehaviour
     public void AddExperiance(float point)
     {
         _experiancePoint += point;
-        Debug.Log($"ëçåoå±íló ÇÕ{_experiancePoint}Ç≈Ç∑");
         if (_nextRequirePoint <= _experiancePoint)
         {
             _experiancePoint = _experiancePoint - _nextRequirePoint;
