@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d8ba9e46ccbb51f4ebf64973098acd1b, type: 3}
-  m_Name: NockBackUp
+  m_Name: KnockBackUp
   m_EditorClassIdentifier: 
-  _kind: 10
+  _kind: 9
   _text: Attack
-  _texture: {fileID: 2800000, guid: 2213dbb31ebcfff40945010696ee503c, type: 3}
+  _information: 
+  _texture: {fileID: 2800000, guid: 3d019e4f625d086499b712ca7a7c416f, type: 3}

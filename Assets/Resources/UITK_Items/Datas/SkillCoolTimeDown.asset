@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ba9e46ccbb51f4ebf64973098acd1b, type: 3}
   m_Name: SkillCoolTimeDown
   m_EditorClassIdentifier: 
-  _kind: 7
+  _kind: 6
   _text: Attack
-  _texture: {fileID: 2800000, guid: 04024046998d1c24f8b208c3aab133a8, type: 3}
+  _information: 
+  _texture: {fileID: 2800000, guid: 3fb4884eef7bba041a48a5596867d8b9, type: 3}
