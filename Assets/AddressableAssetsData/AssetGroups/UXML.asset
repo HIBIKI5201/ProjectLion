@@ -20,6 +20,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 359fd953e8bd5144cb9e78d50a9f6000
+    m_Address: UXML/EXPBar.uxml
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3b6bb7fa846c4974a9de84f8eb4a50a0
     m_Address: UXML/SpecialAttack.uxml
     m_ReadOnly: 0

@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _kind: 6
   _text: Attack
-  _information: 
+  _information: test
   _texture: {fileID: 2800000, guid: 3fb4884eef7bba041a48a5596867d8b9, type: 3}

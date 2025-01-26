@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _kind: 10
   _text: SkillPower
-  _information: 
+  _information: test
   _texture: {fileID: 2800000, guid: 5f98d4434d64b0c4ea86dc752f836d40, type: 3}
