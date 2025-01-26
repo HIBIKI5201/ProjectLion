@@ -85,9 +85,9 @@ public class EnemyManager : MobBase<EnemyData>
     protected override void DeathBehaviour()
     {
         DeathAction?.Invoke();
-        //_experianceObj.GetComponent<Experiance>()._expPoint = base.BaseData.DropExperience; <= うまくうごかない
-        //この状態ではエネミーごとに経験値を変えることができない
-        Instantiate(_experianceObj, transform.position, Quaternion.identity);
+        //経験値をドロップ
+        Instantiate(_experianceObj, transform.position, Quaternion.identity).
+            GetComponent<Experiance>().Initialize(base.BaseData.DropExperience);//経験値を初期化
     }
 
     protected override async void HitDamageBehaviour()
