@@ -2462,9 +2462,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyPrefabs:
-  - {fileID: 1610123057312720962, guid: baa1c4ef2263a6549aac302b4691b953, type: 3}
+  - {fileID: 1610123057312720962, guid: 0bea40918d77b814f969f9586ccf5f5e, type: 3}
   - {fileID: 1610123057312720962, guid: 73f271ab2d6af56499e722ee31460913, type: 3}
   - {fileID: 7720385079266262124, guid: bb178090063a15046b823be1fda862ff, type: 3}
+  - {fileID: 1610123057312720962, guid: aa016166782789d4fb06f976f5da3b41, type: 3}
+  - {fileID: 1610123057312720962, guid: e0cdad1dd1075654fa445f233f4394ac, type: 3}
   _generateIntarval: 1
   _generateLimit: 100
 --- !u!4 &1365497571
@@ -3270,6 +3272,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _uiDatas: {fileID: 11400000, guid: c98fbbe91c2639a45ba0f09b6ee1a293, type: 2}
   _levelUpManager: {fileID: 1914408006}
+  _levelContainer: {fileID: 0}
   _inGameManager: {fileID: 1914408003}
 --- !u!1 &1600755328
 GameObject:

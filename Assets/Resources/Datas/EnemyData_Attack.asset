@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: EnemyData_Attack
   m_EditorClassIdentifier: 
   _data:
-    _maxHealth: 100
+    _maxHealth: 150
     _attack: 40
     _defense: 0
     _agility: 20
     _attackSpeed: 20
     _attackRange: 5
-  _dropExperience: 100
-  _name: Sebas
+  _dropExperience: 60
+  _name: Arthur
