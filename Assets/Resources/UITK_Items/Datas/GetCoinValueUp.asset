@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _kind: 11
   _text: Get Coin
-  _information: 
+  _information: test
   _texture: {fileID: 2800000, guid: 97e3952cf763af446b32f3ce9ad526f2, type: 3}

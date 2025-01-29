@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _kind: 5
   _text: Attack Range
-  _information: 
+  _information: test
   _texture: {fileID: 2800000, guid: cf09e3e49f507af45ba478602b1a1abb, type: 3}

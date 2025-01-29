@@ -15,11 +15,6 @@ MonoBehaviour:
   m_GroupName: Default Local Group
   m_GUID: f42211156c1b1ee449373f8a1ff34d35
   m_SerializeEntries:
-  - m_GUID: 359fd953e8bd5144cb9e78d50a9f6000
-    m_Address: Assets/UITK_Items/UXML/InGame/EXPBar.uxml
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a7d8ca265a84a4144b4d059c33dda5fb
     m_Address: Assets/UITK_Items/UXML/InGame/BattleUI_Master.uxml
     m_ReadOnly: 0
