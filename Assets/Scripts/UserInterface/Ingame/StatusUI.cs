@@ -15,9 +15,6 @@ public partial class StatusUI : UIElement_B
     VisualElement _icon;
     Label _text;
 
-    //ToDo:‰¼
-    Texture2D _iconTexture;
-    float _InitText;
     public StatusUI() : base("UXML/StatusElement") { }
 
     protected override Task Initialize_S(TemplateContainer container)
@@ -25,14 +22,11 @@ public partial class StatusUI : UIElement_B
         _icon = container.Q<VisualElement>("Icon");
         _text = container.Q<Label>("Text");
 
-        SetIcon(_iconTexture, Color.white);
-        OnStatusChanged(_InitText);
 
         return Task.CompletedTask;
     }
     public void SetIcon(Texture2D icon,Color color)
     {
-        _iconTexture = icon;
         if (_icon != null)
         {
             _icon.style.backgroundImage = icon;
@@ -41,7 +35,6 @@ public partial class StatusUI : UIElement_B
     }
     public void OnStatusChanged(float status)
     {
-        _InitText = status;
         if (_text != null)
         {
             _text.text = status.ToString();
