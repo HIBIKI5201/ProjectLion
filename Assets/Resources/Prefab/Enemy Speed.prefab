@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &6539459231431400357
+--- !u!1001 &2863388547466940299
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,11 +10,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 733650811166277178, guid: a81fdbaaa17b4e24fa161d2f953a3518, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.830698
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 733650811166277178, guid: a81fdbaaa17b4e24fa161d2f953a3518, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.2783465
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 733650811166277178, guid: a81fdbaaa17b4e24fa161d2f953a3518, type: 3}
       propertyPath: m_LocalPosition.z
@@ -50,52 +50,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3595142255003445193, guid: a81fdbaaa17b4e24fa161d2f953a3518, type: 3}
       propertyPath: m_Name
-      value: ExplodeEnemy
+      value: Enemy Speed
       objectReference: {fileID: 0}
-    - target: {fileID: 4739704105280992287, guid: a81fdbaaa17b4e24fa161d2f953a3518, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -8097727349830347679, guid: 14753d7f74d231b4e9c402f550f2d978, type: 3}
-    - target: {fileID: 6309027799840157093, guid: a81fdbaaa17b4e24fa161d2f953a3518, type: 3}
-      propertyPath: m_labelHash
-      value: 3.554027e-18
-      objectReference: {fileID: 0}
-    - target: {fileID: 6309027799840157093, guid: a81fdbaaa17b4e24fa161d2f953a3518, type: 3}
-      propertyPath: m_SpriteHash
-      value: 977940405
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2468166948394101393, guid: a81fdbaaa17b4e24fa161d2f953a3518, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3595142255003445193, guid: a81fdbaaa17b4e24fa161d2f953a3518, type: 3}
-      insertIndex: 2
-      addedObject: {fileID: 936768549752203763}
+      insertIndex: -1
+      addedObject: {fileID: 6239651793020116439}
   m_SourcePrefab: {fileID: 100100000, guid: a81fdbaaa17b4e24fa161d2f953a3518, type: 3}
---- !u!1 &7720385079266262124 stripped
+--- !u!1 &1610123057312720962 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3595142255003445193, guid: a81fdbaaa17b4e24fa161d2f953a3518, type: 3}
-  m_PrefabInstance: {fileID: 6539459231431400357}
+  m_PrefabInstance: {fileID: 2863388547466940299}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &936768549752203763
+--- !u!114 &6239651793020116439
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7720385079266262124}
+  m_GameObject: {fileID: 1610123057312720962}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff23284f912d4a64dbc9410efb8781b8, type: 3}
+  m_Script: {fileID: 11500000, guid: 07a94ce507d84a04ab38690dae4defac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _data: {fileID: 11400000, guid: d5bc56e04f161294a9327c4ee6b6a9fa, type: 2}
+  _data: {fileID: 11400000, guid: c57e8b9b8e627dd4cbe5e33366376923, type: 2}
   _maxHealth: 100
-  _attack: 20
-  _defense: 0
-  _agility: 20
-  _attackSpeed: 20
+  _attack: 10
+  _defense: 10
+  _agility: 10
+  _attackSpeed: 10
   _attackRange: 10
   _experianceObj: {fileID: 3379163876735906355, guid: 8371d16512f717140a2ba29d8d3f6426, type: 3}
-  _explodeObj: {fileID: 6576324710281291653, guid: 88915ad5972c2c741ba5fd82723c1a2e, type: 3}
