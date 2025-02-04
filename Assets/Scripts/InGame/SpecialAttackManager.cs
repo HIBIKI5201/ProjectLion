@@ -5,19 +5,28 @@ using UnityEngine;
 public class SpecialAttackManager : MonoBehaviour
 {
     //発動条件用変数
-    private float _specialExperiancePoint = 0;
-    public float SpecialExperiancePoint { get => _specialExperiancePoint; }
+    [Header("必殺技の発動条件")]
     [SerializeField]
     private float _specialRequirePoint = 100;
     public float SpecialRequirePoint { get => _specialRequirePoint; }
 
-    //発動内容変数
+    private float _specialExperiancePoint = 0;
+    public float SpecialExperiancePoint { get => _specialExperiancePoint; }
     private bool _specialReady = false;//この変数がtrueになったら必殺技が使える
     public event Action<float> SpecialEvant;
+
+    //発動内容変数
+    [Header("必殺技の能力値")]
     [SerializeField]
     private GameObject _specialObj;//必殺技のオブジェクト
+    private SpecialAttackSystem _system;
     [SerializeField]
     private float _specialTime = 3;
+
+    private void Start()
+    {
+        _system = _specialObj.GetComponent<SpecialAttackSystem>();//必殺技のスクリプトを取得
+    }
 
     private void Update()
     {
@@ -42,6 +51,7 @@ public class SpecialAttackManager : MonoBehaviour
         //必殺技発動の処理
         if (_specialReady)
         {
+            _system.init();//必殺技の初期化
             _specialObj.SetActive(true);
             await PauseManager.PausableWaitForSecondAsync(_specialTime);
             _specialObj.SetActive(false);

@@ -1,4 +1,5 @@
 using SymphonyFrameWork.CoreSystem;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SpecialAttackSystem : MonoBehaviour
@@ -7,7 +8,7 @@ public class SpecialAttackSystem : MonoBehaviour
     private float _damageRate = 100;
     private float _attack;
 
-    private void Start()
+    public void init()
     {
         _attack = SingletonDirector.GetSingleton<PlayerController>().Attack;
     }
