@@ -1,3 +1,4 @@
+using SymphonyFrameWork.CoreSystem;
 using UnityEngine;
 
 public class SpecialAttackSystem : MonoBehaviour
@@ -6,13 +7,17 @@ public class SpecialAttackSystem : MonoBehaviour
     private float _damageRate = 100;
     private float _attack;
 
+    private void Start()
+    {
+        _attack = SingletonDirector.GetSingleton<PlayerController>().Attack;//初めてシングルトン関連を使ったので使い方間違ってるかも
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
             if (collision.gameObject.TryGetComponent(out EnemyManager enemy))
             {
-                _attack = FindAnyObjectByType<PlayerController>().Attack;//よくない実装、必殺技のオブジェクトを二つ用意している弊害で必殺技発動のたびに二度findしている
                 enemy.AddDamage(_damageRate * _attack);
             }
         }
