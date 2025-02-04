@@ -9,7 +9,7 @@ public class SpecialAttackSystem : MonoBehaviour
 
     private void Start()
     {
-        _attack = SingletonDirector.GetSingleton<PlayerController>().Attack;//初めてシングルトン関連を使ったので使い方間違ってるかも
+        _attack = SingletonDirector.GetSingleton<PlayerController>().Attack;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
