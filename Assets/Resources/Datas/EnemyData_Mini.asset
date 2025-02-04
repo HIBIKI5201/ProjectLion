@@ -19,5 +19,5 @@ MonoBehaviour:
     _agility: 10
     _attackSpeed: 20
     _attackRange: 5
-  _dropExperience: 100
-  _name: Sebas
+  _dropExperience: 40
+  _name: Artist
