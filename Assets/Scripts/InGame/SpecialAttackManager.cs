@@ -49,7 +49,7 @@ public class SpecialAttackManager : MonoBehaviour
     public async void SpecialAttack()
     {
         //•KE‹Z”­“®‚Ìˆ—
-        if (_specialReady)
+        if (_specialReady && !_specialObj.activeInHierarchy)
         {
             _system.init();//•KE‹Z‚Ì‰Šú‰»
             _specialObj.SetActive(true);
