@@ -39,6 +39,7 @@ public class SpecialAttackManager : MonoBehaviour
     public void AddSpecialExperiance(float point)
     {
         _specialExperiancePoint += point;
+        Debug.Log("_specialExperiancePoint : " +_specialExperiancePoint+ " :SpecialRequirePoint :"+SpecialRequirePoint + "\nnormalize : "+(float)SpecialExperiancePoint / SpecialRequirePoint);
         SpecialEvant?.Invoke(_specialRequirePoint - _specialExperiancePoint);
         if (!_specialReady && _specialRequirePoint <= _specialExperiancePoint)
         {
@@ -57,8 +58,8 @@ public class SpecialAttackManager : MonoBehaviour
             _specialObj.SetActive(false);
             //•KŽE‹Z”­“®I—¹‚Ìˆ—
             _specialReady = false;
-            SpecialEvant?.Invoke(0);
             _specialExperiancePoint = 0;
+            SpecialEvant?.Invoke(0);
         }
     }
 }
