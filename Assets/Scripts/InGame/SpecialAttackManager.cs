@@ -13,7 +13,11 @@ public class SpecialAttackManager : MonoBehaviour
     private float _specialExperiancePoint = 0;
     public float SpecialExperiancePoint { get => _specialExperiancePoint; }
     private bool _specialReady = false;//この変数がtrueになったら必殺技が使える
-    public event Action<float> SpecialEvant;
+    /// <summary>
+    /// 必殺技の経験値獲得時に呼ばれる処理
+    /// 引数1 現在の経験値量、引数2 目標の経験値
+    /// </summary>
+    public event Action<float, float> SpecialEvant;
 
     //発動内容変数
     [Header("必殺技の能力値")]
@@ -39,7 +43,7 @@ public class SpecialAttackManager : MonoBehaviour
     public void AddSpecialExperiance(float point)
     {
         _specialExperiancePoint += point;
-        SpecialEvant?.Invoke(_specialRequirePoint - _specialExperiancePoint);
+        SpecialEvant?.Invoke(_specialExperiancePoint, _specialRequirePoint);
         if (!_specialReady && _specialRequirePoint <= _specialExperiancePoint)
         {
             _specialReady = true;
@@ -57,8 +61,7 @@ public class SpecialAttackManager : MonoBehaviour
             _specialObj.SetActive(false);
             //必殺技発動終了の処理
             _specialReady = false;
-            SpecialEvant?.Invoke(0);
-            _specialExperiancePoint = 0;
+            SpecialEvant?.Invoke(_specialExperiancePoint = 0, _specialRequirePoint);\
         }
     }
 }
