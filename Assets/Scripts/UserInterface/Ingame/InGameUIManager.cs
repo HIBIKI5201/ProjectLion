@@ -27,9 +27,10 @@ public class InGameUIManager : MonoBehaviour
 
         await PanelSetting();
     }
-    Task PanelSetting()
+    async Task PanelSetting()
     {
         LevelUpPanel panel = _root.Q<LevelUpPanel>("LevelUpPanel");
+        await panel.InitializeTask;
         if (panel != null)
         {
             _levelUpManager.OnLevelChanged += (x, y) => panel.OnLevelUp(x, y, _uiDatas);
@@ -39,16 +40,17 @@ public class InGameUIManager : MonoBehaviour
             Debug.Log("panel is null");
         }
 
-        var timerText = _root.Q<TimerUI>("TimerUI");
+        TimerUI timerText = _root.Q<TimerUI>("TimerUI");
+        await timerText.InitializeTask;
         _inGameManager.OnTimerChanged += x => timerText.OnTimerChanged(x / 60, x % 60);
 
-        var status = _root.Q<StatusUIManager>("StatusUIManager");
+        StatusUIManager status = _root.Q<StatusUIManager>("StatusUIManager");
+        await status.InitializeTask;
         if (status is null) Debug.Log("statusUIManager is null");
         _levelUpManager.OnGetItem += () => status?.OnStatusChange(LevelUpManager.ItemHaveValue);
 
-        var reward = _root.Q<RewardUIManager>("RewardUI");
+        RewardUIManager reward = _root.Q<RewardUIManager>("RewardUI");
+        await reward.InitializeTask;
         _levelContainer.OnAddExperiance += (x, y) => reward.ChangeEXP(x, y);
-
-        return Task.CompletedTask;
     }
 }

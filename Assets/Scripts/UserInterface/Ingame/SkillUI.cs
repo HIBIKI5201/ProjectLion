@@ -36,7 +36,7 @@ public partial class SkillUI : UIElement_B
 
     void ChangeSkillGage(float current, float next)
     {
-        if (current / next > 1 && current / next < 0)
+        if (current / next > 1 && 0 > current / next)
         {
             Debug.LogWarning("ChagneSkillGage ‚Ì’l‚ª³‹K‰»‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ");
         }
