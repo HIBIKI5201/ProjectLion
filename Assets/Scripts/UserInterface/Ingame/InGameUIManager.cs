@@ -52,9 +52,7 @@ public class InGameUIManager : MonoBehaviour
         _levelUpManager.OnLevelChanged += (x, y) => panel.OnLevelUp(x, y, _uiDatas);
         _inGameManager.OnTimerChanged += x => timerText.OnTimerChanged(x / 60, x % 60);
         _levelUpManager.OnGetItem += () => status?.OnStatusChange(LevelUpManager.ItemHaveValue);
-        //_specialAttackManager.SpecialEvant += x => skill.ChangeSkillGage(
-        //    _specialAttackManager.SpecialExperiancePoint,
-        //    _specialAttackManager.SpecialRequirePoint);
+        _specialAttackManager.SpecialEvant += (x,y) => skill.ChangeSkillGage(x,y);
         skill.OnUseUltimate += () => _specialAttackManager.SpecialAttack();
         _levelContainer.OnAddExperiance += (x, y) => reward.ChangeEXP(x, y);
     }
