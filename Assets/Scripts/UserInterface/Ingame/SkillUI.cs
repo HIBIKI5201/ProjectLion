@@ -23,7 +23,7 @@ public partial class SkillUI : UIElement_B
         _gageMask = container.Q<VisualElement>("GageMask");
         _gageMask.style.overflow = Overflow.Hidden;
 
-        ChangeSkillGage(_normal, 1);
+        ChangeSkillGage(0, 1);
 
         container.AddManipulator(new Clickable(() => OnClick()));
         return Task.CompletedTask;
@@ -34,13 +34,14 @@ public partial class SkillUI : UIElement_B
         }
     }
 
-    void ChangeSkillGage(float current, float next)
+    public void ChangeSkillGage(float current, float next)
     {
-        if (current / next > 1 && 0 > current / next)
+        if (current > next)
         {
-            Debug.LogWarning("ChagneSkillGage ‚Ì’l‚ª³‹K‰»‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ");
+            current = next;
         }
-        _gage.style.bottom = Length.Percent(100 - current / next * 100);
-        _gageMask.style.top = Length.Percent(100 - current / next * 100);
+        var normalizeSkillGage = 100 - (float)current / next * 100;
+        _gage.style.bottom = Length.Percent(normalizeSkillGage);
+        _gageMask.style.top = Length.Percent(normalizeSkillGage);
     }
 }

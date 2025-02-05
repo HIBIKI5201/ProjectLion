@@ -52,27 +52,27 @@ public class InGameUIManager : MonoBehaviour
         _levelUpManager.OnLevelChanged += (x, y) => panel.OnLevelUp(x, y, _uiDatas);
         _inGameManager.OnTimerChanged += x => timerText.OnTimerChanged(x / 60, x % 60);
         _levelUpManager.OnGetItem += () => status?.OnStatusChange(LevelUpManager.ItemHaveValue);
-        _specialAttackManager.SpecialEvant += x => skill.ChangeSkillGage(
-            _specialAttackManager.SpecialExperiancePoint,
-            _specialAttackManager.SpecialRequirePoint);
+        //_specialAttackManager.SpecialEvant += x => skill.ChangeSkillGage(
+        //    _specialAttackManager.SpecialExperiancePoint,
+        //    _specialAttackManager.SpecialRequirePoint);
         skill.OnUseUltimate += () => _specialAttackManager.SpecialAttack();
         _levelContainer.OnAddExperiance += (x, y) => reward.ChangeEXP(x, y);
     }
-    private void OnDisable()
-    {
-        LevelUpPanel panel = _root.Q<LevelUpPanel>("LevelUpPanel");
-        TimerUI timerText = _root.Q<TimerUI>("TimerUI");
-        StatusUIManager status = _root.Q<StatusUIManager>("StatusUIManager");
-        SkillUI skill = _root.Q<SkillUI>("");
-        RewardUIManager reward = _root.Q<RewardUIManager>("RewardUI");
+    //private void OnDisable()
+    //{
+    //    LevelUpPanel panel = _root.Q<LevelUpPanel>("LevelUpPanel");
+    //    TimerUI timerText = _root.Q<TimerUI>("TimerUI");
+    //    StatusUIManager status = _root.Q<StatusUIManager>("StatusUIManager");
+    //    SkillUI skill = _root.Q<SkillUI>("");
+    //    RewardUIManager reward = _root.Q<RewardUIManager>("RewardUI");
 
-        _levelUpManager.OnLevelChanged -= (x, y) => panel.OnLevelUp(x, y, _uiDatas);
-        _inGameManager.OnTimerChanged -= x => timerText.OnTimerChanged(x / 60, x % 60);
-        _levelUpManager.OnGetItem -= () => status?.OnStatusChange(LevelUpManager.ItemHaveValue);
+    //    _levelUpManager.OnLevelChanged -= (x, y) => panel.OnLevelUp(x, y, _uiDatas);
+    //    _inGameManager.OnTimerChanged -= x => timerText.OnTimerChanged(x / 60, x % 60);
+    //    _levelUpManager.OnGetItem -= () => status?.OnStatusChange(LevelUpManager.ItemHaveValue);
         //_specialAttackManager.SpecialEvant -= x => skill.ChangeSkillGage(
         //    _specialAttackManager.SpecialExperiancePoint,
         //    _specialAttackManager.SpecialRequirePoint);
-        skill.OnUseUltimate -= () => _specialAttackManager.SpecialAttack();
-        _levelContainer.OnAddExperiance -= (x, y) => reward.ChangeEXP(x, y);
-    }
+    //    skill.OnUseUltimate -= () => _specialAttackManager.SpecialAttack();
+    //    _levelContainer.OnAddExperiance -= (x, y) => reward.ChangeEXP(x, y);
+    //}
 }
