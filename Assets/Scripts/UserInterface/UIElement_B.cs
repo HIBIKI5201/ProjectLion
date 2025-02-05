@@ -7,7 +7,6 @@ using UnityEngine.UIElements;
 [UxmlElement]
 public abstract partial class UIElement_B : VisualElement {
     public Task InitializeTask { get; private set; }
-    bool _isInitialized = false;
 
     public UIElement_B(string path)
     {
@@ -45,7 +44,6 @@ public abstract partial class UIElement_B : VisualElement {
 
             // UI要素の取得
             await Initialize_S(container);
-            _isInitialized = true;
             Debug.Log("ウィンドウは正常にロード完了");
         }
         else {
