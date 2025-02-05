@@ -50,7 +50,7 @@ public class SpecialAttackManager : MonoBehaviour
     //経験値追加処理、必殺技発動判定処理
     public void AddSpecialExperiance(float point)
     {
-        _specialExperiancePoint += point;
+        SpecialExperiancePoint += point;
         if (!_specialReady && _specialRequirePoint <= _specialExperiancePoint)
         {
             _specialReady = true;
