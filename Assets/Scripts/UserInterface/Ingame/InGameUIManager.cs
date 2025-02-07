@@ -11,10 +11,6 @@ public class InGameUIManager : MonoBehaviour
     VisualElement _root;
 
     [SerializeField] MastorData _uiDatas;
-    [SerializeField] LevelUpManager _levelUpManager;
-    [SerializeField] LevelContainer _levelContainer;
-    [SerializeField] InGameManager _inGameManager;
-    [SerializeField] SpecialAttackManager _specialAttackManager;
     PlayerController _playerController;
     private async void Start()
     {
@@ -32,29 +28,30 @@ public class InGameUIManager : MonoBehaviour
     }
     async Task PanelSetting()
     {
-        LevelUpPanel panel = _root.Q<LevelUpPanel>("LevelUpPanel");
-        TimerUI timerText = _root.Q<TimerUI>("TimerUI");
-        StatusUIManager status = _root.Q<StatusUIManager>("StatusUIManager");
-        SkillUI skill = _root.Q<SkillUI>("SkillUI");
-        RewardUIManager reward = _root.Q<RewardUIManager>("RewardUI");
+        LevelUpPanel panel = _root.Q<LevelUpPanel>();
+        TimerUI timerText = _root.Q<TimerUI>();
+        StatusUIManager status = _root.Q<StatusUIManager>();
+        SkillUI skill = _root.Q<SkillUI>();
+        RewardUIManager reward = _root.Q<RewardUIManager>();
 
-        Task[] wait = new Task[] 
-        {
+        var levelUpManager = FindFirstObjectByType<LevelUpManager>();
+        var inGameManager = FindFirstObjectByType<InGameManager>();
+        var specialAttackManager = FindFirstObjectByType<SpecialAttackManager>();
+        var levelContainer = FindFirstObjectByType<LevelContainer>();
+
+        await Task.WhenAll(
             panel.InitializeTask,
             timerText.InitializeTask,
             status.InitializeTask,
             skill.InitializeTask,
-            reward.InitializeTask,
-        };
+            reward.InitializeTask);
 
-        await Task.WhenAll(wait);
-
-        _levelUpManager.OnLevelChanged += (x, y) => panel.OnLevelUp(x, y, _uiDatas);
-        _inGameManager.OnTimerChanged += x => timerText.OnTimerChanged(x / 60, x % 60);
-        _levelUpManager.OnGetItem += () => status?.OnStatusChange(LevelUpManager.ItemHaveValue);
-        _specialAttackManager.SpecialEvant += (x,y) => skill.ChangeSkillGage(x,y);
-        skill.OnUseUltimate += () => _specialAttackManager.SpecialAttack();
-        _levelContainer.OnAddExperiance += (x, y) => reward.ChangeEXP(x, y);
+        levelUpManager.OnLevelChanged += (x, y) => panel.OnLevelUp(x, y, _uiDatas);
+        levelUpManager.OnGetItem += () => status?.OnStatusChange(LevelUpManager.ItemHaveValue);
+        inGameManager.OnTimerChanged += x => timerText.OnTimerChanged(x / 60, x % 60);
+        specialAttackManager.SpecialEvant += (x,y) => skill.ChangeSkillGage(x,y);
+        skill.OnUseUltimate += () => specialAttackManager.SpecialAttack();
+        levelContainer.OnAddExperiance += (x, y) => reward.ChangeEXP(x, y);
     }
     //private void OnDisable()
     //{
