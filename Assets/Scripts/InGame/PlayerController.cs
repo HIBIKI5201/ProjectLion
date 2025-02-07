@@ -14,6 +14,7 @@ public class PlayerController : MobBase<MobData_S>
     public event Action<MobData> OnChangeState;
     protected override void Awake_S()
     {
+
         SingletonDirector.SetSinglton(this);
         
         _rigidbody = GetComponent<Rigidbody2D>();

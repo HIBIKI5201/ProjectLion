@@ -2,11 +2,15 @@ using UnityEngine;
 
 public class ExplodeObjManager : MonoBehaviour
 {
+    [SerializeField]
+    private float _damage = 10;
+    [SerializeField]
+    private float _time = 5;
     private Coroutine _attackCoroutine;
 
     private async void Start()
     {
-        await Awaitable.WaitForSecondsAsync(5);
+        await Awaitable.WaitForSecondsAsync(_time);
         Destroy(gameObject);
     }
 
@@ -14,7 +18,7 @@ public class ExplodeObjManager : MonoBehaviour
     {
         if (collision.TryGetComponent(out PlayerController component))
         {
-            _attackCoroutine = StartCoroutine(PlayerAttack.Attack(component, 20));
+            _attackCoroutine = StartCoroutine(PlayerAttack.Attack(component, _damage));
         }
     }
 
