@@ -48,7 +48,9 @@ public class EnemyShootManager : MonoBehaviour
                 bool existMG = obj.TryGetComponent<BulletManager>(out var mg);
                 if (!existMG)
                     mg = obj.AddComponent<BulletManager>();
+
                 mg.SetStatus(_enemyManager.Attack);
+
                 if (obj.TryGetComponent<Rigidbody2D>(out var rb))
                 {
                     rb.gravityScale = 0;
