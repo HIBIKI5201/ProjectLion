@@ -72,6 +72,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3595142255003445193, guid: a81fdbaaa17b4e24fa161d2f953a3518, type: 3}
       insertIndex: 2
       addedObject: {fileID: 936768549752203763}
+    - targetCorrespondingSourceObject: {fileID: 3595142255003445193, guid: a81fdbaaa17b4e24fa161d2f953a3518, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7760151519473698185}
   m_SourcePrefab: {fileID: 100100000, guid: a81fdbaaa17b4e24fa161d2f953a3518, type: 3}
 --- !u!1 &7720385079266262124 stripped
 GameObject:
@@ -99,3 +102,19 @@ MonoBehaviour:
   _attackRange: 10
   _experianceObj: {fileID: 3379163876735906355, guid: 8371d16512f717140a2ba29d8d3f6426, type: 3}
   _explodeObj: {fileID: 6576324710281291653, guid: 88915ad5972c2c741ba5fd82723c1a2e, type: 3}
+--- !u!114 &7760151519473698185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7720385079266262124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c4c0ba580560b247bfe6b753a68342e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interval: 1
+  _bullet: {fileID: 5001527041279662033, guid: 9e60857fca53eb24ba7037ac41aa37fe, type: 3}
+  _bulletSpeed: 3
+  _bulletDuration: 2

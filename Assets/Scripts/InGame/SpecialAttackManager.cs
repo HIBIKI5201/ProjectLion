@@ -40,13 +40,14 @@ public class SpecialAttackManager : MonoBehaviour
         _system = _specialObj.GetComponent<SpecialAttackSystem>();//必殺技のスクリプトを取得
     }
 
-    private void Update()
-    {
-        //if (Input.GetKeyDown(KeyCode.Space)) //スペシャルデバック用
-        //{
-        //    SpecialAttack();
-        //}
-    }
+    //private void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.Space)) //スペシャルデバック用
+    //    {
+    //        SpecialAttack();
+    //    }
+    //}
+
     //経験値追加処理、必殺技発動判定処理
     public void AddSpecialExperiance(float point)
     {
