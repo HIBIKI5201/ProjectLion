@@ -25,6 +25,7 @@ public class LevelUpManager : MonoBehaviour
 
     public event Action<IEnumerable<ItemKind>, Action<ItemKind>> OnLevelChanged;
     public event Action OnGetItem;
+    public event Action<Dictionary<ItemKind, int>> OnLevelChange;
     private void Start()
     {
         foreach (ItemKind kind in Enum.GetValues(typeof(ItemKind)))
@@ -68,6 +69,7 @@ public class LevelUpManager : MonoBehaviour
                 player.LoadData(data);
                 break;
         }
+        OnLevelChange?.Invoke(_itemLimitDict);
 
         ItemHaveValue[kind]++;
         OnGetItem?.Invoke();
