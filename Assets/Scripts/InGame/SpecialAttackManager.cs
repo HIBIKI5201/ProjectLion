@@ -64,6 +64,7 @@ public class SpecialAttackManager : MonoBehaviour
         if (_specialReady && !_specialObj.activeInHierarchy)
         {
             _system.init();//•KE‹Z‚Ì‰Šú‰»
+            AudioManager.Instance.PlaySE("SE_Special");//•KE‹Z‚ÌSEÄ¶
             _specialObj.SetActive(true);
             await PauseManager.PausableWaitForSecondAsync(_specialTime);
             _specialObj.SetActive(false);

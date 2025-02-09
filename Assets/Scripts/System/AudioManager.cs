@@ -7,10 +7,43 @@ using Range = UnityEngine.RangeAttribute;
 
 public class AudioManager : MonoBehaviour
 {
+    public static AudioManager Instance;
     private AudioMixer _audioMixer;
-
+    private AudioSource _seSource;
     [SerializeField]
-    private List<AudioData> _soundEffectData = new(); 
+    private List<AudioData> _soundEffectData = new();
+
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+        _audioMixer = Resources.Load<AudioMixer>("AudioMixer");
+        _seSource = gameObject.AddComponent<AudioSource>();
+        _seSource.outputAudioMixerGroup = _audioMixer.FindMatchingGroups("SE")[0];
+    }
+    /// <summary>
+    /// éwíËÇµÇΩSEÇçƒê∂Ç∑ÇÈ
+    /// </summary>
+    /// <param name="seName"></param>
+    public void PlaySE(string seName)
+    {
+        AudioData data = _soundEffectData.Find(d => d.clip.name == seName);
+        if (data.clip == null)
+        {
+            Debug.LogWarning($"{seName}ÇÃSEÇ™å©Ç¬Ç©ÇËÇ‹ÇπÇÒ");
+            return;
+        }
+        _seSource.PlayOneShot(data.clip, data.volume);
+    }
 }
 
 [Serializable]
