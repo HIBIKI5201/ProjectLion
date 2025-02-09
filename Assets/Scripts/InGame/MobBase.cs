@@ -1,7 +1,8 @@
+using SymphonyFrameWork.CoreSystem;
 using UnityEngine;
 using UnityEngine.U2D.Animation;
 
-public class MobBase<MobDataKind> : MonoBehaviour where MobDataKind : MobData_S
+public class MobBase<MobDataKind> : MonoBehaviour, PauseManager.IPausable where MobDataKind : MobData_S
 {
     [SerializeField]
     private MobDataKind _data;
@@ -66,5 +67,16 @@ public class MobBase<MobDataKind> : MonoBehaviour where MobDataKind : MobData_S
         _spriteResolver.SetCategoryAndLabel(category, label);
 
         _spriteResolver.ResolveSpriteToSpriteRenderer();
+    }
+
+
+    public virtual void Pause()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public virtual void Resume()
+    {
+        throw new System.NotImplementedException();
     }
 }
