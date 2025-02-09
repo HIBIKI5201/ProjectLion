@@ -1,4 +1,5 @@
 using SymphonyFrameWork.CoreSystem;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -9,7 +10,7 @@ public abstract class Servant_B : MobBase<MobData_S>
     [SerializeField] float _moveStopDistanse;
     [SerializeField] float _moveScale;
 
-    PlayerController _player;
+    protected PlayerController _player;
     Rigidbody2D _rb;
     bool _isPause;
 
@@ -17,9 +18,11 @@ public abstract class Servant_B : MobBase<MobData_S>
     {
         _player = SingletonDirector.GetSingleton<PlayerController>();
         _rb = GetComponent<Rigidbody2D>();
-        OnStart();
+        Start_S();
+        var n = FindAnyObjectByType<LevelUpManager>();
+        n.OnLevelChange += x => LevelUp(x);
     }
-    protected virtual void OnStart() { }
+    protected virtual void Start_S() { }
 
     // Update is called once per frame
     void Update()
@@ -32,9 +35,19 @@ public abstract class Servant_B : MobBase<MobData_S>
             _rb.linearVelocity = n * _moveScale;
         }
 
-        OnUpdate();
+        Update_S();
     }
-    protected virtual void OnUpdate() { }
+    protected virtual void Update_S() { }
+    protected virtual void LevelUp(Dictionary<ItemKind, int> haveItem)
+    {
+        LoadData(new MobData(Data,
+                    health: 1.1f * Data.MaxHealth,
+                    attack: 1.1f * Data.Attack,
+                    defense: 0,//ItemHaveValue[ItemKind.DefenseUp] * 0.1f * player.Data.Defense,
+                    agility: 1.1f * Data.Agility,
+                    attackRange: 1.1f * Data.AttackRange,
+                    attackSpeed: 1.1f * Data.AttackSpeed));
+    }
 
     public abstract void Skill();
 
