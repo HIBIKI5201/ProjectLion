@@ -48,7 +48,7 @@ public class PlayerController : MobBase<MobData_S>
     protected override async void HitDamageBehaviour()
     {
         base.HitDamageBehaviour();
-
+        AudioManager.Instance.PlaySE("SE_Damage");
         _spriteRenderer.color = Color.red;
         await Awaitable.WaitForSecondsAsync(0.2f);
         _spriteRenderer.color = Color.white;
