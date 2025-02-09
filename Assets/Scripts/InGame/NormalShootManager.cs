@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(CircleCollider2D))]
 public class NormalShootManager : MonoBehaviour
 {
-    private PlayerController controller;
+    private MobBase<MobData_S> controller;
 
     private List<EnemyManager> enemies = new();
     private float _interval = 1;
@@ -21,7 +21,8 @@ public class NormalShootManager : MonoBehaviour
 
     private void Start()
     {
-        controller = SingletonDirector.GetSingleton<PlayerController>();
+        controller = transform.parent.GetComponent<MobBase<MobData_S>>();
+        _interval = controller.AttackSpeed;
     }
 
     private void Update()

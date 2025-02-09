@@ -1,4 +1,5 @@
 using SymphonyFrameWork.CoreSystem;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.U2D.Animation;
 
@@ -14,13 +15,21 @@ public class MobBase<MobDataKind> : MonoBehaviour, PauseManager.IPausable where 
     protected float _currentHealth;
 
     protected SpriteResolver _spriteResolver;
-    public float MaxHealth { get => _data.MaxHealth; }
-    public float Attack { get => _data.Attack; }
-    public float AttackSpeed { get => _data.AttackSpeed; }
-    public float AttackRange { get => _data.AttackRange; }
-    public float Agility { get => _data.Agility; }
 
-    int _buffList;
+    Dictionary<BuffKind, float> _buffs = new Dictionary<BuffKind, float>()
+    {
+        {BuffKind.HPBuff, 1},
+        {BuffKind.AgilityBuff, 1},
+        {BuffKind.AttackSpeedBuff, 1},
+        {BuffKind.AttackRangeBuff, 1},
+        {BuffKind.AttackPowerBuff, 1},
+    };
+
+    public float MaxHealth { get => _data.MaxHealth * _buffs[BuffKind.HPBuff]; }
+    public float Attack { get => _data.Attack * _buffs[BuffKind.AttackPowerBuff]; }
+    public float AttackSpeed { get => _data.AttackSpeed * _buffs[BuffKind.AttackSpeedBuff]; }
+    public float AttackRange { get => _data.AttackRange * _buffs[BuffKind.AttackRangeBuff]; }
+    public float Agility { get => _data.Agility * _buffs[BuffKind.AgilityBuff]; }
     private void Awake()
     {
         if (_baseData != null)
@@ -49,9 +58,9 @@ public class MobBase<MobDataKind> : MonoBehaviour, PauseManager.IPausable where 
             DeathBehaviour();
         }
     }
-    void Setbuff()
+    public void Setbuff(BuffKind kind, float latio)
     {
-
+        _buffs[kind] = latio;
     }
 
     protected virtual void HitDamageBehaviour() { }
@@ -74,4 +83,13 @@ public class MobBase<MobDataKind> : MonoBehaviour, PauseManager.IPausable where 
     {
         throw new System.NotImplementedException();
     }
+
+}
+public enum BuffKind
+{
+    HPBuff,
+    AttackPowerBuff,
+    AttackSpeedBuff,
+    AttackRangeBuff,
+    AgilityBuff,
 }
