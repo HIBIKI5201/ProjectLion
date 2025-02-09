@@ -41,7 +41,7 @@ public class EnemyManager : MobBase<EnemyData>
             if (distance > _playerCollider.radius)
             {
                 Vector2 direction = (_player.transform.position - transform.position).normalized;
-                _rigidBody.linearVelocity = direction * _agility / 5;
+                _rigidBody.linearVelocity = direction * Agility / 5;
 
                 ChangeSprite(direction.x >= 0 ? "Right" : "Left", BaseData.Name);
             }
@@ -56,7 +56,7 @@ public class EnemyManager : MobBase<EnemyData>
     {
         if (collision.gameObject.TryGetComponent(out PlayerController player))
             if (gameObject.activeInHierarchy)
-                _attackCoroutine = StartCoroutine(PlayerAttack.Attack(player, _attack));
+                _attackCoroutine = StartCoroutine(PlayerAttack.Attack(player, Attack));
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -67,7 +67,7 @@ public class EnemyManager : MobBase<EnemyData>
 
     public void Init(Action action)
     {
-        _currentHealth = _maxHealth;
+        _currentHealth = MaxHealth;
         DeathAction = action;
         _repopRange = Random.Range(12, 25);
 

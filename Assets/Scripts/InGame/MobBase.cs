@@ -5,31 +5,27 @@ using UnityEngine.U2D.Animation;
 public class MobBase<MobDataKind> : MonoBehaviour, PauseManager.IPausable where MobDataKind : MobData_S
 {
     [SerializeField]
-    private MobDataKind _data;
-    public MobDataKind BaseData { get => _data; }
-    public MobData Data { get => _data.Data; }
+    private MobDataKind _baseData;
+    [SerializeField]
+    private MobData _data;
+    public MobDataKind BaseData { get => _baseData; }
+    public MobData Data { get => _data; }
 
-    [SerializeField]
-    protected float _maxHealth = 100;
     protected float _currentHealth;
-    [SerializeField]
-    protected float _attack = 10;
-    [SerializeField]
-    protected float _defense = 10;
-    [SerializeField]
-    protected float _agility = 10;
-    [SerializeField]
-    protected float _attackSpeed = 10;
-    [SerializeField]
-    protected float _attackRange = 10;
 
     protected SpriteResolver _spriteResolver;
-    public float Attack { get => _attack; }
+    public float MaxHealth { get => _data.MaxHealth; }
+    public float Attack { get => _data.Attack; }
+    public float AttackSpeed { get => _data.AttackSpeed; }
+    public float AttackRange { get => _data.AttackRange; }
+    public float Agility { get => _data.Agility; }
+
+    int _buffList;
     private void Awake()
     {
-        if (_data != null)
+        if (_baseData != null)
         {
-            LoadData(_data.Data);
+            LoadData(_baseData.Data);
         }
         else Debug.LogWarning($"{gameObject.name}Ç…ÉfÅ[É^Ç™Ç†ÇËÇ‹ÇπÇÒ");
 
@@ -40,23 +36,22 @@ public class MobBase<MobDataKind> : MonoBehaviour, PauseManager.IPausable where 
 
     public virtual void LoadData(global::MobData data)
     {
-        _maxHealth = data.MaxHealth;
-        _attack = data.Attack;
-        _defense = data.Defense;
-        _agility = data.Agility;
-        _attackSpeed = data.AttackSpeed;
-        _attackRange = data.AttackRange;
+        _data = data;
     }
 
     public virtual void AddDamage(float damage)
     {
-        _currentHealth -= Mathf.Max(damage - _defense, 0);
+        _currentHealth -= Mathf.Max(damage, 0);
         HitDamageBehaviour();
 
         if (_currentHealth <= 0)
         {
             DeathBehaviour();
         }
+    }
+    void Setbuff()
+    {
+
     }
 
     protected virtual void HitDamageBehaviour() { }
