@@ -25,13 +25,13 @@ public class PlayerController : MobBase<MobData_S>
 
     public void Initialize()
     {
-        _currentHealth = _maxHealth;
+        _currentHealth = MaxHealth;
     }
 
     private void Update()
     {
         Vector2 direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
-        _rigidbody.linearVelocity = direction * _agility / 5;
+        _rigidbody.linearVelocity = direction * Agility / 5;
         ChangeSprite(direction.x >= 0 ? "Right" : "Left" , "Player");
     }
     public override void LoadData(MobData data)

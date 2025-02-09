@@ -1,35 +1,40 @@
 using SymphonyFrameWork.CoreSystem;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.U2D.Animation;
 
 public class MobBase<MobDataKind> : MonoBehaviour, PauseManager.IPausable where MobDataKind : MobData_S
 {
     [SerializeField]
-    private MobDataKind _data;
-    public MobDataKind BaseData { get => _data; }
-    public MobData Data { get => _data.Data; }
+    private MobDataKind _baseData;
+    [SerializeField]
+    private MobData _data;
+    public MobDataKind BaseData { get => _baseData; }
+    public MobData Data { get => _data; }
 
-    [SerializeField]
-    protected float _maxHealth = 100;
     protected float _currentHealth;
-    [SerializeField]
-    protected float _attack = 10;
-    [SerializeField]
-    protected float _defense = 10;
-    [SerializeField]
-    protected float _agility = 10;
-    [SerializeField]
-    protected float _attackSpeed = 10;
-    [SerializeField]
-    protected float _attackRange = 10;
 
     protected SpriteResolver _spriteResolver;
-    public float Attack { get => _attack; }
+
+    Dictionary<BuffKind, float> _buffs = new Dictionary<BuffKind, float>()
+    {
+        {BuffKind.HPBuff, 1},
+        {BuffKind.AgilityBuff, 1},
+        {BuffKind.AttackSpeedBuff, 1},
+        {BuffKind.AttackRangeBuff, 1},
+        {BuffKind.AttackPowerBuff, 1},
+    };
+
+    public float MaxHealth { get => _data.MaxHealth * _buffs[BuffKind.HPBuff]; }
+    public float Attack { get => _data.Attack * _buffs[BuffKind.AttackPowerBuff]; }
+    public float AttackSpeed { get => _data.AttackSpeed * _buffs[BuffKind.AttackSpeedBuff]; }
+    public float AttackRange { get => _data.AttackRange * _buffs[BuffKind.AttackRangeBuff]; }
+    public float Agility { get => _data.Agility * _buffs[BuffKind.AgilityBuff]; }
     private void Awake()
     {
-        if (_data != null)
+        if (_baseData != null)
         {
-            LoadData(_data.Data);
+            LoadData(_baseData.Data);
         }
         else Debug.LogWarning($"{gameObject.name}Ç…ÉfÅ[É^Ç™Ç†ÇËÇ‹ÇπÇÒ");
 
@@ -40,23 +45,22 @@ public class MobBase<MobDataKind> : MonoBehaviour, PauseManager.IPausable where 
 
     public virtual void LoadData(global::MobData data)
     {
-        _maxHealth = data.MaxHealth;
-        _attack = data.Attack;
-        _defense = data.Defense;
-        _agility = data.Agility;
-        _attackSpeed = data.AttackSpeed;
-        _attackRange = data.AttackRange;
+        _data = data;
     }
 
     public virtual void AddDamage(float damage)
     {
-        _currentHealth -= Mathf.Max(damage - _defense, 0);
+        _currentHealth -= Mathf.Max(damage, 0);
         HitDamageBehaviour();
 
         if (_currentHealth <= 0)
         {
             DeathBehaviour();
         }
+    }
+    public void Setbuff(BuffKind kind, float latio)
+    {
+        _buffs[kind] = latio;
     }
 
     protected virtual void HitDamageBehaviour() { }
@@ -79,4 +83,13 @@ public class MobBase<MobDataKind> : MonoBehaviour, PauseManager.IPausable where 
     {
         throw new System.NotImplementedException();
     }
+
+}
+public enum BuffKind
+{
+    HPBuff,
+    AttackPowerBuff,
+    AttackSpeedBuff,
+    AttackRangeBuff,
+    AgilityBuff,
 }
