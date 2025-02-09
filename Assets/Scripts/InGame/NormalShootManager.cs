@@ -45,8 +45,7 @@ public class NormalShootManager : MonoBehaviour
             {
                 Destroy(obj, _bulletDuration);
 
-                bool existMG = obj.TryGetComponent<BulletManager>(out var mg);
-                if (!existMG)
+                if (!obj.TryGetComponent<BulletManager>(out var mg))
                     mg = obj.AddComponent<BulletManager>();
 
                 mg.SetStatus(controller.Attack);
@@ -54,6 +53,7 @@ public class NormalShootManager : MonoBehaviour
                 if (obj.TryGetComponent<Rigidbody2D>(out var rb))
                 {
                     rb.gravityScale = 0;
+                    rb.linearDamping = 0;
                     rb.linearVelocity = direction * _bulletSpeed;
                 }
                 if (obj.TryGetComponent<CircleCollider2D>(out var cc))
