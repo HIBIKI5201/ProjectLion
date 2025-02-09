@@ -115,6 +115,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interval: 1
-  _bullet: {fileID: 5250973490852852300, guid: 42142a5578e8e5647beda9fe7c96d5b6, type: 3}
+  _bullet: {fileID: 2875977998387469546, guid: 42142a5578e8e5647beda9fe7c96d5b6, type: 3}
   _bulletSpeed: 10
   _bulletDuration: 10

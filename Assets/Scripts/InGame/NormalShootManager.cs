@@ -11,6 +11,7 @@ public class NormalShootManager : MonoBehaviour
     private List<EnemyManager> enemies = new();
     private float _interval = 1;
     private float _timer = 0;
+    private AudioManager _audioManager;
 
     [SerializeField]
     private GameObject _bullet;
@@ -30,6 +31,7 @@ public class NormalShootManager : MonoBehaviour
         {
             _timer = Time.time;
             Shoot();
+            AudioManager.Instance.PlaySE("SE_Shoot");
         }
     }
 
