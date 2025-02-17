@@ -10,6 +10,7 @@ public class SceneLoader : MonoBehaviour
         {SceneKind.Title, "" },
         {SceneKind.Home, "" },
         {SceneKind.Ingame, "" },
+        {SceneKind.Result, "ResultScene" }
     };
 
     private static Scene _currentScene;
@@ -32,4 +33,5 @@ public enum SceneKind
     Title,
     Home,
     Ingame,
+    Result
 }

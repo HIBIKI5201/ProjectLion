@@ -25,6 +25,7 @@ public class MobBase<MobDataKind> : MonoBehaviour, PauseManager.IPausable where 
         {BuffKind.AttackPowerBuff, 1},
     };
 
+    public float CurrentHealth { get => _currentHealth; }
     public float MaxHealth { get => _data.MaxHealth * _buffs[BuffKind.HPBuff]; }
     public float Attack { get => _data.Attack * _buffs[BuffKind.AttackPowerBuff]; }
     public float AttackSpeed { get => _data.AttackSpeed * _buffs[BuffKind.AttackSpeedBuff]; }
