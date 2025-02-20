@@ -1,9 +1,13 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <engine:VisualElement style="flex-grow: 1; background-image: none; background-position-x: center 0;">
-        <engine:VisualElement name="BackGround" style="flex-grow: 0; background-image: resource(&apos;UITK_Items/UIAssets/必殺技リング背景&apos;); background-color: rgba(255, 255, 255, 0); -unity-background-image-tint-color: rgb(0, 255, 253); height: 100%; position: relative;" />
+        <engine:VisualElement style="flex-grow: 0; height: 100%; position: relative; background-image: resource(&apos;UITK_Items/UIAssets/SpecialAttack/必殺技ボタン背景&apos;);" />
         <engine:VisualElement name="GageMask" style="flex-grow: 1; position: absolute; height: 100%; width: 100%; top: 50%; bottom: auto;">
-            <engine:VisualElement name="Gage" style="flex-grow: 1; background-image: resource(&apos;UITK_Items/UIAssets/必殺技リング背景_ゲージ&apos;); position: absolute; height: 100%; width: 100%; background-position-y: center 0; -unity-background-scale-mode: stretch-to-fill; bottom: 50%; background-color: rgba(0, 0, 0, 0); background-position-x: center 0; background-size: 100% 100%; top: auto; left: auto; right: auto;" />
+            <engine:VisualElement name="Gage" style="flex-grow: 1; position: absolute; height: 100%; width: 100%; bottom: 50%; top: auto; left: auto; right: auto;">
+                <TextureMask _vertex-data="(0.50, 0.00)|(1.00, 0.50)|(0.50, 1.00)|(0.00, 0.50)" _texture="project://database/Assets/Resources/UITK_Items/UIAssets/SpecialAttack/%E5%BF%85%E6%AE%BA%E6%8A%80%E3%82%B2%E3%83%BC%E3%82%B8%E3%80%80%E8%83%8C%E6%99%AF%E3%81%AB%E3%82%AF%E3%83%AA%E3%83%83%E3%83%94%E3%83%B3%E3%82%B0.png?fileID=2800000&amp;guid=76e2888342abf6e428d5b3d37cc10efe&amp;type=3#必殺技ゲージ　背景にクリッピング" style="width: 100%; height: 100%; position: absolute;" />
+            </engine:VisualElement>
         </engine:VisualElement>
-        <engine:VisualElement name="Ring" style="flex-grow: 1; background-image: resource(&apos;UITK_Items/UIAssets/必殺技リング&apos;); flex-shrink: 1; position: absolute; width: 100%; height: 100%;" />
+        <engine:VisualElement style="position: absolute; width: 100%; height: 100%; background-image: resource(&apos;UITK_Items/UIAssets/SpecialAttack/必殺技ボタン　キャラ背景&apos;); background-size: 93% 93%;" />
+        <TextureMask _texture="project://database/Assets/Resources/Visual%20Resource/Sprite/%E4%B8%BB%E4%BA%BA%E5%85%AC%E9%80%8F%E9%81%8E1.png?fileID=2800000&amp;guid=57d6a7b55dbb6ad42b8fd1fdb62180f8&amp;type=3#主人公透過1" _texture-offset="0,0.16" _vertex-data="(0.96, 0.50)|(0.50, 0.96)|(0.04, 0.50)|(0.00, 0.16)|(1.00, 0.16)" _texture-scale="1" style="position: absolute; width: 100%; height: 100%;" />
+        <engine:VisualElement style="position: absolute; width: 100%; height: 100%; background-image: resource(&apos;UITK_Items/UIAssets/SpecialAttack/必殺技ボタン枠&apos;); display: flex;" />
     </engine:VisualElement>
 </engine:UXML>

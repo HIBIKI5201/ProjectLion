@@ -16,7 +16,7 @@ MonoBehaviour:
   m_GUID: fac991a7644062e45b03af6e30e00170
   m_SerializeEntries:
   - m_GUID: 06a967d3662a05443858c054bca0f5e0
-    m_Address: UXML/Timer
+    m_Address: UXML/Timer.uxml
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

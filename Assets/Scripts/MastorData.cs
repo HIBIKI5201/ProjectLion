@@ -7,13 +7,13 @@ public class MastorData : ScriptableObject
     [SerializeField]List<ItemUIData> itemData;
     public ItemUIData FindEnum(ItemKind kind) => itemData.Find(x => x.Kind == kind);
 }
-public class MastorData<T> : ScriptableObject where T : DataBass
+public class MastorData<T> : ScriptableObject where T : DataBase
 {
     protected List<T> _datas = new();
     public T FindID(int id) => _datas.Find(x => x.ID == id);
     public T FindName(string name) => _datas.Find(x => x.Name == name);
 }
-public class DataBass
+public class DataBase
 {
     [SerializeField] int id;
     public int ID => id;

@@ -1,20 +1,19 @@
-using System.Linq;
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEditor.UIElements;
+
 
 [UxmlElement]
 public partial class TextureMask : VisualElement
 {
-    [UxmlAttribute, Range(0, 1)] private float _percentWide;
-    [UxmlAttribute, Range(0, 1)] private float _percentHigh;
-
-    [UxmlAttribute] private Sprite _maskSprite;
-    [UxmlAttribute] Vector2 _textureOffset;
-
-    private int _vartexCount = 4;
-    private int _edgeCount = 4;
-
     [UxmlAttribute] Texture2D _texture;
+    [UxmlAttribute] Vector2 _textureOffset;
+    [UxmlAttribute,Tooltip("未実装")] private float _textureScale = 1f;
+
+    [UxmlAttribute,Tooltip("時計回りに頂点座標を入力してください")] Vector2[] _vertexData;
+
     public TextureMask()
     {
         generateVisualContent += GenerateMesh;
@@ -22,37 +21,72 @@ public partial class TextureMask : VisualElement
 
     void GenerateMesh(MeshGenerationContext context)
     {
+        if (_vertexData is null || !_texture) return;
+
         var maxX = contentRect.width;
         var maxY = contentRect.height;
+        Vector2 originPos = new Vector2(maxX / 2, maxY / 2);
 
-        var vertex = new Vertex[4];
-        ushort[] triangles = { 0, 1, 2, 2, 3, 0 };
+        var vertex = new Vertex[_vertexData.Length + 1];
+        List<ushort> triangles = new();
 
-        {
-            vertex[0].position = new Vector3(0, maxY / 2);
-            vertex[1].position = new Vector3(maxX / 2, 0);
-            vertex[2].position = new Vector3(maxX, maxY / 2);
-            vertex[3].position = new Vector3(maxX / 2, maxY);
-        }
+        vertex[0].position = originPos;
+        vertex[0].uv = new Vector2(originPos.x / maxX, 1 - originPos.y / maxY) + _textureOffset;
+        vertex[0].tint = Color.white;
 
+        for (int i = 1; i < vertex.Length; i++)
         {
-            vertex[0].uv = new Vector2(0, .5f)+ _textureOffset;
-            vertex[1].uv = new Vector2(.5f, 1)+ _textureOffset;
-            vertex[2].uv = new Vector2(1, .5f) + _textureOffset;
-            vertex[3].uv = new Vector2(.5f, 0) + _textureOffset;
-        }
-        {
-            vertex[0].tint = Color.white;
-            vertex[1].tint = Color.white;
-            vertex[2].tint = Color.white;
-            vertex[3].tint = Color.white;
+            Vector3 position = _vertexData[i - 1] * new Vector2(maxX, maxY);
+            vertex[i].position = position;
+            vertex[i].uv = new Vector2((position.x / maxX) , (1 - position.y / maxY) ) +
+                           _textureOffset;
+            vertex[i].tint = Color.white;
+
+            if (i < 2) continue;
+
+            triangles.Add((ushort)(0));
+            triangles.Add((ushort)(i - 1));
+            triangles.Add((ushort)(i));
+
+            if (i != vertex.Length - 1) continue;
+
+            Debug.LogWarning(i);
+            triangles.Add(0);
+            triangles.Add((ushort)i);
+            triangles.Add(1);
         }
 
         _texture.wrapMode = TextureWrapMode.Clamp;
+        Debug.Log(triangles.Count);
+        if (triangles.Count < 3)
+        {
+            Debug.Log("No triangles found");
+            return;
+        }
 
-        MeshWriteData mesh = context.Allocate(vertex.Length, triangles.Length, _texture);
+        MeshWriteData mesh = context.Allocate(vertex.Length, triangles.Count, _texture);
 
         mesh.SetAllVertices(vertex);
-        mesh.SetAllIndices(triangles);
+        mesh.SetAllIndices(triangles.ToArray());
+    }
+
+    //TODO:HERE たぶんビルドできない
+    public class VertexPositionDatas : UxmlAttributeConverter<Vector2[]>
+    {
+        public override Vector2[] FromString(string value)
+        {
+            var sprit = value.Replace(" ", "").Replace("(", "").Replace(")", "").Split('|');
+            Vector2[] output = new Vector2[sprit.Length];
+            for (int i = 0; i < sprit.Length; i++)
+            {
+                var n = Array.ConvertAll(sprit[i].Trim(')').Split(','), float.Parse);
+                output[i] = new Vector2(n[0], n[1]);
+            }
+
+            return output;
+        }
+
+        public override string ToString(Vector2[] value) =>
+            System.FormattableString.Invariant($"{string.Join('|', value)}");
     }
 }
