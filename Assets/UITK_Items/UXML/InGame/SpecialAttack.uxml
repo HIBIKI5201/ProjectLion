@@ -7,7 +7,9 @@
             </engine:VisualElement>
         </engine:VisualElement>
         <engine:VisualElement style="position: absolute; width: 100%; height: 100%; background-image: resource(&apos;UITK_Items/UIAssets/SpecialAttack/必殺技ボタン　キャラ背景&apos;); background-size: 93% 93%;" />
-        <TextureMask _texture="project://database/Assets/Resources/Visual%20Resource/Sprite/%E4%B8%BB%E4%BA%BA%E5%85%AC%E9%80%8F%E9%81%8E1.png?fileID=2800000&amp;guid=57d6a7b55dbb6ad42b8fd1fdb62180f8&amp;type=3#主人公透過1" _texture-offset="0,0.16" _vertex-data="(0.96, 0.50)|(0.50, 0.96)|(0.04, 0.50)|(0.00, 0.16)|(1.00, 0.16)" _texture-scale="1" style="position: absolute; width: 100%; height: 100%;" />
+        <TextureMask _texture="project://database/Assets/Resources/Visual%20Resource/Sprite/%E4%B8%BB%E4%BA%BA%E5%85%AC%E9%80%8F%E9%81%8E1.png?fileID=2800000&amp;guid=57d6a7b55dbb6ad42b8fd1fdb62180f8&amp;type=3#主人公透過1" _texture-offset="0,0.16" _vertex-data="(0.96, 0.50)|(0.50, 0.96)|(0.04, 0.50)|(0.00, 0.16)|(1.00, 0.16)" _texture-scale="1" enabled="true" style="position: absolute; width: 100%; height: 100%; -unity-background-image-tint-color: rgb(255, 255, 255); display: flex;" />
+        <engine:VisualElement name="Cover" style="position: absolute; width: 100%; height: 100%; background-image: resource(&apos;UITK_Items/UIAssets/SpecialAttack/必殺技ボタンキャラ隠し　不透明度70%&apos;); display: flex; background-size: 93% 93%;" />
         <engine:VisualElement style="position: absolute; width: 100%; height: 100%; background-image: resource(&apos;UITK_Items/UIAssets/SpecialAttack/必殺技ボタン枠&apos;); display: flex;" />
+        <engine:VisualElement style="position: absolute; width: 100%; height: 100%; background-image: resource(&apos;UITK_Items/UIAssets/SpecialAttack/必殺技ボタン最前面　透明色&apos;); display: flex; -unity-background-image-tint-color: rgb(255, 255, 255);" />
     </engine:VisualElement>
 </engine:UXML>
