@@ -12,6 +12,9 @@ public class LevelContainer : MonoBehaviour
     public float ExperiancePoint { get => _experiancePoint; }
     public float NextRequirePoint { get => _nextRequirePoint; }
 
+    private float _experianceUp = 0;
+    public float ExperianceUp { set { _experianceUp = value; } }
+
     /// <summary>
     /// 経験値取得時に呼ばれる処理
     /// 引数1　現在の経験値  引数2　次の経験値。
@@ -25,7 +28,7 @@ public class LevelContainer : MonoBehaviour
 
     public void AddExperiance(float point)
     {
-        _experiancePoint += point;
+        _experiancePoint += point + (point * _experianceUp * 0.01f);
         if (_nextRequirePoint <= _experiancePoint)
         {
             _experiancePoint = _experiancePoint - _nextRequirePoint;
