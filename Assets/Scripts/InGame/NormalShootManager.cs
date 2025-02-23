@@ -1,4 +1,5 @@
 using SymphonyFrameWork.CoreSystem;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -12,6 +13,7 @@ public class NormalShootManager : MonoBehaviour
     private float _interval = 1;
     private float _timer = 0;
     private AudioManager _audioManager;
+    private Vector3 _range;
 
     [SerializeField]
     private GameObject _bullet;
@@ -20,14 +22,29 @@ public class NormalShootManager : MonoBehaviour
     [SerializeField]
     private float _bulletDuration = 2;
 
+
     private void Start()
     {
         controller = transform.parent.GetComponent<MobBase<MobData_S>>();
         _interval = controller.AttackSpeed;
+        _range = GetComponent<Transform>().localScale;
+        GetComponent<Transform>().localScale = _range = new Vector3(controller.AttackRange, 0f, 0f);
     }
 
     private void Update()
     {
+        if (_interval != controller.AttackSpeed)
+        {
+            _interval = controller.AttackSpeed;
+        }
+
+        if (_range.x != controller.AttackRange)
+        {
+            _range = new Vector3(controller.AttackRange, 0f, 0f);
+            GetComponent<Transform>().localScale = _range;
+            Debug.Log($"ƒŒƒ“ƒW‚Í {_range}");
+        }
+
         if (_timer + _interval < Time.time && enemies.Count > 0)
         {
             _timer = Time.time;
@@ -94,7 +111,6 @@ public class NormalShootManager : MonoBehaviour
     public class BulletManager : MonoBehaviour
     {
         private float _damage = 1;
-
         public void SetStatus(float damage)
         {
             _damage = damage;

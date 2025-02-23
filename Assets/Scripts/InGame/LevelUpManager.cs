@@ -18,18 +18,32 @@ public class LevelUpManager : MonoBehaviour
         { ItemKind.SkillCoolTimeDown, 10 },
         { ItemKind.HealOfTime, 10 },
         { ItemKind.ExperianceUp, 10 },
-        { ItemKind.KnockBackUp, 10 },
+        //{ ItemKind.KnockBackUp, 10 },
         { ItemKind.SkillPowerUp, 10 },
-        { ItemKind.GetCoinValueUp, 10 },
+        //{ ItemKind.GetCoinValueUp, 10 },
     };
+
+    private PlayerController player;
+    private MobData data;
+    private SpecialAttackManager specialMana;
+    private AutoHeal autoHeal;
+    private LevelContainer levelContainer;
+    private SpecialAttackSystem specialAttackSystem;
 
     public event Action<IEnumerable<ItemKind>, Action<ItemKind>> OnLevelChanged;
     public event Action OnGetItem;
     public event Action<Dictionary<ItemKind, int>> OnLevelChange;
     private void Start()
     {
+        //ファインド使いすぎなのでいつかどうにかする
         foreach (ItemKind kind in Enum.GetValues(typeof(ItemKind)))
             ItemHaveValue.Add(kind, 0);
+        player = SingletonDirector.GetSingleton<PlayerController>();
+        data = player.Data;
+        specialMana = FindAnyObjectByType<SpecialAttackManager>();
+        autoHeal = FindAnyObjectByType<AutoHeal>();
+        levelContainer = FindAnyObjectByType<LevelContainer>();
+        specialAttackSystem = FindAnyObjectByType<SpecialAttackSystem>();
     }
 
     [ContextMenu("LevelUp")]
@@ -53,22 +67,75 @@ public class LevelUpManager : MonoBehaviour
         switch (kind)
         {
             case ItemKind.HealthUp:
-            case ItemKind.AttackUp:
-            //case ItemKind.DefenseUp:
-            case ItemKind.AgilityUp:
-            case ItemKind.AttackSpeedUp:
-            case ItemKind.AttackRangeUp:
-                PlayerController player = SingletonDirector.GetSingleton<PlayerController>();
-                MobData data = new MobData(player.Data,
+                data = new MobData(player.Data,
                     health: ItemHaveValue[ItemKind.HealthUp] * 0.1f * player.Data.MaxHealth,
-                    attack: ItemHaveValue[ItemKind.AttackUp] * 0.1f * player.Data.Attack,
-                    defense: 0,//ItemHaveValue[ItemKind.DefenseUp] * 0.1f * player.Data.Defense,
-                    agility: ItemHaveValue[ItemKind.AgilityUp] * 0.1f * player.Data.Agility,
-                    attackRange: ItemHaveValue[ItemKind.AttackRangeUp] * 0.1f * player.Data.AttackRange,
-                    attackSpeed: ItemHaveValue[ItemKind.AttackSpeedUp] * 0.1f * player.Data.AttackSpeed);
-                player.LoadData(data);
+                    attack: 0,
+                    defense: 0,
+                    agility: 0,
+                    attackRange: 0,
+                    attackSpeed: 0);
                 break;
+
+            case ItemKind.AttackUp:
+                data = new MobData(player.Data,
+                    health: 0,
+                    attack: ItemHaveValue[ItemKind.AttackUp] * 0.1f * player.Data.Attack,
+                    defense: 0,
+                    agility: 0,
+                    attackRange: 0,
+                    attackSpeed: 0);
+                break;
+
+            //case ItemKind.DefenseUp:
+
+            case ItemKind.AgilityUp:
+                data = new MobData(player.Data,
+                    health: 0,
+                    attack: 0,
+                    defense: 0,
+                    agility: ItemHaveValue[ItemKind.AgilityUp] * 0.1f * player.Data.Agility,
+                    attackRange: 0,
+                    attackSpeed: 0);
+                break;
+
+            case ItemKind.AttackSpeedUp:
+                data = new MobData(player.Data,
+                    health: 0,
+                    attack: 0,
+                    defense: 0,
+                    agility: 0,
+                    attackRange: 0,
+                    attackSpeed: -ItemHaveValue[ItemKind.AttackSpeedUp] * 0.1f * player.Data.AttackSpeed);
+                break;
+
+            case ItemKind.AttackRangeUp:
+                data = new MobData(player.Data,
+                    health: 0,
+                    attack: 0,
+                    defense: 0,
+                    agility: 0,
+                    attackRange: ItemHaveValue[ItemKind.AttackRangeUp] * 0.1f * player.Data.AttackRange,
+                    attackSpeed: 0);
+                break;
+
+            case ItemKind.SkillCoolTimeDown:
+                specialMana.SpecialRequirePoint -= 0.02f * specialMana.InitRequirePoint;
+                break;
+
+            case ItemKind.HealOfTime:
+                autoHeal.Healvalue += 0.01f * autoHeal.InitHealValue;
+                break;
+            //以下二つの実装がスマートな感じな気がするから、時間があるタイミングで上二つも修正したい
+            case ItemKind.ExperianceUp:
+                levelContainer.ExperianceUp = ItemHaveValue[ItemKind.ExperianceUp];
+                break;
+
+            case ItemKind.SkillPowerUp:
+                specialAttackSystem.Attackbuff = ItemHaveValue[ItemKind.SkillPowerUp];
+                break;
+
         }
+        player.LoadData(data);
         OnLevelChange?.Invoke(_itemLimitDict);
 
         ItemHaveValue[kind]++;
@@ -80,7 +147,7 @@ public class LevelUpManager : MonoBehaviour
 public enum ItemKind
 {
     None,
-
+    //以下ステータスバフ
     HealthUp,
     AttackUp,
     //DefenseUp,
@@ -88,10 +155,11 @@ public enum ItemKind
     AttackSpeedUp,
     AttackRangeUp,
 
+    //以下特殊バフ
     SkillCoolTimeDown,
     HealOfTime,
     ExperianceUp,
-    KnockBackUp,
+    //KnockBackUp,
     SkillPowerUp,
-    GetCoinValueUp,
+    //GetCoinValueUp,
 }

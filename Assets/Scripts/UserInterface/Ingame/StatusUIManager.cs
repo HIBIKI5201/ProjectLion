@@ -25,7 +25,7 @@ public partial class StatusUIManager : UIElement_B
         _statusPanels.Add(ItemKind.SkillPowerUp, container.Q<StatusUI>("SkillPower"));
         _statusPanels.Add(ItemKind.SkillCoolTimeDown, container.Q<StatusUI>("SkillCoolTime"));
         _statusPanels.Add(ItemKind.HealOfTime, container.Q<StatusUI>("HealthRegen"));
-        _statusPanels.Add(ItemKind.KnockBackUp, container.Q<StatusUI>("KnockBack"));
+        //_statusPanels.Add(ItemKind.KnockBackUp, container.Q<StatusUI>("KnockBack"));
         #endregion
 
         Task[] tasks = _statusPanels.Select(kvp => kvp.Value.InitializeTask).ToArray();

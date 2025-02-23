@@ -6,9 +6,16 @@ public class SpecialAttackManager : MonoBehaviour
 {
     //”­“®ğŒ—p•Ï”
     [Header("•KE‹Z‚Ì”­“®ğŒ")]
+    [Tooltip("•KE‹Z‚É•K—v‚ÈŒoŒ±’l‚Ì‰Šú’l")]
     [SerializeField]
-    private float _specialRequirePoint = 100;
-    public float SpecialRequirePoint { get => _specialRequirePoint; }
+    private float _initRequirePoint = 100;
+    public float InitRequirePoint { get => _initRequirePoint; }
+    private float _specialRequirePoint;
+    public float SpecialRequirePoint
+    {
+        get => _specialRequirePoint;
+        set { _specialRequirePoint = value; }
+    }
 
     private float _specialExperiancePoint = 0;
     public float SpecialExperiancePoint
@@ -33,11 +40,14 @@ public class SpecialAttackManager : MonoBehaviour
     private GameObject _specialObj;//•KE‹Z‚ÌƒIƒuƒWƒFƒNƒg
     private SpecialAttackSystem _system;
     [SerializeField]
+    private SpecialAttackSystem _systemSub; 
+    [SerializeField]
     private float _specialTime = 3;
 
     private void Start()
     {
         _system = _specialObj.GetComponent<SpecialAttackSystem>();//•KE‹Z‚ÌƒXƒNƒŠƒvƒg‚ğæ“¾
+        _specialRequirePoint = _initRequirePoint;
     }
 
     //private void Update()
@@ -61,17 +71,16 @@ public class SpecialAttackManager : MonoBehaviour
     public async void SpecialAttack()
     {
         //•KE‹Z”­“®‚Ìˆ—
-        if (_specialReady && !_specialObj.activeInHierarchy)
+        if (_specialReady && _specialReady)
         {
-            _system.init();//•KE‹Z‚Ì‰Šú‰»
-            AudioManager.Instance.PlaySE("SE_Special");//•KE‹Z‚ÌSEÄ¶
-            _specialObj.SetActive(true);
-            await PauseManager.PausableWaitForSecondAsync(_specialTime);
-            _specialObj.SetActive(false);
-            //•KE‹Z”­“®I—¹‚Ìˆ—
             _specialReady = false;
-
             SpecialExperiancePoint = 0;
+            _system.Init();//•KE‹Z‚Ì‰Šú‰»
+            _systemSub.Init();
+            AudioManager.Instance.PlaySE("SE_Special");//•KE‹Z‚ÌSEÄ¶
+            await PauseManager.PausableWaitForSecondAsync(_specialTime);
+            _system.End();
+            _systemSub.End();
         }
     }
 }

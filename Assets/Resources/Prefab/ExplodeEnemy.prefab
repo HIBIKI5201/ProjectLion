@@ -93,13 +93,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff23284f912d4a64dbc9410efb8781b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _data: {fileID: 11400000, guid: d5bc56e04f161294a9327c4ee6b6a9fa, type: 2}
-  _maxHealth: 100
-  _attack: 20
-  _defense: 0
-  _agility: 20
-  _attackSpeed: 20
-  _attackRange: 10
+  _baseData: {fileID: 11400000, guid: d5bc56e04f161294a9327c4ee6b6a9fa, type: 2}
+  _data:
+    _maxHealth: 0
+    _attack: 0
+    _defense: 0
+    _agility: 0
+    _attackSpeed: 0
+    _attackRange: 0
   _experianceObj: {fileID: 3379163876735906355, guid: 8371d16512f717140a2ba29d8d3f6426, type: 3}
   _explodeObj: {fileID: 6576324710281291653, guid: 88915ad5972c2c741ba5fd82723c1a2e, type: 3}
 --- !u!114 &7760151519473698185
