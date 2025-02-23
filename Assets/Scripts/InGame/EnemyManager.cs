@@ -116,7 +116,7 @@ public static class PlayerAttack
         while (true)
         {
             player.AddDamage(damage);
-            yield return new WaitForSeconds(1);
+            yield return PauseManager.PausableWaitForSecond(1);
         }
     }
 }
