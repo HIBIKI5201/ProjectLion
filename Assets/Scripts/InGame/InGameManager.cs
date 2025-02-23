@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class InGameManager : MonoBehaviour//, PauseManager.IPausable
 {
-    private float _ingameStartTime;
     private float _time;
     bool _isPause;
 
@@ -26,10 +25,10 @@ public class InGameManager : MonoBehaviour//, PauseManager.IPausable
         }
 
 
-        if (!_isPause) _time += Time.deltaTime;
-        if (Time.time - _ingameStartTime > 10)
+        if (!_isPause)
         {
-            OnTimerChanged?.Invoke(_ingameStartTime);
+            _time += Time.deltaTime;
+            OnTimerChanged?.Invoke(_time);
         }
 
     }

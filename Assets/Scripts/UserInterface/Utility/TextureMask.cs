@@ -55,7 +55,6 @@ public partial class TextureMask : VisualElement
         }
 
         _texture.wrapMode = TextureWrapMode.Clamp;
-        Debug.Log(triangles.Count);
         if (triangles.Count < 3)
         {
             Debug.Log("No triangles found");

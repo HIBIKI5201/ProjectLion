@@ -44,7 +44,7 @@ public class NormalShootManager : MonoBehaviour, PauseManager.IPausable
         if (_range.x != controller.AttackRange)
         {
             _range = new Vector3(controller.AttackRange, 0f, 0f);
-            GetComponent<Transform>().localScale = _range;
+            transform.localScale = _range;
             Debug.Log($"ƒŒƒ“ƒW‚Í {_range}");
         }
 

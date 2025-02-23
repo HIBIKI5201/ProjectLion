@@ -1,3 +1,4 @@
+using SymphonyFrameWork.CoreSystem;
 using UnityEngine;
 
 public class ExplodeObjManager : MonoBehaviour
@@ -10,7 +11,7 @@ public class ExplodeObjManager : MonoBehaviour
 
     private async void Start()
     {
-        await Awaitable.WaitForSecondsAsync(_time);
+        await PauseManager.PausableWaitForSecondAsync(_time);
         Destroy(gameObject);
     }
 
