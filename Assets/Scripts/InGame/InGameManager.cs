@@ -10,8 +10,12 @@ public class InGameManager : MonoBehaviour//, PauseManager.IPausable
     public Action<float> OnTimerChanged;
     private void Start()
     {
-        SingletonDirector.GetSingleton<PlayerController>().Initialize();
-        FindAnyObjectByType<EnemyGenerator>().Initialize();
+        Init();
+    }
+    private void Init()
+    {
+        SingletonDirector.GetSingleton<PlayerController>()?.Initialize();
+        FindAnyObjectByType<EnemyGenerator>()?.Initialize();
     }
 
     private void Update()

@@ -1,6 +1,7 @@
 using SymphonyFrameWork.CoreSystem;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.U2D.Animation;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public abstract class Servant_B : MobBase<MobData_S>
@@ -9,25 +10,30 @@ public abstract class Servant_B : MobBase<MobData_S>
     [SerializeField] float _moveScale;
 
     protected PlayerController _player;
+    protected SpriteRenderer _spriteRenderer;
     Rigidbody2D _rb;
 
     void Start()
     {
         _player = SingletonDirector.GetSingleton<PlayerController>();
+        _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        _spriteResolver = _spriteRenderer?.gameObject.GetComponent<SpriteResolver>();
+
         _rb = GetComponent<Rigidbody2D>();
+        FindAnyObjectByType<LevelUpManager>().OnLevelChange += x => LevelUp(x);
         Start_S();
-        var n = FindAnyObjectByType<LevelUpManager>();
-        n.OnLevelChange += x => LevelUp(x);
     }
     protected virtual void Start_S() { }
 
     // Update is called once per frame
     void Update()
     {
-        Vector2 n = _player.transform.position - this.transform.position;
-        if (n.sqrMagnitude > _moveStopDistanse * _moveStopDistanse)
+        Vector2 direction = _player.transform.position - this.transform.position;
+        if (direction.sqrMagnitude > _moveStopDistanse * _moveStopDistanse)
         {
-            _rb.linearVelocity = n * _moveScale;
+            _rb.linearVelocity = direction * _moveScale;
+
+            ChangeSprite(direction.x >= 0 ? "Right" : "Left", BaseData.name);
         }
 
         Update_S();

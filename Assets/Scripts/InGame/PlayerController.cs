@@ -41,7 +41,9 @@ public class PlayerController : MobBase<MobData_S>
 
     protected override void DeathBehaviour()
     {
-
+        _spriteRenderer.enabled = false;
+        enabled = false;
+        _rigidbody.simulated = false;
     }
 
     protected override async void HitDamageBehaviour()

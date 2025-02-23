@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32b474387d1fabf4fa397bc2b1129807, type: 3}
+  m_Script: {fileID: 11500000, guid: 7506ec9cd1a19684886336923e7b264f, type: 3}
   m_Name: ServantData_Penguin
   m_EditorClassIdentifier: 
   _data:
@@ -19,3 +19,4 @@ MonoBehaviour:
     _agility: 0
     _attackSpeed: 0
     _attackRange: 0
+  _name: Penguin
