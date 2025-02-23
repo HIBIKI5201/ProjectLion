@@ -40,13 +40,17 @@ public partial class SkillUI : UIElement_B
 
     public void ChangeSkillGage(float current, float next)
     {
-        if (current > next)
+        if (current >= next)
         {
-            current = next;
+            current = next; 
+            _cover.style.visibility = Visibility.Hidden;
+        }
+        else
+        {
+            _cover.style.visibility = Visibility.Visible;
         }
 
         var normalizeSkillGage = 100 - (float)current / next * 100;
-        _cover.style.overflow = normalizeSkillGage >= 1 ? Overflow.Hidden : Overflow.Visible;
 
         _gage.style.bottom = Length.Percent(normalizeSkillGage);
         _gageMask.style.top = Length.Percent(normalizeSkillGage);
