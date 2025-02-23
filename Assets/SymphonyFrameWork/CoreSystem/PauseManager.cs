@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -29,6 +30,7 @@ namespace SymphonyFrameWork.CoreSystem
         [Tooltip("ポーズ時にtrue、リズーム時にfalseで実行するイベント")]
         public static event Action<bool> OnPauseChanged;
 
+        static Dictionary<IPausable, Action<bool>> _pauseDic=new();
         /// <summary>
         /// ポーズ時に停止するWaitForSecond
         /// </summary>
@@ -75,7 +77,9 @@ namespace SymphonyFrameWork.CoreSystem
             /// <param name="pausable"></param>
             static void RegisterPauseManager(IPausable pausable)
             {
-                OnPauseChanged += value =>
+                if(_pauseDic.ContainsKey(pausable)) { return; }
+
+                Action<bool> action = value =>
                 {
                     if (value)
                     {
@@ -86,6 +90,16 @@ namespace SymphonyFrameWork.CoreSystem
                         pausable.Resume();
                     }
                 };
+
+                _pauseDic[pausable] = action;
+
+                OnPauseChanged += action;
+            }
+
+            static void RemovePauseManager(IPausable pausable)
+            {
+                if(_pauseDic.TryGetValue(pausable, out var action))
+                OnPauseChanged -= action;
             }
         }
     }
