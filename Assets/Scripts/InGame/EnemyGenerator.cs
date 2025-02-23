@@ -1,11 +1,14 @@
 using SymphonyFrameWork.CoreSystem;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
 public class EnemyGenerator : MonoBehaviour
 {
     public static ObjectPool<EnemyManager> _enemyPool;
+    public Dictionary<GameObject, ObjectPool<EnemyManager>> EnemyPools = new();
+    
     [SerializeField]
     private GameObject[] _enemyPrefabs;
 
@@ -17,38 +20,37 @@ public class EnemyGenerator : MonoBehaviour
 
     private LevelContainer _levelContainer;
 
-
+    [SerializeField] private bool _test=true;//TODO:HERE テスト用
     public void Initialize()
     {
-        ObjectPoolInitialize();
-        StartCoroutine(ObjectGet());
+            ObjectPoolInitialize(_enemyPrefabs);
+            StartCoroutine(ObjectGet());
         _levelContainer = FindAnyObjectByType<LevelContainer>();
     }
 
     #region ObjectPoolパターン
-    private void ObjectPoolInitialize()
+    private void ObjectPoolInitialize(GameObject[] prefab)
     {
-        _enemyPool = new ObjectPool<EnemyManager>(
-            createFunc: () =>
-                {
-                    var enemy = _enemyPrefabs[Random.Range(0, _enemyPrefabs.Length)];
-                    return Instantiate(enemy, transform).GetComponent<EnemyManager>();
-                },
-            actionOnGet: obj => obj.Init(() => _enemyPool.Release(obj)),
-            actionOnRelease: obj => { obj.gameObject.SetActive(false); },
-                //AddExperiance(obj.BaseData.DropExperience); },
-            actionOnDestroy: obj => Destroy(obj.gameObject),
-            collectionCheck: false, defaultCapacity: 10, maxSize: _generateLimit);
-    }
+        foreach (var obj in prefab)
+        {
+            if (EnemyPools.ContainsKey(obj)) return;
 
+            var pool = new ObjectPool<EnemyManager>(
+                createFunc: () =>Instantiate(obj, transform).GetComponent<EnemyManager>(),
+                actionOnGet: enemy => enemy.Init(() => EnemyPools[obj].Release(enemy)),
+                actionOnRelease: enemy => { enemy.gameObject.SetActive(false); },
+                //AddExperiance(obj.BaseData.DropExperience); },
+                actionOnDestroy: enemy => Destroy(enemy.gameObject),
+                collectionCheck: false, defaultCapacity: 10, maxSize: _generateLimit);
+            EnemyPools[obj] = pool;
+        }
+    }
+    
     private IEnumerator ObjectGet()
     {
         while (true)
         {
-            if (_enemyPool.CountActive <= _generateLimit)
-            {
-                _enemyPool.Get();
-            }
+            EnemyPools[_enemyPrefabs[Random.Range(0, _enemyPrefabs.Length)]].Get();
             yield return PauseManager.PausableWaitForSecond(_generateIntarval);
         }
     }

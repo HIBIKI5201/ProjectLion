@@ -34,7 +34,6 @@ public abstract class Servant_B : MobBase<MobData_S>
             //TODO:HERE 移動logicをdirection-_moveStopに向かってスピードを固定せずに移動するように
             //direction * Data.Agility;
             _rb.linearVelocity = n;
-            Debug.Log("Move");
         }
         ChangeSprite(direction.x >= 0 ? "Right" : "Left", BaseData.Data.Name);
 
