@@ -6,7 +6,6 @@ using UnityEngine.U2D.Animation;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MobBase<MobData_S>
 {
-
     private Rigidbody2D _rigidbody;
 
     private SpriteRenderer _spriteRenderer;

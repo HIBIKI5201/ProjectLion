@@ -28,7 +28,6 @@ public class AudioManager : MonoBehaviour
         }
         _audioMixer = Resources.Load<AudioMixer>("AudioMixer");
         _seSource = gameObject.AddComponent<AudioSource>();
-        _seSource.outputAudioMixerGroup = _audioMixer.FindMatchingGroups("SE")[0];
     }
     /// <summary>
     /// éwíËÇµÇΩSEÇçƒê∂Ç∑ÇÈ
