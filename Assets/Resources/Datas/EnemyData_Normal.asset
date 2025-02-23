@@ -15,9 +15,9 @@ MonoBehaviour:
   _data:
     _maxHealth: 100
     _attack: 20
-    _defense: 20
-    _agility: 20
-    _attackSpeed: 20
+    _defense: 10
+    _agility: 5
+    _attackSpeed: 1
     _attackRange: 20
   _dropExperience: 60
   _name: Docter
