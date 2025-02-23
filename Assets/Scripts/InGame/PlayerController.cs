@@ -52,4 +52,13 @@ public class PlayerController : MobBase<MobData_S>
         await Awaitable.WaitForSecondsAsync(0.2f);
         _spriteRenderer.color = Color.white;
     }
+
+    public override void Pause()
+    {
+        _rigidbody.simulated = false;
+    }
+    public override void Resume()
+    {
+        _rigidbody.simulated = true;
+    }
 }
