@@ -284,6 +284,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _baseData: {fileID: 0}
   _data:
+    _name: 
     _maxHealth: 5
     _attack: 5
     _defense: 5
@@ -291,7 +292,6 @@ MonoBehaviour:
     _attackSpeed: 1
     _attackRange: 5
   _moveStopDistanse: 3
-  _moveScale: 2
   _skillTime: 1
   _skillCoolTime: 1
   _buffKind: 0

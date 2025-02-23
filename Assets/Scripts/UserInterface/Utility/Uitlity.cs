@@ -1,6 +1,8 @@
 using UnityEngine;
-using UnityEditor.UIElements;
 using System;
+#if UNITY_EDITOR
+using UnityEditor.UIElements;
+#endif
 
 namespace LionUitlity
 {
