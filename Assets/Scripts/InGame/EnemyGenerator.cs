@@ -1,3 +1,4 @@
+using SymphonyFrameWork.CoreSystem;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Pool;
@@ -48,7 +49,7 @@ public class EnemyGenerator : MonoBehaviour
             {
                 _enemyPool.Get();
             }
-            yield return GameLogics.PausalbeWaitForSecond(_generateIntarval);
+            yield return PauseManager.PausableWaitForSecond(_generateIntarval);
         }
     }
     #endregion
