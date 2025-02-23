@@ -2,7 +2,7 @@ using SymphonyFrameWork.CoreSystem;
 using System;
 using UnityEngine;
 
-public class InGameManager : MonoBehaviour
+public class InGameManager : MonoBehaviour//, PauseManager.IPausable
 {
     private float _ingameStartTime;
     private float _time;
@@ -17,11 +17,21 @@ public class InGameManager : MonoBehaviour
 
     private void Update()
     {
-        if(!_isPause)_time += Time.deltaTime;
+
+        //ポーズテスト用
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("Pause");
+            PauseManager.Pause = _isPause = !_isPause;
+        }
+
+
+        if (!_isPause) _time += Time.deltaTime;
         if (Time.time - _ingameStartTime > 10)
         {
             OnTimerChanged?.Invoke(_ingameStartTime);
         }
+
     }
 }
 

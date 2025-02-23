@@ -19,7 +19,7 @@ public class AudioManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -30,7 +30,7 @@ public class AudioManager : MonoBehaviour
         _seSource = gameObject.AddComponent<AudioSource>();
     }
     /// <summary>
-    /// w’è‚µ‚½SE‚ğÄ¶‚·‚é
+    /// æŒ‡å®šã—ãŸSEã‚’å†ç”Ÿã™ã‚‹
     /// </summary>
     /// <param name="seName"></param>
     public void PlaySE(string seName)
@@ -38,7 +38,7 @@ public class AudioManager : MonoBehaviour
         AudioData data = _soundEffectData.Find(d => d.clip.name == seName);
         if (data.clip == null)
         {
-            Debug.LogWarning($"{seName}‚ÌSE‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ");
+            Debug.LogWarning($"{seName}ã®SEãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“");
             return;
         }
         _seSource.PlayOneShot(data.clip, data.volume);

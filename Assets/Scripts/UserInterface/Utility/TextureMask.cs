@@ -49,7 +49,6 @@ public partial class TextureMask : VisualElement
 
             if (i != vertex.Length - 1) continue;
 
-            Debug.LogWarning(i);
             triangles.Add(0);
             triangles.Add((ushort)i);
             triangles.Add(1);
