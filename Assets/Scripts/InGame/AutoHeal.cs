@@ -3,7 +3,7 @@ using SymphonyFrameWork.CoreSystem;
 
 public class AutoHeal : MonoBehaviour
 {
-    private float _currentHealth;//åªç›ÇÃHPÇÃíl
+    private PlayerController controller;
     private float _timer = 0;
     private float _interval = 5;
 
@@ -16,16 +16,16 @@ public class AutoHeal : MonoBehaviour
     void Start()
     {
         _healValue = _initHealValue;
-        _currentHealth = SingletonDirector.GetSingleton<PlayerController>().CurrentHealth;
+        controller = SingletonDirector.GetSingleton<PlayerController>();
     }
 
     void Update()
     {
-        if (_timer + _interval < Time.time)
+        if (_timer + _interval < Time.time &&
+            controller.CurrentHealth + Healvalue >= controller.MaxHealth)
         {
-            Debug.Log(_healValue);
             _timer = Time.time;
-            _currentHealth += _healValue;
+            controller.AddDamage(-Healvalue);
         }
     }
 }
