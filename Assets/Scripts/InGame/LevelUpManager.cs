@@ -26,7 +26,7 @@ public class LevelUpManager : MonoBehaviour
     private PlayerController player;
     private MobData data;
     private SpecialAttackManager specialMana;
-    private AutoHeal autoHeal;
+    //private AutoHeal autoHeal;
     private LevelContainer levelContainer;
     private SpecialAttackSystem specialAttackSystem;
 
@@ -35,13 +35,13 @@ public class LevelUpManager : MonoBehaviour
     public event Action<Dictionary<ItemKind, int>> OnLevelChange;
     private void Start()
     {
-        //ƒtƒ@ƒCƒ“ƒhg‚¢‚·‚¬‚È‚Ì‚Å‚¢‚Â‚©‚Ç‚¤‚É‚©‚·‚é
+        //ãƒ•ã‚¡ã‚¤ãƒ³ãƒ‰ä½¿ã„ã™ããªã®ã§ã„ã¤ã‹ã©ã†ã«ã‹ã™ã‚‹
         foreach (ItemKind kind in Enum.GetValues(typeof(ItemKind)))
             ItemHaveValue.Add(kind, 0);
         player = SingletonDirector.GetSingleton<PlayerController>();
         data = player.Data;
         specialMana = FindAnyObjectByType<SpecialAttackManager>();
-        autoHeal = FindAnyObjectByType<AutoHeal>();
+        //autoHeal = FindAnyObjectByType<AutoHeal>();
         levelContainer = FindAnyObjectByType<LevelContainer>();
         specialAttackSystem = FindAnyObjectByType<SpecialAttackSystem>();
     }
@@ -50,16 +50,23 @@ public class LevelUpManager : MonoBehaviour
     public void GetNewItem()
     {
         HashSet<ItemKind> kinds = new();
-        while (kinds.Count < 3)//ƒŒƒxƒ‹‚ªÅ‘å‚ÌƒAƒCƒeƒ€‚Ì—Ê‚É‚æ‚Á‚Ä–³ŒÀƒ‹[ƒv‚Ì‰Â”\«‚ ‚è
+        while (kinds.Count < 3)//ãƒ¬ãƒ™ãƒ«ãŒæœ€å¤§ã®ã‚¢ã‚¤ãƒ†ãƒ ã®é‡ã«ã‚ˆã£ã¦ç„¡é™ãƒ«ãƒ¼ãƒ—ã®å¯èƒ½æ€§ã‚ã‚Š
         {
             int index = Random.Range(1, _itemKindValue);
             ItemKind kind = (ItemKind)Enum.GetValues(typeof(ItemKind)).GetValue(index);
             if (ItemHaveValue[kind] <= _itemLimitDict[kind])
                 kinds.Add(kind);
         }
-        Debug.Log($"level up and selected items are u{string.Join(" ", kinds)}v");
-        OnLevelChanged?.Invoke(kinds, x => AddItem(x));
-        //AddItem(kinds.ElementAt(0));
+        Debug.Log($"level up and selected items are ã€Œ{string.Join(" ", kinds)}ã€");
+
+        if (OnLevelChange.GetInvocationList().Length == 0) { AddItem(ItemKind.HealthUp); return; } //ãƒ¬ãƒ™ãƒ«ã‚¢ãƒƒãƒ—æ™‚ã«uiãŒå­˜åœ¨ã—ãªã‹ã£ãŸå ´åˆã®ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚°
+
+        PauseManager.Pause = true;
+        OnLevelChanged?.Invoke(kinds, callback =>
+        {
+            AddItem(callback);
+            PauseManager.Pause = false;
+        });
     }
 
     private void AddItem(ItemKind kind)
@@ -123,9 +130,9 @@ public class LevelUpManager : MonoBehaviour
                 break;
 
             case ItemKind.HealOfTime:
-                autoHeal.Healvalue += 0.01f * autoHeal.InitHealValue;
+                //autoHeal.Healvalue += 0.01f * autoHeal.InitHealValue;
                 break;
-            //ˆÈ‰º“ñ‚Â‚ÌÀ‘•‚ªƒXƒ}[ƒg‚ÈŠ´‚¶‚È‹C‚ª‚·‚é‚©‚çAŠÔ‚ª‚ ‚éƒ^ƒCƒ~ƒ“ƒO‚Åã“ñ‚Â‚àC³‚µ‚½‚¢
+            //ä»¥ä¸‹äºŒã¤ã®å®Ÿè£…ãŒã‚¹ãƒãƒ¼ãƒˆãªæ„Ÿã˜ãªæ°—ãŒã™ã‚‹ã‹ã‚‰ã€æ™‚é–“ãŒã‚ã‚‹ã‚¿ã‚¤ãƒŸãƒ³ã‚°ã§ä¸ŠäºŒã¤ã‚‚ä¿®æ­£ã—ãŸã„
             case ItemKind.ExperianceUp:
                 levelContainer.ExperianceUp = ItemHaveValue[ItemKind.ExperianceUp];
                 break;
@@ -147,7 +154,7 @@ public class LevelUpManager : MonoBehaviour
 public enum ItemKind
 {
     None,
-    //ˆÈ‰ºƒXƒe[ƒ^ƒXƒoƒt
+    //ä»¥ä¸‹ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ãƒãƒ•
     HealthUp,
     AttackUp,
     //DefenseUp,
@@ -155,7 +162,7 @@ public enum ItemKind
     AttackSpeedUp,
     AttackRangeUp,
 
-    //ˆÈ‰º“Áêƒoƒt
+    //ä»¥ä¸‹ç‰¹æ®Šãƒãƒ•
     SkillCoolTimeDown,
     HealOfTime,
     ExperianceUp,

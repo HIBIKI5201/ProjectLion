@@ -40,7 +40,13 @@ public class MobBase<MobDataKind> : MonoBehaviour, PauseManager.IPausable where 
         }
         else Debug.LogWarning($"{gameObject.name}‚Éƒf[ƒ^‚ª‚ ‚è‚Ü‚¹‚ñ");
 
+        PauseManager.IPausable.RegisterPauseManager(this);
+
         Awake_S();
+    }
+    private void OnDestroy()
+    {
+        PauseManager.IPausable.RemovePauseManager(this);
     }
 
     protected virtual void Awake_S() { }

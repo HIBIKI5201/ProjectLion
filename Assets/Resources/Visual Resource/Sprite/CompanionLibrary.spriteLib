@@ -39,16 +39,21 @@ MonoBehaviour:
       m_SpriteOverride: {fileID: -8097727349830347679, guid: 14753d7f74d231b4e9c402f550f2d978, type: 3}
     - m_Name: Artist
       m_Hash: 116757425
-      m_Sprite: {fileID: -480641208007337870, guid: fb70e65f6f4dd1c4b875263fbb976368, type: 3}
+      m_Sprite: {fileID: -3530562136454208723, guid: 6749a7207a6a2e445896ebe657e0a806, type: 3}
       m_FromMain: 0
-      m_SpriteOverride: {fileID: -480641208007337870, guid: fb70e65f6f4dd1c4b875263fbb976368, type: 3}
+      m_SpriteOverride: {fileID: -3530562136454208723, guid: 6749a7207a6a2e445896ebe657e0a806, type: 3}
     - m_Name: Smith
       m_Hash: 1071761647
-      m_Sprite: {fileID: 5084999330907419283, guid: 6e2f25cbe72e108438bfadd0abd5dcf2, type: 3}
+      m_Sprite: {fileID: -7263544410424285763, guid: 404bba035b4063c4cbc789ce2145d0df, type: 3}
       m_FromMain: 0
-      m_SpriteOverride: {fileID: 5084999330907419283, guid: 6e2f25cbe72e108438bfadd0abd5dcf2, type: 3}
+      m_SpriteOverride: {fileID: -7263544410424285763, guid: 404bba035b4063c4cbc789ce2145d0df, type: 3}
+    - m_Name: Penguin
+      m_Hash: 712808636
+      m_Sprite: {fileID: -9008205362261826637, guid: 2491e6f8d9a08f546b64ad76fe429a31, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -9008205362261826637, guid: 2491e6f8d9a08f546b64ad76fe429a31, type: 3}
     m_FromMain: 0
-    m_EntryOverrideCount: 6
+    m_EntryOverrideCount: 7
   - m_Name: Left
     m_Hash: 441796694
     m_CategoryList: []
@@ -75,16 +80,21 @@ MonoBehaviour:
       m_SpriteOverride: {fileID: -3403126691211694693, guid: ab3c21da93fe31642a110298966ed637, type: 3}
     - m_Name: Artist
       m_Hash: 116757425
-      m_Sprite: {fileID: -3530562136454208723, guid: 6749a7207a6a2e445896ebe657e0a806, type: 3}
+      m_Sprite: {fileID: -480641208007337870, guid: fb70e65f6f4dd1c4b875263fbb976368, type: 3}
       m_FromMain: 0
-      m_SpriteOverride: {fileID: -3530562136454208723, guid: 6749a7207a6a2e445896ebe657e0a806, type: 3}
+      m_SpriteOverride: {fileID: -480641208007337870, guid: fb70e65f6f4dd1c4b875263fbb976368, type: 3}
     - m_Name: Smith
       m_Hash: 1071761647
-      m_Sprite: {fileID: -7263544410424285763, guid: 404bba035b4063c4cbc789ce2145d0df, type: 3}
+      m_Sprite: {fileID: 5084999330907419283, guid: 6e2f25cbe72e108438bfadd0abd5dcf2, type: 3}
       m_FromMain: 0
-      m_SpriteOverride: {fileID: -7263544410424285763, guid: 404bba035b4063c4cbc789ce2145d0df, type: 3}
+      m_SpriteOverride: {fileID: 5084999330907419283, guid: 6e2f25cbe72e108438bfadd0abd5dcf2, type: 3}
+    - m_Name: Penguin
+      m_Hash: 712808636
+      m_Sprite: {fileID: -6959554391341708676, guid: 2ac0765cb9a23a0479f220a28c2e99ff, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -6959554391341708676, guid: 2ac0765cb9a23a0479f220a28c2e99ff, type: 3}
     m_FromMain: 0
-    m_EntryOverrideCount: 6
+    m_EntryOverrideCount: 7
   m_PrimaryLibraryGUID: 
-  m_ModificationHash: 638706806452334959
+  m_ModificationHash: 638759236998080053
   m_Version: 1

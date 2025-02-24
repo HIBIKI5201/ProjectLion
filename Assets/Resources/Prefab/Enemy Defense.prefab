@@ -48,6 +48,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3283297789925265511, guid: a81fdbaaa17b4e24fa161d2f953a3518, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3283297789925265511, guid: a81fdbaaa17b4e24fa161d2f953a3518, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3283297789925265511, guid: a81fdbaaa17b4e24fa161d2f953a3518, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 3595142255003445193, guid: a81fdbaaa17b4e24fa161d2f953a3518, type: 3}
       propertyPath: m_Name
       value: Enemy Defense
@@ -55,7 +67,11 @@ PrefabInstance:
     - target: {fileID: 4739704105280992287, guid: a81fdbaaa17b4e24fa161d2f953a3518, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 5084999330907419283, guid: 6e2f25cbe72e108438bfadd0abd5dcf2, type: 3}
+      objectReference: {fileID: -7263544410424285763, guid: 404bba035b4063c4cbc789ce2145d0df, type: 3}
+    - target: {fileID: 6309027799840157093, guid: a81fdbaaa17b4e24fa161d2f953a3518, type: 3}
+      propertyPath: m_labelHash
+      value: 1.7639445
+      objectReference: {fileID: 0}
     - target: {fileID: 6309027799840157093, guid: a81fdbaaa17b4e24fa161d2f953a3518, type: 3}
       propertyPath: m_SpriteHash
       value: 26729528

@@ -98,6 +98,15 @@ public class EnemyManager : MobBase<EnemyData>
         await Awaitable.WaitForSecondsAsync(0.2f);
         _spriteRenderer.color = Color.white;
     }
+
+    public override void Pause()
+    {
+        _rigidBody.simulated = false;
+    }
+    public override void Resume()
+    {
+        _rigidBody.simulated = true;
+    }
 }
 
 public static class PlayerAttack
@@ -107,7 +116,7 @@ public static class PlayerAttack
         while (true)
         {
             player.AddDamage(damage);
-            yield return new WaitForSeconds(1);
+            yield return PauseManager.PausableWaitForSecond(1);
         }
     }
 }

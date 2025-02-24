@@ -1,6 +1,5 @@
 using SymphonyFrameWork.CoreSystem;
 using System.Threading.Tasks;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
 using static UnityEngine.Rendering.DebugUI;
@@ -46,12 +45,12 @@ public class InGameUIManager : MonoBehaviour
             skill.InitializeTask,
             reward.InitializeTask);
 
-        levelUpManager.OnLevelChanged += (x, y) => panel.OnLevelUp(x, y, _uiDatas);
+        levelUpManager.OnLevelChanged += (kind, action) => panel.OnLevelUp(kind, action, _uiDatas);
         levelUpManager.OnGetItem += () => status?.OnStatusChange(LevelUpManager.ItemHaveValue);
         inGameManager.OnTimerChanged += x => timerText.OnTimerChanged(x / 60, x % 60);
-        specialAttackManager.SpecialEvant += (x,y) => skill.ChangeSkillGage(x,y);
-        skill.OnUseUltimate += () => specialAttackManager.SpecialAttack();
-        levelContainer.OnAddExperiance += (x, y) => reward.ChangeEXP(x, y);
+        specialAttackManager.SpecialEvant += skill.ChangeSkillGage;
+        skill.OnUseUltimate += specialAttackManager.SpecialAttack;
+        levelContainer.OnAddExperiance += reward.ChangeEXP;
     }
     //private void OnDisable()
     //{

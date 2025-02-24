@@ -36,7 +36,6 @@ public partial class StatusUIManager : UIElement_B
         {
             item.Value.SetIcon(_uiData.FindEnum(item.Key).Texture, Color.white);
             item.Value.OnStatusChanged(0);
-            Debug.Log("set " + _uiData.FindEnum(item.Key));
         }
     }
 
