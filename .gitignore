@@ -70,7 +70,6 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
-Assets/Resources/UITK_Items/UIAssets/
 Assets/Settings/
 Assets/AssetStoreTools.meta
 Assets/AssetStoreTools/Grass_Dense_Tint_01_Base_Basecolor_B 1.png
@@ -83,3 +82,5 @@ Assets/Resources/sounds/SE_Shoot.mp3
 Assets/Resources/sounds/SE_Shoot.mp3.meta
 Assets/Resources/sounds/SE_Special.mp3
 Assets/Resources/sounds/SE_Special.mp3.meta
+Assets/AssetStoreTools/
+Assets/Resources/UITK_Items/UIAssets/Icon/
