@@ -22,7 +22,7 @@ public class AutoHeal : MonoBehaviour
     void Update()
     {
         if (_timer + _interval < Time.time &&
-            controller.CurrentHealth + Healvalue >= controller.MaxHealth)
+            controller.CurrentHealth + Healvalue <= controller.MaxHealth)
         {
             _timer = Time.time;
             controller.AddDamage(-Healvalue);
