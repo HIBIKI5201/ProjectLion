@@ -3330,6 +3330,7 @@ MonoBehaviour:
   - {fileID: 1610123057312720962, guid: e0cdad1dd1075654fa445f233f4394ac, type: 3}
   _generateIntarval: 1
   _generateLimit: 100
+  _test: 1
 --- !u!4 &1365497571
 Transform:
   m_ObjectHideFlags: 0
@@ -5172,7 +5173,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _initRequirePoint: 100
   _specialObj: {fileID: 72801065}
-  _systemSub: {fileID: 0}
+  _systemSub: {fileID: 121610968}
   _specialTime: 3
 --- !u!114 &1914408008
 MonoBehaviour:
@@ -5199,6 +5200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 412e548966825b845aa44c46ec8e8444, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _initHealValue: 100
 --- !u!1 &1993525103
 GameObject:
   m_ObjectHideFlags: 0

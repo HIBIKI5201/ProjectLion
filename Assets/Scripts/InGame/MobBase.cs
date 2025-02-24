@@ -2,7 +2,6 @@ using SymphonyFrameWork.CoreSystem;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.U2D.Animation;
-using System;
 
 public class MobBase<MobDataKind> : MonoBehaviour, PauseManager.IPausable where MobDataKind : MobData_S
 {
