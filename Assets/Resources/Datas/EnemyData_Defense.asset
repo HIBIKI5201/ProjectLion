@@ -16,7 +16,7 @@ MonoBehaviour:
     _maxHealth: 200
     _attack: 20
     _defense: 0
-    _agility: 20
+    _agility: 10
     _attackSpeed: 20
     _attackRange: 5
   _dropExperience: 80

@@ -40,14 +40,14 @@ public partial class ExpSlider : UIElement_B
         return Task.CompletedTask;
     }
     /// <summary>
-    /// ³‹K‰»‚³‚ê‚½’l‚ğŠî‚Éslider‚Ì’l‚ğXV‚µ‚Ü‚·
+    /// æ­£è¦åŒ–ã•ã‚ŒãŸå€¤ã‚’åŸºã«sliderã®å€¤ã‚’æ›´æ–°ã—ã¾ã™
     /// </summary>
-    /// <param name="normalize">slider‚Éİ’è‚·‚é³‹K‰»‚³‚ê‚½’l</param>
+    /// <param name="normalize">sliderã«è¨­å®šã™ã‚‹æ­£è¦åŒ–ã•ã‚ŒãŸå€¤</param>
     public void OnSliderChange(float normalize)
     {
         if (normalize > 100 && normalize < 0)
         {
-            Debug.LogWarning("³‹K‰»‚³‚ê‚½’l‚ğ‘ã“ü‚µ‚Ä‚­‚¾‚³‚¢");
+            Debug.LogWarning("æ­£è¦åŒ–ã•ã‚ŒãŸå€¤ã‚’ä»£å…¥ã—ã¦ãã ã•ã„");
         }
         _slider.style.width = Length.Percent(normalize * 100);
     }

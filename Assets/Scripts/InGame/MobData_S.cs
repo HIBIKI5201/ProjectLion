@@ -1,4 +1,3 @@
-using SymphonyFrameWork.CoreSystem;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "MobData", menuName = "GameData/MobData")]
@@ -12,6 +11,9 @@ public class MobData_S : ScriptableObject
 [System.Serializable]
 public class MobData
 {
+    [SerializeField] string _name;
+    public string Name { get => _name; }
+
     [SerializeField]
     private float _maxHealth = 100;
     public float MaxHealth { get => _maxHealth; }

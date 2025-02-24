@@ -8,11 +8,11 @@
             <StatusUI name="Agility" style="flex-grow: 1;" />
         </engine:VisualElement>
         <engine:VisualElement style="flex-grow: 0; flex-direction: row; flex-shrink: 0; background-size: 100% 100%; width: 89%; align-self: center; margin-top: 0; margin-bottom: 0; padding-top: 2%; height: 40%; margin-right: 0; margin-left: 0; padding-bottom: 3%; top: 50%; position: absolute;">
-            <StatusUI picking-mode="Ignore" name="SkillPower" style="flex-grow: 1;" />
-            <StatusUI name="SkillCoolTime" style="flex-grow: 1;" />
-            <StatusUI picking-mode="Ignore" name="ExperianceUp" style="flex-grow: 1;" />
-            <StatusUI picking-mode="Ignore" name="HealthRegen" style="flex-grow: 1;" />
-            <StatusUI name="KnockBack" style="flex-grow: 1;" />
+            <StatusUI picking-mode="Ignore" name="SkillPower" style="flex-grow: 1; width: 9.1%; max-width: 20%;" />
+            <StatusUI name="SkillCoolTime" style="flex-grow: 1; width: 9.1%; max-width: 20%;" />
+            <StatusUI picking-mode="Ignore" name="ExperianceUp" style="flex-grow: 1; width: 9.1%; max-width: 20%;" />
+            <StatusUI picking-mode="Ignore" name="HealthRegen" style="flex-grow: 1; width: 9.1%; max-width: 20%;" />
+            <StatusUI name="KnockBack" style="flex-grow: 1; max-width: 20%; display: none; visibility: visible;" />
         </engine:VisualElement>
     </engine:VisualElement>
 </engine:UXML>

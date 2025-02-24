@@ -29,16 +29,3 @@ public class GameBaseSystem : MonoBehaviour
         await SceneLoader.LoadSceneAsync(kind);
     }
 }
-
-public class GameLogics
-{
-    public static IEnumerator PausalbeWaitForSecond(float time)
-    {
-        float timer = 0;
-        while (timer < time)
-        {
-            timer += Time.deltaTime;
-            yield return null;
-        }
-    }
-}

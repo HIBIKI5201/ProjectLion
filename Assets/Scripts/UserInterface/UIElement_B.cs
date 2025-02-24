@@ -28,7 +28,7 @@ public abstract partial class UIElement_B : VisualElement {
 
         if (handle.Status == AsyncOperationStatus.Succeeded && handle.Result != null) {
 
-            #region eƒGƒŒƒƒ“ƒg‚Ì‰Šú‰»
+            #region è¦ªã‚¨ãƒ¬ãƒ¡ãƒ³ãƒˆã®åˆæœŸåŒ–
 
             var treeAsset = handle.Result;
             var container = treeAsset.Instantiate();
@@ -42,15 +42,15 @@ public abstract partial class UIElement_B : VisualElement {
 
             #endregion
 
-            // UI—v‘f‚Ìæ“¾
+            // UIè¦ç´ ã®å–å¾—
             await Initialize_S(container);
-            Debug.Log("ƒEƒBƒ“ƒhƒE‚Í³í‚Éƒ[ƒhŠ®—¹");
+            Debug.Log("ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã¯æ­£å¸¸ã«ãƒ­ãƒ¼ãƒ‰å®Œäº†");
         }
         else {
             Debug.LogError("Failed to load UXML file from Addressables: UXML/BasicInformation.uxml");
         }
 
-        // ƒƒ‚ƒŠ‚Ì‰ğ•ú
+        // ãƒ¡ãƒ¢ãƒªã®è§£æ”¾
         Addressables.Release(handle);
     }
 

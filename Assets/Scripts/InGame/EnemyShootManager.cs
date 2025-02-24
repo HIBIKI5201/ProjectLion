@@ -1,8 +1,8 @@
-using UnityEngine;
 using SymphonyFrameWork.CoreSystem;
+using UnityEngine;
 
-public class EnemyShootManager : MonoBehaviour
-{
+public class EnemyShootManager : MonoBehaviour, PauseManager.IPausable
+{//TODO:HERE NormalShootÇ∆ìùçáÇ∑ÇÈ
     [Header("î≠éÀä‘äu")]
     [SerializeField]
     private float _interval = 1;
@@ -12,22 +12,31 @@ public class EnemyShootManager : MonoBehaviour
     private GameObject _bullet;
     [SerializeField]
     private float _bulletSpeed = 3;
-    [Tooltip("íeä€Ç™îÚÇ—ë±ÇØÇÈïbêî")][SerializeField]
+    [Tooltip("íeä€Ç™îÚÇ—ë±ÇØÇÈïbêî")]
+    [SerializeField]
     private float _bulletDuration = 2;
 
     private PlayerController _playerController;
     private EnemyManager _enemyManager;
     private float _timer = 0;
 
+    private bool _isPause;
     void Start()
     {
         _playerController = SingletonDirector.GetSingleton<PlayerController>();
         _enemyManager = GetComponent<EnemyManager>();
+
+        PauseManager.IPausable.RegisterPauseManager(this);
     }
 
     void Update()
     {
-        if (_timer + _interval < Time.time)
+        if (_isPause)
+        {
+            _timer += Time.deltaTime;
+        }
+
+        else if (_timer + _interval < Time.time)
         {
             _timer = Time.time;
             Shoot();
@@ -43,7 +52,6 @@ public class EnemyShootManager : MonoBehaviour
             await operation;
             foreach (GameObject obj in operation.Result)
             {
-                Destroy(obj, _bulletDuration);
 
                 if (!obj.TryGetComponent<BulletManager>(out var mg))
                     mg = obj.AddComponent<BulletManager>();
@@ -60,17 +68,32 @@ public class EnemyShootManager : MonoBehaviour
                 {
                     cc.isTrigger = true;
                 }
+                await PauseManager.PausableWaitForSecondAsync(_bulletDuration);
+                Destroy(obj);
             }
         }
     }
 
+    void PauseManager.IPausable.Pause()
+    {
+        _isPause = true;
+    }
+
+    void PauseManager.IPausable.Resume()
+    {
+        _isPause = false;
+    }
+
     [RequireComponent(typeof(Rigidbody2D), typeof(CircleCollider2D))]
-    public class BulletManager : MonoBehaviour
+    public class BulletManager : MonoBehaviour, PauseManager.IPausable
     {
         private float _attack;
+        Rigidbody2D _rb;
         public void SetStatus(float attack)
         {
             _attack = attack;
+            _rb = GetComponent<Rigidbody2D>();
+            PauseManager.IPausable.RegisterPauseManager(this);
         }
         private void OnTriggerEnter2D(Collider2D collision)
         {
@@ -79,6 +102,22 @@ public class EnemyShootManager : MonoBehaviour
                 player.AddDamage(_attack);
                 Destroy(gameObject);
             }
+        }
+        private void OnDestroy()
+        {
+            PauseManager.IPausable.RemovePauseManager(this);
+        }
+        public void Pause()
+        {
+            if( _rb != null ) 
+                _rb.simulated = false;
+            Debug.Log(_rb.ToString());
+        }
+
+        public void Resume()
+        {
+            if (_rb != null)
+                _rb.simulated = true;
         }
     }
 }

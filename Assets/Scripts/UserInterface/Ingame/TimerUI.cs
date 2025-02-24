@@ -4,7 +4,7 @@ using UnityEngine.UIElements;
 [UxmlElement]
 public partial class TimerUI : UIElement_B
 {
-    public TimerUI() : base("UXML/Timer") { }
+    public TimerUI() : base("UXML/Timer.uxml") { }
     Label _timer;
     protected override Task Initialize_S(TemplateContainer container)
     {

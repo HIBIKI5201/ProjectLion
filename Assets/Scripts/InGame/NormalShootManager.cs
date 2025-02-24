@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(CircleCollider2D))]
-public class NormalShootManager : MonoBehaviour
+public class NormalShootManager : MonoBehaviour, PauseManager.IPausable
 {
     private MobBase<MobData_S> controller;
 
@@ -22,6 +22,7 @@ public class NormalShootManager : MonoBehaviour
     [SerializeField]
     private float _bulletDuration = 2;
 
+    bool _isPause;
 
     private void Start()
     {
@@ -29,6 +30,8 @@ public class NormalShootManager : MonoBehaviour
         _interval = controller.AttackSpeed;
         _range = GetComponent<Transform>().localScale;
         GetComponent<Transform>().localScale = _range = new Vector3(controller.AttackRange, 0f, 0f);
+
+        PauseManager.IPausable.RegisterPauseManager(this);
     }
 
     private void Update()
@@ -41,11 +44,15 @@ public class NormalShootManager : MonoBehaviour
         if (_range.x != controller.AttackRange)
         {
             _range = new Vector3(controller.AttackRange, 0f, 0f);
-            GetComponent<Transform>().localScale = _range;
+            transform.localScale = _range;
             Debug.Log($"ƒŒƒ“ƒW‚Í {_range}");
         }
 
-        if (_timer + _interval < Time.time && enemies.Count > 0)
+        if (_isPause)
+        {
+            _timer += Time.deltaTime;
+        }
+        else if (_timer + _interval < Time.time && enemies.Count > 0)
         {
             _timer = Time.time;
             Shoot();
@@ -107,13 +114,27 @@ public class NormalShootManager : MonoBehaviour
         }
     }
 
+    void PauseManager.IPausable.Pause()
+    {
+        _isPause = true;
+    }
+
+    void PauseManager.IPausable.Resume()
+    {
+        _isPause = false;
+    }
+
     [RequireComponent(typeof(Rigidbody2D), typeof(CircleCollider2D))]
-    public class BulletManager : MonoBehaviour
+    public class BulletManager : MonoBehaviour, PauseManager.IPausable
     {
         private float _damage = 1;
+        Rigidbody2D _rb;
+
         public void SetStatus(float damage)
         {
             _damage = damage;
+            _rb = GetComponent<Rigidbody2D>();
+            PauseManager.IPausable.RegisterPauseManager(this);
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
@@ -126,6 +147,19 @@ public class NormalShootManager : MonoBehaviour
                     Destroy(gameObject);
                 }
             }
+        }
+        private void OnDestroy()
+        {
+            PauseManager.IPausable.RemovePauseManager(this);
+        }
+        public void Pause()
+        {
+            _rb.simulated = false;
+        }
+
+        public void Resume()
+        {
+            _rb.simulated = true;
         }
     }
 }

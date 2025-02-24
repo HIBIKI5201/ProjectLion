@@ -17,7 +17,7 @@ public partial class LevelUpPanel : UIElement_B
         return Task.CompletedTask;
     }
 
-    public void OnLevelUp(IEnumerable<ItemKind> kinds, Action<ItemKind> callBack,MastorData uiDatas)
+    public void OnLevelUp(IEnumerable<ItemKind> kinds, Action<ItemKind> callBack, MastorData uiDatas)
     {
         if (kinds.Count() != _levelUpPanel.Count)//エラーが起きないように両方の要素の個数を確認
         {
