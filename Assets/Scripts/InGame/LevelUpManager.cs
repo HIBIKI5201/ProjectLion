@@ -26,7 +26,7 @@ public class LevelUpManager : MonoBehaviour
     private PlayerController player;
     private MobData data;
     private SpecialAttackManager specialMana;
-    //private AutoHeal autoHeal;
+    private AutoHeal autoHeal;
     private LevelContainer levelContainer;
     private SpecialAttackSystem specialAttackSystem;
 
@@ -41,7 +41,7 @@ public class LevelUpManager : MonoBehaviour
         player = SingletonDirector.GetSingleton<PlayerController>();
         data = player.Data;
         specialMana = FindAnyObjectByType<SpecialAttackManager>();
-        //autoHeal = FindAnyObjectByType<AutoHeal>();
+        autoHeal = FindAnyObjectByType<AutoHeal>();
         levelContainer = FindAnyObjectByType<LevelContainer>();
         specialAttackSystem = FindAnyObjectByType<SpecialAttackSystem>();
     }
@@ -130,7 +130,7 @@ public class LevelUpManager : MonoBehaviour
                 break;
 
             case ItemKind.HealOfTime:
-                //autoHeal.Healvalue += 0.01f * autoHeal.InitHealValue;
+                autoHeal.Healvalue += 0.01f * autoHeal.InitHealValue;
                 break;
             //以下二つの実装がスマートな感じな気がするから、時間があるタイミングで上二つも修正したい
             case ItemKind.ExperianceUp:

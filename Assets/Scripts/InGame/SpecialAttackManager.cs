@@ -71,7 +71,7 @@ public class SpecialAttackManager : MonoBehaviour
     public async void SpecialAttack()
     {
         //•KE‹Z”­“®‚Ìˆ—
-        if (_specialReady && _specialReady)
+        if (_specialReady)
         {
             _specialReady = false;
             SpecialExperiancePoint = 0;
