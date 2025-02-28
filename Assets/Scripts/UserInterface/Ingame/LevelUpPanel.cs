@@ -9,7 +9,7 @@ using UnityEngine.UIElements;
 public partial class LevelUpPanel : UIElement_B
 {
     List<LavelUpCard> _levelUpPanel = new();
-    public LevelUpPanel() : base("UXML/LevelUpPanel.uxml") { }
+    public LevelUpPanel() : base("UITK_Items/UXML/InGame/LevelUpPanel") { }
     protected override Task Initialize_S(TemplateContainer container)
     {
         this.style.visibility = Visibility.Hidden;
@@ -19,7 +19,7 @@ public partial class LevelUpPanel : UIElement_B
 
     public void OnLevelUp(IEnumerable<ItemKind> kinds, Action<ItemKind> callBack, MastorData uiDatas)
     {
-        if (kinds.Count() != _levelUpPanel.Count)//ƒGƒ‰[‚ª‹N‚«‚È‚¢‚æ‚¤‚É—¼•û‚Ì—v‘f‚ÌŒÂ”‚ğŠm”F
+        if (kinds.Count() != _levelUpPanel.Count)//ï¿½Gï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½Nï¿½ï¿½ï¿½È‚ï¿½ï¿½æ‚¤ï¿½É—ï¿½ï¿½ï¿½ï¿½Ì—vï¿½fï¿½ÌŒÂï¿½ï¿½ï¿½ï¿½mï¿½F
         {
             Debug.LogWarning($"kinds not equal _stateusPanel\nkinds:{kinds.Count()}, StateusPanel:{_levelUpPanel.Count}");
             callBack?.Invoke(0);
@@ -30,12 +30,12 @@ public partial class LevelUpPanel : UIElement_B
 
         for (var i = 0; i < _levelUpPanel.Count(); i++)
         {
-            //Œ©‚½–Ú‚Ì•ÏX.
+            //ï¿½ï¿½ï¿½ï¿½ï¿½Ú‚Ì•ÏX.
             var uiData = uiDatas.FindEnum(kinds.ElementAt(i));
             _levelUpPanel[i].ChangeStyle(uiData.Texture, uiData.Name, uiData.Information);
 
             //callback
-            int index = i;//ƒNƒ[ƒWƒƒ
+            int index = i;//ï¿½Nï¿½ï¿½ï¿½[ï¿½Wï¿½ï¿½
             _levelUpPanel[i].OnLevelUpChoiced += () =>
             {
                 callBack?.Invoke(kinds.ElementAt(index));

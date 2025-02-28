@@ -15,7 +15,7 @@ public partial class LavelUpCard : UIElement_B
 
     public Action OnLevelUpChoiced;
 
-    public LavelUpCard() : base("UXML/LevelUpStatus.uxml") { }
+    public LavelUpCard() : base("UITK_Items/UXML/InGame/LevelUpStatus") { }
 
     protected override Task Initialize_S(TemplateContainer container)
     {

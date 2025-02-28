@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 [UxmlElement]
 public partial class RewardUIManager : UIElement_B
 {
-    public RewardUIManager() : base("UXML/EXPBar.uxml") { }
+    public RewardUIManager() : base("UITK_Items/UXML/InGame/EXPBar") { }
 
     ExpSlider _expSlider;
     Label _expText;
