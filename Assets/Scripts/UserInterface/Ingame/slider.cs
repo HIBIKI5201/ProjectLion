@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 [UxmlElement]
 public partial class ExpSlider : UIElement_B
 {
-    public ExpSlider() : base("UXML/Slider.uxml") { }
+    public ExpSlider() : base("UITK_Items/UXML/InGame/SliderBar") { }
 
     [UxmlAttribute]
     Texture2D _coverTexture;

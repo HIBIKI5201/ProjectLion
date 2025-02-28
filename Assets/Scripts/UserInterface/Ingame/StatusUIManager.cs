@@ -10,12 +10,12 @@ public partial class StatusUIManager : UIElement_B
 {
     [UxmlAttribute]
     MastorData _uiData;
-    public StatusUIManager() : base("UXML/Status.uxml") { }
+    public StatusUIManager() : base("UITK_Items/UXML/InGame/Status") { }
 
     Dictionary<ItemKind, StatusUI> _statusPanels = new Dictionary<ItemKind, StatusUI>();
     protected override async Task Initialize_S(TemplateContainer container)
     {
-        #region VisualElementæ“¾
+        #region VisualElementï¿½æ“¾
         _statusPanels.Add(ItemKind.HealthUp, container.Q<StatusUI>("Health"));
         _statusPanels.Add(ItemKind.AttackUp, container.Q<StatusUI>("AttackPower"));
         _statusPanels.Add(ItemKind.AttackSpeedUp, container.Q<StatusUI>("AttackSpeed"));
@@ -31,7 +31,7 @@ public partial class StatusUIManager : UIElement_B
         Task[] tasks = _statusPanels.Select(kvp => kvp.Value.InitializeTask).ToArray();
         await Task.WhenAll(tasks);
 
-        //status‚ÌƒAƒCƒRƒ“İ’è
+        //statusï¿½ÌƒAï¿½Cï¿½Rï¿½ï¿½ï¿½İ’ï¿½
         foreach (var item in _statusPanels)
         {
             item.Value.SetIcon(_uiData.FindEnum(item.Key).Texture, Color.white);

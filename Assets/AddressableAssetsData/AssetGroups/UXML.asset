@@ -25,11 +25,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 3b6bb7fa846c4974a9de84f8eb4a50a0
-    m_Address: UXML/SpecialAttack.uxml
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5b291a3a65a63b84f9dd36d2e4f6d541
     m_Address: UXML/LevelUpPanel.uxml
     m_ReadOnly: 0
@@ -42,11 +37,6 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: cf8e7b7ca72a8854a8c3e898b2b8e549
     m_Address: UXML/LevelUpStatus.uxml
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: d89dd57a73caef742a0ac2b448f0d580
-    m_Address: UXML/Slider.uxml
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

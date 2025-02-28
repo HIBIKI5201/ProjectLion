@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using LionUitlity;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -15,23 +16,22 @@ public abstract partial class UIElement_B : VisualElement {
 
     private async Task Initialize(string path)
     {
-        AsyncOperationHandle<VisualTreeAsset> handle = default;
+        ResourceRequest handle = default;
         if (!string.IsNullOrEmpty(path)) {
-            handle = Addressables.LoadAssetAsync<VisualTreeAsset>(path);
+            handle = Resources.LoadAsync(path);
         }
         else {
             Debug.LogError($"{name} failed initialize");
             return;
         }
+        
+        await Uitlity.WaitUntil(() => handle.isDone);
 
-        await handle.Task;
-
-        if (handle.Status == AsyncOperationStatus.Succeeded && handle.Result != null) {
+        if (handle.asset != null && handle.asset is VisualTreeAsset visualTreeAsset) {
 
             #region 親エレメントの初期化
 
-            var treeAsset = handle.Result;
-            var container = treeAsset.Instantiate();
+            var container = visualTreeAsset.Instantiate();
             container.style.width = Length.Percent(100);
             container.style.height = Length.Percent(100);
             this.RegisterCallback<KeyDownEvent>(e => e.StopImmediatePropagation());
@@ -47,11 +47,8 @@ public abstract partial class UIElement_B : VisualElement {
             Debug.Log("ウィンドウは正常にロード完了");
         }
         else {
-            Debug.LogError("Failed to load UXML file from Addressables: UXML/BasicInformation.uxml");
+            Debug.LogError($"Failed to load UXML file from Pass:{path}");
         }
-
-        // メモリの解放
-        Addressables.Release(handle);
     }
 
     protected abstract Task Initialize_S(TemplateContainer container);

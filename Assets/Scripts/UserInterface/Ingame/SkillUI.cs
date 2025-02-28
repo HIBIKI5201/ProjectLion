@@ -14,7 +14,7 @@ public partial class SkillUI : UIElement_B
 
     public event Action OnUseUltimate;
 
-    public SkillUI() : base("UXML/SpecialAttack.uxml")
+    public SkillUI() : base("UITK_Items/UXML/InGame/SpecialAttack")
     {
     }
 

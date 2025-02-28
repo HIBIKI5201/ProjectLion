@@ -15,7 +15,7 @@ public partial class StatusUI : UIElement_B
     VisualElement _icon;
     Label _text;
 
-    public StatusUI() : base("UXML/StatusElement") { }
+    public StatusUI() : base("UITK_Items/UXML/InGame/StatusElement") { }
 
     protected override Task Initialize_S(TemplateContainer container)
     {

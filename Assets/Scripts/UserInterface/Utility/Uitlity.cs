@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using System.Threading.Tasks;
 #if UNITY_EDITOR
 using UnityEditor.UIElements;
 #endif
@@ -12,6 +13,14 @@ namespace LionUitlity
             float to2 = 0.1f)
         {
             return (value - from1) / (to1 - from1) * (to2 - from2) + from2;
+        }
+
+        public static async Task WaitUntil(Func<bool> condition)
+        {
+            while (!condition())
+            {
+                await Awaitable.EndOfFrameAsync();
+            }
         }
     }
 
