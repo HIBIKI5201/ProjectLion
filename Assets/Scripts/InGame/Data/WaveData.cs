@@ -1,9 +1,9 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "SpawnData",menuName = "SpawnData/spawnData")]
-public class MasterSpawnData : ScriptableObject
+[CreateAssetMenu(fileName = "WaveData",menuName = "SpawnData/WaveData")]
+public class WaveData : ScriptableObject
 {
-    [SerializeField] SpawnData[] _spawnData;
+    [SerializeField,Tooltip("ゲーム開始時からの時間")] SpawnData[] _spawnData;
 
     public SpawnData[] SpawnData
     {

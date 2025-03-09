@@ -13,7 +13,7 @@ public class EnemyGenerator : MonoBehaviour
     public Dictionary<EnemyKind, ObjectPool<EnemyManager>> EnemyPools = new();
 
     [SerializeField] private EnemyData[] _enemyKinds;
-    [SerializeField] private MasterSpawnData _spawnData;
+    [SerializeField] private WaveData _spawnData;
 
     [SerializeField] private float _generateIntarval = 1;
 
