@@ -91,6 +91,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _baseData: {fileID: 11400000, guid: c57e8b9b8e627dd4cbe5e33366376923, type: 2}
   _data:
+    _name: 
     _maxHealth: 0
     _attack: 0
     _defense: 0

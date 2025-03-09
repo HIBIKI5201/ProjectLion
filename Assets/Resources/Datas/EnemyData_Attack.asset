@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: EnemyData_Attack
   m_EditorClassIdentifier: 
   _data:
+    _name: Arthur
     _maxHealth: 150
     _attack: 40
     _defense: 0
