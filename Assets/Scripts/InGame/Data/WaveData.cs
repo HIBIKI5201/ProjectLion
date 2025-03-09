@@ -1,9 +1,10 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "WaveData",menuName = "SpawnData/WaveData")]
+[CreateAssetMenu(fileName = "WaveData", menuName = "SpawnData/WaveData")]
 public class WaveData : ScriptableObject
 {
-    [SerializeField,Tooltip("ゲーム開始時からの時間")] SpawnData[] _spawnData;
+    [SerializeField, Tooltip("ゲーム開始時からの時間")]
+    SpawnData[] _spawnData;
 
     public SpawnData[] SpawnData
     {
@@ -55,6 +56,9 @@ public class SpawnEnemyData
     [SerializeField] private int _angle = 0;
     [SerializeField] private int _enemyCount = 1;
 
+    [SerializeField, Tooltip("エネミーをランダムな角度に生成します。この項目がtrueの時Angleは無効化されます。")]
+    private bool _randomAngle = false;
+
     public EnemyGenerator.EnemyKind Kind
     {
         get => _kind;
@@ -78,5 +82,10 @@ public class SpawnEnemyData
     public int EnemyCount
     {
         get => _enemyCount;
+    }
+
+    public bool RandomAngle
+    {
+        get => _randomAngle;
     }
 }

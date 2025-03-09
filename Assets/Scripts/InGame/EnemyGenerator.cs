@@ -80,7 +80,7 @@ public class EnemyGenerator : MonoBehaviour
                 {
                     EnemyManager enemy　= EnemyPools[enemyData.Kind].Get();
                     enemy.Init(() => EnemyPools[enemyData.Kind].Release(enemy), enemyData.StatusMultiplier);
-                    enemy.SetPos(enemyData.Angle, enemyData.Distance);
+                    enemy.SetPos(enemyData.Angle, enemyData.Distance, enemyData.RandomAngle);
                 }
             }
             

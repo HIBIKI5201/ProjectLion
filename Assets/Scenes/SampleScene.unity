@@ -2922,7 +2922,7 @@ MonoBehaviour:
   _spawnData: {fileID: 11400000, guid: 3333cc6f3f17afe4f940bf0c5ee7a7bd, type: 2}
   _generateIntarval: 1
   _generateLimit: 100
-  _test: 1
+  _test: 0
 --- !u!4 &1365497571
 Transform:
   m_ObjectHideFlags: 0

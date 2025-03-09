@@ -18,3 +18,16 @@ MonoBehaviour:
     _distance: 0
     _angle: 0
     _enemyCount: 0
+    _randomAngle: 0
+  - _kind: 0
+    _statusMultiplier: 0
+    _distance: 0
+    _angle: 0
+    _enemyCount: 0
+    _randomAngle: 0
+  - _kind: 0
+    _statusMultiplier: 0
+    _distance: 0
+    _angle: 0
+    _enemyCount: 0
+    _randomAngle: 0

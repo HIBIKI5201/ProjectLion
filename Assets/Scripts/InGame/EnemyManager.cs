@@ -84,9 +84,14 @@ public class EnemyManager : MobBase<EnemyData>
         gameObject.SetActive(true);
     }
 
-    public void SetPos(float angle, float radius)
+    public void SetPos(float angle, float radius , bool randomAngle = false)
     {
-        angle = angle * Mathf.Deg2Rad;
+        if (randomAngle)
+        {
+            angle = Random.Range(0, 360) * Mathf.Deg2Rad;
+        }
+        else angle = angle * Mathf.Deg2Rad;
+        
         _rigidBody.AddForce(new Vector2(Random.Range(-1,1),Random.Range(-1,1)));//重なってスポーンすることがあったので少しずらす
         transform.position = _player.transform.position +
                              new Vector3(radius * Mathf.Cos(angle), radius * Mathf.Sin(angle));

@@ -17,8 +17,6 @@ MonoBehaviour:
     _randomSpawnData:
     - _cumulativeWeight: 1
       _spawnData: {fileID: 11400000, guid: 6579a8f04ebb0f645bd58af2a497f848, type: 2}
-    - _cumulativeWeight: 1
-      _spawnData: {fileID: 11400000, guid: da15668fec7f75144a92852510e49059, type: 2}
   - _spawnTime: 10
     _randomSpawnData:
     - _cumulativeWeight: 1

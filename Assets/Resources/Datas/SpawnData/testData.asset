@@ -18,3 +18,4 @@ MonoBehaviour:
     _distance: 20
     _angle: 0
     _enemyCount: 40
+    _randomAngle: 1
