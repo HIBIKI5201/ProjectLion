@@ -44,7 +44,7 @@ public abstract partial class UIElement_B : VisualElement {
 
             // UI要素の取得
             await Initialize_S(container);
-            Debug.Log("ウィンドウは正常にロード完了");
+            //Debug.Log("ウィンドウは正常にロード完了");
         }
         else {
             Debug.LogError($"Failed to load UXML file from Pass:{path}");

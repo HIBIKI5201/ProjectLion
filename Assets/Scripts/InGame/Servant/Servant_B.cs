@@ -25,10 +25,9 @@ public abstract class Servant_B : MobBase<MobData_S>
     protected virtual void Start_S() { }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         Move();
-        Update_S();
 
         void Move()
         {

@@ -16,7 +16,7 @@ public class BuffServant : Servant_B
     protected override void Start_S()
     {
     }
-    protected override void Update_S()
+    void Update()
     {
         _timer += Time.deltaTime;
         if (_timer > _skillCoolTime && !_useSkill)
@@ -24,14 +24,14 @@ public class BuffServant : Servant_B
             _timer = 0;
             _useSkill = true;
             _player.Setbuff(BuffKind.AttackPowerBuff, latio: 1.5f);
-            Debug.Log("buff" + _player.Attack.ToString());
+            //Debug.Log("buff" + _player.Attack.ToString());
         }
         else if (_timer > _skillTime && _useSkill)
         {
             _timer = 0;
             _useSkill = false;
             _player.Setbuff(BuffKind.AttackPowerBuff, latio: 1);
-            Debug.Log("buffが切れた" + _player.Attack.ToString());
+            //Debug.Log("buffが切れた" + _player.Attack.ToString());
         }
     }
 

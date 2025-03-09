@@ -22,6 +22,8 @@ public class NormalShootManager : MonoBehaviour, PauseManager.IPausable
     [SerializeField]
     private float _bulletDuration = 2;
 
+    [SerializeField] private float _attackPowerMultiplier = 1;
+
     bool _isPause;
 
     private void Start()
@@ -45,7 +47,7 @@ public class NormalShootManager : MonoBehaviour, PauseManager.IPausable
         {
             _range = new Vector3(controller.AttackRange, 0f, 0f);
             transform.localScale = _range;
-            Debug.Log($"ƒŒƒ“ƒW‚Í {_range}");
+            Debug.Log($"ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½ï¿½ {_range}");
         }
 
         if (_isPause)
@@ -75,7 +77,7 @@ public class NormalShootManager : MonoBehaviour, PauseManager.IPausable
                 if (!obj.TryGetComponent<BulletManager>(out var mg))
                     mg = obj.AddComponent<BulletManager>();
 
-                mg.SetStatus(controller.Attack);
+                mg.SetStatus(controller.Attack, _attackPowerMultiplier);
 
                 if (obj.TryGetComponent<Rigidbody2D>(out var rb))
                 {
@@ -128,11 +130,13 @@ public class NormalShootManager : MonoBehaviour, PauseManager.IPausable
     public class BulletManager : MonoBehaviour, PauseManager.IPausable
     {
         private float _damage = 1;
+        private float _attackPowerMultiplier;
         Rigidbody2D _rb;
 
-        public void SetStatus(float damage)
+        public void SetStatus(float damage, float attackPowerMultiplier)
         {
             _damage = damage;
+            _attackPowerMultiplier = attackPowerMultiplier;
             _rb = GetComponent<Rigidbody2D>();
             PauseManager.IPausable.RegisterPauseManager(this);
         }
@@ -143,7 +147,7 @@ public class NormalShootManager : MonoBehaviour, PauseManager.IPausable
             {
                 if (collision.gameObject.TryGetComponent(out EnemyManager enemy))
                 {
-                    enemy.AddDamage(_damage);
+                    enemy.AddDamage(_damage * _attackPowerMultiplier);
                     Destroy(gameObject);
                 }
             }
