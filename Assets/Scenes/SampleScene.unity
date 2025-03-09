@@ -2922,7 +2922,7 @@ MonoBehaviour:
   _spawnData: {fileID: 11400000, guid: 3333cc6f3f17afe4f940bf0c5ee7a7bd, type: 2}
   _generateIntarval: 1
   _generateLimit: 100
-  _test: 0
+  _test: 1
 --- !u!4 &1365497571
 Transform:
   m_ObjectHideFlags: 0
@@ -3799,7 +3799,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39568dcbfc398ef41aad29823714f280, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bullet: {fileID: 2875977998387469546, guid: 42142a5578e8e5647beda9fe7c96d5b6, type: 3}
+  _bullet: {fileID: 2875977998387469546, guid: a1948fbc0c082074c9ba729e28902410, type: 3}
   _bulletSpeed: 5
   _bulletDuration: 2
   _attackPowerMultiplier: 1
