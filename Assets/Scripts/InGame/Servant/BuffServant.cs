@@ -31,7 +31,7 @@ public class BuffServant : Servant_B
             _timer = 0;
             _useSkill = false;
             _player.Setbuff(BuffKind.AttackPowerBuff, latio: 1);
-            Debug.Log("buff���؂ꂽ" + _player.Attack.ToString());
+            Debug.Log("buffが切れた" + _player.Attack.ToString());
         }
     }
 

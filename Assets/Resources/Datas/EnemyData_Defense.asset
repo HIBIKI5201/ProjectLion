@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: EnemyData_Defense
   m_EditorClassIdentifier: 
   _data:
+    _name: Smith
     _maxHealth: 200
     _attack: 20
     _defense: 0
@@ -20,4 +21,4 @@ MonoBehaviour:
     _attackSpeed: 20
     _attackRange: 5
   _dropExperience: 80
-  _name: Sumith
+  _name: Smith

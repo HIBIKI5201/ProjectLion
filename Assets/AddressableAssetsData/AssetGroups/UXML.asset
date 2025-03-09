@@ -14,37 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_GroupName: UXML
   m_GUID: fac991a7644062e45b03af6e30e00170
-  m_SerializeEntries:
-  - m_GUID: 06a967d3662a05443858c054bca0f5e0
-    m_Address: UXML/Timer.uxml
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 359fd953e8bd5144cb9e78d50a9f6000
-    m_Address: UXML/EXPBar.uxml
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 5b291a3a65a63b84f9dd36d2e4f6d541
-    m_Address: UXML/LevelUpPanel.uxml
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: c14e3ca2e87748b469cacf5b8c5dff8f
-    m_Address: UXML/StatusElement
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: cf8e7b7ca72a8854a8c3e898b2b8e549
-    m_Address: UXML/LevelUpStatus.uxml
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: e025c1d296a6610449b6f798a616693e
-    m_Address: UXML/Status.uxml
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
+  m_SerializeEntries: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 5d770c189dbeee64e8bef378f6134cc8, type: 2}
   m_SchemaSet:

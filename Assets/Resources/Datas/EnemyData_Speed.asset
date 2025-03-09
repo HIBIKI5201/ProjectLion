@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: EnemyData_Speed
   m_EditorClassIdentifier: 
   _data:
+    _name: Sebas
     _maxHealth: 100
     _attack: 20
     _defense: 0

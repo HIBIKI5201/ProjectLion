@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: EnemyData_Mini
   m_EditorClassIdentifier: 
   _data:
+    _name: Artist
     _maxHealth: 50
     _attack: 10
     _defense: 0

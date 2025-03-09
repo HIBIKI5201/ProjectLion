@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: EnemyData_Normal
   m_EditorClassIdentifier: 
   _data:
+    _name: Docter
     _maxHealth: 100
     _attack: 20
     _defense: 10
