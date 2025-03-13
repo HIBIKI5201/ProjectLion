@@ -25,19 +25,20 @@ public abstract class Servant_B : MobBase<MobData_S>
     protected virtual void Start_S() { }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        Vector2 direction = _player.transform.position - this.transform.position;
-        if (direction.sqrMagnitude > _moveStopDistanse * _moveStopDistanse)
-        {
-            var n = direction.normalized * Data.Agility;
-            //TODO:HERE 移動logicをdirection-_moveStopに向かってスピードを固定せずに移動するように
-            //direction * Data.Agility;
-            _rb.linearVelocity = n;
-        }
-        ChangeSprite(direction.x >= 0 ? "Right" : "Left", BaseData.Data.Name);
+        Move();
 
-        Update_S();
+        void Move()
+        {
+            Vector2 direction = _player.transform.position - this.transform.position;
+            if (direction.sqrMagnitude > _moveStopDistanse * _moveStopDistanse)
+            {
+                var moveVec = direction - direction.normalized * _moveStopDistanse;
+                _rb.linearVelocity = moveVec * Data.Agility * 0.1f;//移動速度調整
+            }
+            ChangeSprite(direction.x >= 0 ? "Right" : "Left", BaseData.Data.Name);
+        }
     }
     protected virtual void Update_S() { }
     protected virtual void LevelUp(Dictionary<ItemKind, int> haveItem)
@@ -50,7 +51,7 @@ public abstract class Servant_B : MobBase<MobData_S>
                     attackRange: 1.1f * BaseData.Data.AttackRange,
                     attackSpeed: 1.1f * BaseData.Data.AttackSpeed));
     }
-
+    
     public abstract void Skill();
 
     public override void Pause()

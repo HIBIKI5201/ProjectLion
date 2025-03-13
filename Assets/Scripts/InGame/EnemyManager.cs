@@ -43,7 +43,7 @@ public class EnemyManager : MobBase<EnemyData>
                 Vector2 direction = (_player.transform.position - transform.position).normalized;
                 _rigidBody.linearVelocity = direction * Agility / 5;
 
-                ChangeSprite(direction.x >= 0 ? "Right" : "Left", BaseData.Name);
+                ChangeSprite(direction.x >= 0 ? "Right" : "Left", BaseData.Data.Name);
             }
         }
         else
@@ -65,14 +65,36 @@ public class EnemyManager : MobBase<EnemyData>
             StopCoroutine(_attackCoroutine);
     }
 
-    public void Init(Action action)
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="action">æ­»äº¡æ™‚ã«å‘¼ã³å‡ºã•ã‚Œã‚‹Action</param>
+    /// <param name="statusMultiplier">Enemyã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹å€ç‡</param>
+    public void Init(Action action, float statusMultiplier)
     {
         _currentHealth = MaxHealth;
         DeathAction = action;
-        _repopRange = Random.Range(12, 25);
+        _repopRange = 30;
 
-        Repop();
+        foreach (BuffKind buffKind in Enum.GetValues(typeof(BuffKind)))
+        {
+            Setbuff(buffKind, statusMultiplier);
+        }
+        //Repop();//SetPosã«å¤‰æ›´
         gameObject.SetActive(true);
+    }
+
+    public void SetPos(float angle, float radius , bool randomAngle = false)
+    {
+        if (randomAngle)
+        {
+            angle = Random.Range(0, 360) * Mathf.Deg2Rad;
+        }
+        else angle = angle * Mathf.Deg2Rad;
+        
+        _rigidBody.AddForce(new Vector2(Random.Range(-1,1),Random.Range(-1,1)));//é‡ãªã£ã¦ã‚¹ãƒãƒ¼ãƒ³ã™ã‚‹ã“ã¨ãŒã‚ã£ãŸã®ã§å°‘ã—ãšã‚‰ã™
+        transform.position = _player.transform.position +
+                             new Vector3(radius * Mathf.Cos(angle), radius * Mathf.Sin(angle));
     }
 
     private void Repop()
@@ -85,9 +107,9 @@ public class EnemyManager : MobBase<EnemyData>
     protected override void DeathBehaviour()
     {
         DeathAction?.Invoke();
-        //ŒoŒ±’l‚ğƒhƒƒbƒv
+        //ï¿½oï¿½ï¿½ï¿½lï¿½ï¿½ï¿½hï¿½ï¿½ï¿½bï¿½v
         Instantiate(_experianceObj, transform.position, Quaternion.identity).
-            GetComponent<Experiance>().Initialize(base.BaseData.DropExperience);//ŒoŒ±’l‚ğ‰Šú‰»
+            GetComponent<Experiance>().Initialize(base.BaseData.DropExperience);//ï¿½oï¿½ï¿½ï¿½lï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     }
 
     protected override async void HitDamageBehaviour()
