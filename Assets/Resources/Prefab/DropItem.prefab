@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 249338035419738307}
   - component: {fileID: 8089060078045367808}
   - component: {fileID: 3167398751721789495}
+  - component: {fileID: 4613201317304363980}
   m_Layer: 0
   m_Name: DropItem
   m_TagString: Untagged
@@ -100,3 +101,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8e120252afbabb469f4e32112acc5e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _weaponType: 0
+  _itemLifeTime: 10
+  _bulletSpeed: 100
+  _bulletDuration: 2
+  _attackPowerMultiplier: 1
+  _attackRange: 1
+  _attackSpeed: 1
+  _healpoint: 0
+--- !u!58 &4613201317304363980
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8298091702221717961}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0.21133333}
+  m_Radius: 0.5

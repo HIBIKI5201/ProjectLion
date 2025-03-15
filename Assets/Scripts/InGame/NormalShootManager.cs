@@ -14,15 +14,19 @@ public class NormalShootManager : MonoBehaviour, PauseManager.IPausable
     private float _timer = 0;
     private AudioManager _audioManager;
     private Vector3 _range;
+    private GameObject _nowbullet;
 
     [SerializeField]
-    private GameObject _bullet;
+    private GameObject[] _bullet;
     [SerializeField]
     private float _bulletSpeed = 3;
+    public float BulletSpeed { set => _bulletSpeed = value; }
     [SerializeField]
     private float _bulletDuration = 2;
+    public float BulletDuration { set => _bulletDuration = value; }
 
     [SerializeField] private float _attackPowerMultiplier = 1;
+    public float AttackPowerMultiplier { set => _attackPowerMultiplier = value; }
 
     bool _isPause;
 
@@ -30,6 +34,7 @@ public class NormalShootManager : MonoBehaviour, PauseManager.IPausable
     {
         controller = transform.parent.GetComponent<MobBase<MobData_S>>();
         _interval = controller.AttackSpeed;
+        _nowbullet = _bullet[0];
         _range = GetComponent<Transform>().localScale;
         GetComponent<Transform>().localScale = _range = new Vector3(controller.AttackRange, 0f, 0f);
 
@@ -68,7 +73,7 @@ public class NormalShootManager : MonoBehaviour, PauseManager.IPausable
         if (target is not null)
         {
             Vector2 direction = (target.transform.position - controller.transform.position).normalized;
-            AsyncInstantiateOperation operation = InstantiateAsync(_bullet, controller.transform.position, Quaternion.Euler(direction));
+            AsyncInstantiateOperation operation = InstantiateAsync(_nowbullet, controller.transform.position, Quaternion.Euler(direction));
             await operation;
             foreach (GameObject obj in operation.Result)
             {
@@ -124,6 +129,11 @@ public class NormalShootManager : MonoBehaviour, PauseManager.IPausable
     void PauseManager.IPausable.Resume()
     {
         _isPause = false;
+    }
+
+    public void SetWeapon(int num)
+    {
+        _nowbullet = _bullet[(num)];
     }
 
     [RequireComponent(typeof(Rigidbody2D), typeof(CircleCollider2D))]
