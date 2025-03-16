@@ -18,7 +18,7 @@ MonoBehaviour:
     _attack: 20
     _defense: 10
     _agility: 5
-    _attackSpeed: 1
+    _attackSpeed: 5
     _attackRange: 20
-  _dropExperience: 60
+  _dropExperience: 200
   _name: Docter
