@@ -1,5 +1,4 @@
 using SymphonyFrameWork.CoreSystem;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -8,58 +7,59 @@ using UnityEngine;
 public class NormalShootManager : MonoBehaviour, PauseManager.IPausable
 {
     private MobBase<MobData_S> controller;
-
-    private List<EnemyManager> enemies = new();
-    private float _interval = 1;
-    private float _timer = 0;
     private AudioManager _audioManager;
-    private Vector3 _range;
-    private GameObject _nowbullet;
+
+    private WeaponData _nowWeapon;
+    private List<EnemyManager> enemies = new();
+    private float _timer = 0;
+
+    //private float _bulletSpeed = 3;
+    //private float _bulletDuration = 2;
+    //private float _attackPowerMultiplier = 1;
+    private Vector3 _attackRange;//保留
+    private float _attackSpeed = 1;//保留
+
 
     [SerializeField]
-    private GameObject[] _bullet;
+    private GameObject _bullet;
     [SerializeField]
-    private float _bulletSpeed = 3;
-    public float BulletSpeed { set => _bulletSpeed = value; }
-    [SerializeField]
-    private float _bulletDuration = 2;
-    public float BulletDuration { set => _bulletDuration = value; }
-
-    [SerializeField] private float _attackPowerMultiplier = 1;
-    public float AttackPowerMultiplier { set => _attackPowerMultiplier = value; }
+    private WeaponData_S[] _weaponData;
 
     bool _isPause;
 
     private void Start()
     {
         controller = transform.parent.GetComponent<MobBase<MobData_S>>();
-        _interval = controller.AttackSpeed;
-        _nowbullet = _bullet[0];
-        _range = GetComponent<Transform>().localScale;
-        GetComponent<Transform>().localScale = _range = new Vector3(controller.AttackRange, 0f, 0f);
-
+        Init();
         PauseManager.IPausable.RegisterPauseManager(this);
+    }
+
+    private void Init()
+    {
+        _nowWeapon = _weaponData[0].Data;
+        _attackSpeed = _nowWeapon.AttackSpeed;
+        GetComponent<Transform>().localScale = _attackRange = new Vector3(_nowWeapon.AttackRange, 0f, 0f);
     }
 
     private void Update()
     {
-        if (_interval != controller.AttackSpeed)
+        if (_attackSpeed != _nowWeapon.AttackSpeed)
         {
-            _interval = controller.AttackSpeed;
+            _attackSpeed = _nowWeapon.AttackSpeed;
         }
 
-        if (_range.x != controller.AttackRange)
+        if (_attackRange.x != _nowWeapon.AttackRange)
         {
-            _range = new Vector3(controller.AttackRange, 0f, 0f);
-            transform.localScale = _range;
-            Debug.Log($"�����W�� {_range}");
+            _attackRange = new Vector3(_nowWeapon.AttackRange, 0f, 0f);
+            transform.localScale = _attackRange;
+            Debug.Log($"�����W�� {_attackRange}");
         }
 
         if (_isPause)
         {
             _timer += Time.deltaTime;
         }
-        else if (_timer + _interval < Time.time && enemies.Count > 0)
+        else if (_timer + _attackSpeed < Time.time && enemies.Count > 0)
         {
             _timer = Time.time;
             Shoot();
@@ -73,22 +73,22 @@ public class NormalShootManager : MonoBehaviour, PauseManager.IPausable
         if (target is not null)
         {
             Vector2 direction = (target.transform.position - controller.transform.position).normalized;
-            AsyncInstantiateOperation operation = InstantiateAsync(_nowbullet, controller.transform.position, Quaternion.Euler(direction));
+            AsyncInstantiateOperation operation = InstantiateAsync(_bullet, controller.transform.position, Quaternion.Euler(direction));
             await operation;
             foreach (GameObject obj in operation.Result)
             {
-                Destroy(obj, _bulletDuration);
+                Destroy(obj, _nowWeapon.BulletDuration);
 
                 if (!obj.TryGetComponent<BulletManager>(out var mg))
                     mg = obj.AddComponent<BulletManager>();
 
-                mg.SetStatus(controller.Attack, _attackPowerMultiplier);
+                mg.SetStatus(controller.Attack, _nowWeapon.AttackPowerMultiplier);
 
                 if (obj.TryGetComponent<Rigidbody2D>(out var rb))
                 {
                     rb.gravityScale = 0;
                     rb.linearDamping = 0;
-                    rb.linearVelocity = direction * _bulletSpeed;
+                    rb.linearVelocity = direction * _nowWeapon.BulletSpeed;
                 }
                 if (obj.TryGetComponent<CircleCollider2D>(out var cc))
                 {
@@ -130,11 +130,18 @@ public class NormalShootManager : MonoBehaviour, PauseManager.IPausable
     {
         _isPause = false;
     }
-
+    /// <summary>
+    /// 武器の変更の際に呼び出す処理、引数には武器の番号を指定する
+    /// </summary>
+    /// <param name="num"></param>
     public void SetWeapon(int num)
     {
-        _nowbullet = _bullet[(num)];
+        _nowWeapon = _weaponData[(num)].Data;
+        _attackSpeed = _nowWeapon.AttackSpeed;
+        GetComponent<Transform>().localScale = _attackRange = new Vector3(_nowWeapon.AttackRange, 0f, 0f);
     }
+
+
 
     [RequireComponent(typeof(Rigidbody2D), typeof(CircleCollider2D))]
     public class BulletManager : MonoBehaviour, PauseManager.IPausable

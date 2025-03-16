@@ -21,6 +21,10 @@ public class PickUpManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// アイテムを拾った際に呼び出す処理
+    /// </summary>
+    /// <param name="dropItem"></param>
     private void ItemPicUp(DropItemManager dropItem)
     {
         switch (dropItem.WeaponType)
@@ -35,6 +39,7 @@ public class PickUpManager : MonoBehaviour
                 _shooter.SetWeapon(2);
                 break;
             case DropItemManager.ItemWeaponType.HealItem:
+                Debug.Log("回復アイテムを拾いました");
                 _player.AddDamage(-dropItem.Healpoint);
                 break;
         }
