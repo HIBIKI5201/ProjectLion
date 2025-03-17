@@ -13,9 +13,8 @@ public class PlayerController : MobBase<MobData_S>
     public event Action<MobData> OnChangeState;
     protected override void Awake_S()
     {
-
         SingletonDirector.SetSinglton(this);
-        
+
         _rigidbody = GetComponent<Rigidbody2D>();
         //一番目のオブジェクトがPlayerの見た目
         _spriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
@@ -31,7 +30,7 @@ public class PlayerController : MobBase<MobData_S>
     {
         Vector2 direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
         _rigidbody.linearVelocity = direction * Agility / 5;
-        ChangeSprite(direction.x >= 0 ? "Right" : "Left" , "Player");
+        ChangeSprite(direction.x >= 0 ? "Right" : "Left", "Player");
     }
     public override void LoadData(MobData data)
     {
@@ -63,4 +62,15 @@ public class PlayerController : MobBase<MobData_S>
     {
         _rigidbody.simulated = true;
     }
+
+    //public void ChangeWeapon(NowWeaponType weaponType)
+    //{
+
+    //}
+    //public enum NowWeaponType
+    //{
+    //    Weapon1,
+    //    Weapon2,
+    //    Weapon3
+    //}
 }

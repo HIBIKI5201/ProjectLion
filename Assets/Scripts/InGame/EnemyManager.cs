@@ -23,6 +23,8 @@ public class EnemyManager : MobBase<EnemyData>
 
     [SerializeField]
     private GameObject _experianceObj;
+    [SerializeField]
+    private GameObject[] _dropObj;
 
     protected override void Awake_S()
     {
@@ -84,15 +86,15 @@ public class EnemyManager : MobBase<EnemyData>
         gameObject.SetActive(true);
     }
 
-    public void SetPos(float angle, float radius , bool randomAngle = false)
+    public void SetPos(float angle, float radius, bool randomAngle = false)
     {
         if (randomAngle)
         {
             angle = Random.Range(0, 360) * Mathf.Deg2Rad;
         }
         else angle = angle * Mathf.Deg2Rad;
-        
-        _rigidBody.AddForce(new Vector2(Random.Range(-1,1),Random.Range(-1,1)));//重なってスポーンすることがあったので少しずらす
+
+        _rigidBody.AddForce(new Vector2(Random.Range(-1, 1), Random.Range(-1, 1)));//重なってスポーンすることがあったので少しずらす
         transform.position = _player.transform.position +
                              new Vector3(radius * Mathf.Cos(angle), radius * Mathf.Sin(angle));
     }
@@ -107,10 +109,23 @@ public class EnemyManager : MobBase<EnemyData>
     protected override void DeathBehaviour()
     {
         DeathAction?.Invoke();
-        //�o���l���h���b�v
+        //�o���l���h���b�v＜＝これはなにを書かれていたんだ？ちょくちょく発生するけど対処法がいまいちわからん
+        if (_dropObj.Length != 0)
+        {
+            try
+            {
+                Instantiate(_dropObj[Random.Range(0, _dropObj.Length)], transform.position, Quaternion.identity).
+                TryGetComponent<DropItemManager>(out DropItemManager itemManager);
+                itemManager.Initialize();
+            }
+            catch (UnassignedReferenceException) {/*アイテムドロップ抽選はずれ*/}
+        }
+
         Instantiate(_experianceObj, transform.position, Quaternion.identity).
-            GetComponent<Experiance>().Initialize(base.BaseData.DropExperience);//�o���l��������
+        GetComponent<Experiance>().Initialize(base.BaseData.DropExperience);//�o���l��������
     }
+
+
 
     protected override async void HitDamageBehaviour()
     {

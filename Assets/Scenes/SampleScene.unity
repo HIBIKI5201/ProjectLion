@@ -3729,6 +3729,7 @@ GameObject:
   - component: {fileID: 1600755329}
   - component: {fileID: 1600755331}
   - component: {fileID: 1600755332}
+  - component: {fileID: 1600755333}
   m_Layer: 6
   m_Name: Shooter
   m_TagString: Untagged
@@ -3800,9 +3801,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bullet: {fileID: 2875977998387469546, guid: a1948fbc0c082074c9ba729e28902410, type: 3}
-  _bulletSpeed: 5
-  _bulletDuration: 2
-  _attackPowerMultiplier: 1
+  _weaponData:
+  - {fileID: 11400000, guid: 597d4e142e3a2e444940cdda863d1301, type: 2}
+  - {fileID: 11400000, guid: a2add2a50aa615f4c9e3a2e1f8c27bb5, type: 2}
+  - {fileID: 11400000, guid: dd4205da8d530c04c970a908f24c8a3f, type: 2}
+--- !u!114 &1600755333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1600755328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fc4fb5710dbcf64aa77e7b2c06b366f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1655495854
 GameObject:
   m_ObjectHideFlags: 0
@@ -5055,7 +5069,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -5270,7 +5284,23 @@ PrefabInstance:
     - target: {fileID: 358187240812640144, guid: b26f567b66500334a8dd2d4e090529cd, type: 3}
       propertyPath: _bullet
       value: 
-      objectReference: {fileID: 2875977998387469546, guid: 966783ed2fa0cba45bd79c1bc8c3f2df, type: 3}
+      objectReference: {fileID: 2875977998387469546, guid: a1948fbc0c082074c9ba729e28902410, type: 3}
+    - target: {fileID: 358187240812640144, guid: b26f567b66500334a8dd2d4e090529cd, type: 3}
+      propertyPath: _weaponData.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 358187240812640144, guid: b26f567b66500334a8dd2d4e090529cd, type: 3}
+      propertyPath: '_weaponData.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 597d4e142e3a2e444940cdda863d1301, type: 2}
+    - target: {fileID: 358187240812640144, guid: b26f567b66500334a8dd2d4e090529cd, type: 3}
+      propertyPath: '_weaponData.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: a2add2a50aa615f4c9e3a2e1f8c27bb5, type: 2}
+    - target: {fileID: 358187240812640144, guid: b26f567b66500334a8dd2d4e090529cd, type: 3}
+      propertyPath: '_weaponData.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: dd4205da8d530c04c970a908f24c8a3f, type: 2}
     - target: {fileID: 3926099373572088735, guid: b26f567b66500334a8dd2d4e090529cd, type: 3}
       propertyPath: m_LinearDamping
       value: 4
