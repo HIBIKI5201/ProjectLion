@@ -20,5 +20,5 @@ MonoBehaviour:
     _agility: 15
     _attackSpeed: 20
     _attackRange: 5
-  _dropExperience: 40
+  _dropExperience: 80
   _name: Artist

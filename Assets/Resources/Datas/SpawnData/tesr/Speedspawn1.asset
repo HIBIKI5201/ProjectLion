@@ -9,16 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd499fd7183bbb344ba8eb9e4ae8f5a7, type: 3}
-  m_Name: EnemyData_Attack
+  m_Script: {fileID: 11500000, guid: d981dc24e9464b36ad5807d94987aedb, type: 3}
+  m_Name: Speedspawn1
   m_EditorClassIdentifier: 
-  _data:
-    _name: Arthur
-    _maxHealth: 150
-    _attack: 40
-    _defense: 0
-    _agility: 10
-    _attackSpeed: 20
-    _attackRange: 5
-  _dropExperience: 100
-  _name: Arthur
+  _enemyData:
+  - _kind: 0
+    _statusMultiplier: 1
+    _distance: 10
+    _angle: 5
+    _enemyCount: 1
+    _randomAngle: 1
