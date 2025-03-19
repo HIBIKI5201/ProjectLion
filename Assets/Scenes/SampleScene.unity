@@ -1623,7 +1623,11 @@ PrefabInstance:
     - target: {fileID: 1593759846281836716, guid: 1a429bb40f2dddc4cb56f66921115620, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 1acff9429044bf4469ddf77481156ff0, type: 3}
+      objectReference: {fileID: 21300000, guid: 6da89c520128f7e44a3a00caadc68f1a, type: 3}
+    - target: {fileID: 1593759846281836716, guid: 1a429bb40f2dddc4cb56f66921115620, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5131899373767329965, guid: 1a429bb40f2dddc4cb56f66921115620, type: 3}
       propertyPath: m_Name
       value: Ground (1)
@@ -2919,7 +2923,7 @@ MonoBehaviour:
     _enemyKind: 3
   - _enemyPrefab: {fileID: 936768549752203763, guid: bb178090063a15046b823be1fda862ff, type: 3}
     _enemyKind: 2
-  _spawnData: {fileID: 11400000, guid: 3333cc6f3f17afe4f940bf0c5ee7a7bd, type: 2}
+  _spawnData: {fileID: 11400000, guid: 7cf9099e07ee62d4286447a7b19ec394, type: 2}
   _generateIntarval: 1
   _generateLimit: 100
   _test: 0
