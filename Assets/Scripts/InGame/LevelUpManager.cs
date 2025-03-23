@@ -37,7 +37,7 @@ public class LevelUpManager : MonoBehaviour
     {
         //ファインド使いすぎなのでいつかどうにかする
         foreach (ItemKind kind in Enum.GetValues(typeof(ItemKind)))
-            ItemHaveValue.Add(kind, 0);
+            ItemHaveValue.TryAdd(kind, 0);
         player = SingletonDirector.GetSingleton<PlayerController>();
         data = player.Data;
         specialMana = FindAnyObjectByType<SpecialAttackManager>();
@@ -80,7 +80,7 @@ public class LevelUpManager : MonoBehaviour
                     defense: 0,
                     agility: 0,
                     attackRange: 0,
-                    attackSpeed: 0);
+                    attackCoolTime: 0);
                 break;
 
             case ItemKind.AttackUp:
@@ -90,7 +90,7 @@ public class LevelUpManager : MonoBehaviour
                     defense: 0,
                     agility: 0,
                     attackRange: 0,
-                    attackSpeed: 0);
+                    attackCoolTime: 0);
                 break;
 
             //case ItemKind.DefenseUp:
@@ -102,7 +102,7 @@ public class LevelUpManager : MonoBehaviour
                     defense: 0,
                     agility: ItemHaveValue[ItemKind.AgilityUp] * 0.1f * player.Data.Agility,
                     attackRange: 0,
-                    attackSpeed: 0);
+                    attackCoolTime: 0);
                 break;
 
             case ItemKind.AttackSpeedUp:
@@ -112,7 +112,7 @@ public class LevelUpManager : MonoBehaviour
                     defense: 0,
                     agility: 0,
                     attackRange: 0,
-                    attackSpeed: -ItemHaveValue[ItemKind.AttackSpeedUp] * 0.1f * player.Data.AttackSpeed);
+                    attackCoolTime: -ItemHaveValue[ItemKind.AttackSpeedUp] * 0.1f * player.Data.AttackCoolTime);
                 break;
 
             case ItemKind.AttackRangeUp:
@@ -122,7 +122,7 @@ public class LevelUpManager : MonoBehaviour
                     defense: 0,
                     agility: 0,
                     attackRange: ItemHaveValue[ItemKind.AttackRangeUp] * 0.1f * player.Data.AttackRange,
-                    attackSpeed: 0);
+                    attackCoolTime: 0);
                 break;
 
             case ItemKind.SkillCoolTimeDown:

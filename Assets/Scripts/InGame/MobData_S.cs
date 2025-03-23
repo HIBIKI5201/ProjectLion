@@ -31,8 +31,8 @@ public class MobData
     public float Agility { get => _agility; }
 
     [SerializeField]
-    private float _attackSpeed = 20;
-    public float AttackSpeed { get => _attackSpeed; }
+    private float _attackCoolTime = 20;
+    public float AttackCoolTime { get => _attackCoolTime; }
 
     [SerializeField]
     private float _attackRange = 20;
@@ -44,17 +44,17 @@ public class MobData
         _attack = attack;
         _defense = defense;
         _agility = agility;
-        _attackSpeed = attackSpeed;
+        _attackCoolTime = attackSpeed;
         _attackRange = attackRange;
     }
 
-    public MobData(MobData data, float health, float attack, float defense, float agility, float attackSpeed, float attackRange)
+    public MobData(MobData data, float health, float attack, float defense, float agility, float attackCoolTime, float attackRange)
     {
         _maxHealth = health + data.MaxHealth;
         _attack = attack + data.Attack;
         _defense = defense + data.Defense;
         _agility = agility + data.Agility;
-        _attackSpeed = attackSpeed + data.AttackSpeed;
+        _attackCoolTime = attackCoolTime + data.AttackCoolTime;
         _attackRange = attackRange + data.AttackRange;
     }
 }

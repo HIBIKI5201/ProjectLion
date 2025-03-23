@@ -9,7 +9,7 @@ public class PickUpManager : MonoBehaviour
     private void Start()
     {
         _player = SingletonDirector.GetSingleton<PlayerController>();
-        _shooter = GetComponent<NormalShootManager>();
+        _shooter = GetComponentInChildren<NormalShootManager>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -22,7 +22,7 @@ public class PickUpManager : MonoBehaviour
     }
 
     /// <summary>
-    /// �A�C�e�����E�����ۂɌĂяo������
+    /// アイテムを拾った際に呼び出す処理
     /// </summary>
     /// <param name="dropItem"></param>
     private void ItemPicUp(DropItemManager dropItem)
@@ -39,7 +39,7 @@ public class PickUpManager : MonoBehaviour
                 _shooter.SetWeapon(2);
                 break;
             case DropItemManager.ItemWeaponType.HealItem:
-                Debug.Log("�񕜃A�C�e�����E���܂���");
+                Debug.Log("回復アイテムを拾いました");
                 _player.AddDamage(-dropItem.Healpoint);
                 break;
         }
