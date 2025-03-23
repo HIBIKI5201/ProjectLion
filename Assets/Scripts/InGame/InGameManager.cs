@@ -21,15 +21,6 @@ public class InGameManager : MonoBehaviour, PauseManager.IPausable
 
     private void Update()
     {
-
-        //�|�[�Y�e�X�g�p
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Debug.Log("Pause");
-            PauseManager.Pause = _isPause = !_isPause;
-        }
-
-
         if (!_isPause)
         {
             _time += Time.deltaTime;

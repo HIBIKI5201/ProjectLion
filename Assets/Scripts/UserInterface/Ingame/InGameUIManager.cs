@@ -52,7 +52,7 @@ public class InGameUIManager : MonoBehaviour
         specialAttackManager.SpecialEvant += skill.ChangeSkillGage;
         skill.OnUseUltimate += specialAttackManager.SpecialAttack;
         levelContainer.OnAddExperiance += reward.ChangeEXP;
-        //result.ActivateResultPanel(inGameManager.EnemyKillCount);
+        _playerController.OnDeath += () => result.ActivateResultPanel(inGameManager.EnemyKillCount);
     }
     //private void OnDisable()
     //{

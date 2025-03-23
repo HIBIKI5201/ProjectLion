@@ -18,12 +18,22 @@ public class SceneLoader : MonoBehaviour
     public static async Task LoadSceneAsync(SceneKind kind)
     {
         Scene activeScene = SceneManager.GetSceneByName(_sceneNames[kind]);
-        var task = SceneManager.LoadSceneAsync(activeScene.name);
-        await task;
-        SceneManager.SetActiveScene(activeScene);
+
+        if (activeScene.isLoaded)
+        {
+            SceneManager.UnloadSceneAsync(activeScene);
+        }
         
-        task = SceneManager.UnloadSceneAsync(_currentScene.name);
+        var task = SceneManager.LoadSceneAsync(activeScene.name, LoadSceneMode.Additive);
         await task;
+        activeScene = SceneManager.GetSceneByName(_sceneNames[kind]);
+        SceneManager.SetActiveScene(activeScene);
+        if (_currentScene.name is not null)
+        {
+            task = SceneManager.UnloadSceneAsync(_currentScene.name);
+            await task;
+        }
+
         _currentScene = activeScene;
     }
 }

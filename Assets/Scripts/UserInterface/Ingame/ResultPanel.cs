@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 [UxmlElement]
 public partial class ResultPanel : UIElement_B
 {
-    [UxmlAttribute] private SceneKind _loadSceneName;
+    [UxmlAttribute] private SceneKind loadScene;
 
     [UxmlAttribute] private string _enemyCountText = "倒した敵の数：";
 
@@ -24,7 +24,8 @@ public partial class ResultPanel : UIElement_B
         ResetButton.clickable = new Clickable(() =>
         {
             Debug.Log("Restart");
-            SceneLoader.LoadSceneAsync(_loadSceneName);
+            //SceneLoader.LoadSceneAsync(loadScene);
+            GameBaseSystem.instance.ChangeScene(loadScene);
         });
         return Task.CompletedTask;
     }
