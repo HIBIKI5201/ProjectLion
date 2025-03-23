@@ -10,6 +10,7 @@ public class NormalShootManager : MonoBehaviour, PauseManager.IPausable
     private AudioManager _audioManager;
 
     private WeaponData _nowWeapon;
+    public WeaponData NowWeapon { get => _nowWeapon; } 
     private List<EnemyManager> enemies = new();
     private float _timer = 0;
 
@@ -52,7 +53,7 @@ public class NormalShootManager : MonoBehaviour, PauseManager.IPausable
         {
             _attackRange = new Vector3(_nowWeapon.AttackRangeMultiplier, 0f, 0f);
             transform.localScale = _attackRange;
-            Debug.Log($"�����W�� {_attackRange}");
+            //Debug.Log($"�����W�� {_attackRange}");
         }
 
         if (_isPause)

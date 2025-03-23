@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: PlayerData
   m_EditorClassIdentifier: 
   _data:
+    _name: 
     _maxHealth: 100
     _attack: 100
     _defense: 0
     _agility: 20
-    _attackSpeed: 1
+    _attackCoolTime: 1
     _attackRange: 3
