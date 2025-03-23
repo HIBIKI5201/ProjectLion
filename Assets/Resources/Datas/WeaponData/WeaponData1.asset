@@ -16,5 +16,5 @@ MonoBehaviour:
     _bulletSpeed: 5
     _bulletDuration: 2
     _attackPowerMultiplier: 1
-    _attackRange: 1
-    _attackSpeed: 1
+    _attackRangeMultiplier: 3
+    _attackCoolTimeModifier: 1

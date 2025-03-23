@@ -18,6 +18,6 @@ MonoBehaviour:
     _attack: 5
     _defense: 5
     _agility: 20
-    _attackSpeed: 1
+    _attackCoolTime: 5
     _attackRange: 5
   _name: Penguin
