@@ -32,6 +32,7 @@ public class InGameUIManager : MonoBehaviour
         StatusUIManager status = _root.Q<StatusUIManager>();
         SkillUI skill = _root.Q<SkillUI>();
         RewardUIManager reward = _root.Q<RewardUIManager>();
+        ResultPanel result = _root.Q<ResultPanel>();
 
         var levelUpManager = FindFirstObjectByType<LevelUpManager>();
         var inGameManager = FindFirstObjectByType<InGameManager>();
@@ -51,6 +52,7 @@ public class InGameUIManager : MonoBehaviour
         specialAttackManager.SpecialEvant += skill.ChangeSkillGage;
         skill.OnUseUltimate += specialAttackManager.SpecialAttack;
         levelContainer.OnAddExperiance += reward.ChangeEXP;
+        _playerController.OnDeath += () => result.ActivateResultPanel(inGameManager.EnemyKillCount);
     }
     //private void OnDisable()
     //{
