@@ -20,7 +20,7 @@ public class MobBase<MobDataKind> : MonoBehaviour, PauseManager.IPausable where 
     {
         {BuffKind.HPBuff, 1},
         {BuffKind.AgilityBuff, 1},
-        {BuffKind.AttackSpeedBuff, 1},
+        {BuffKind.AttackCoolTimeBuff, 1},
         {BuffKind.AttackRangeBuff, 1},
         {BuffKind.AttackPowerBuff, 1},
     };
@@ -28,7 +28,7 @@ public class MobBase<MobDataKind> : MonoBehaviour, PauseManager.IPausable where 
     public float CurrentHealth { get => _currentHealth; }
     public float MaxHealth { get => _data.MaxHealth * _buffs[BuffKind.HPBuff]; }
     public float Attack { get => _data.Attack * _buffs[BuffKind.AttackPowerBuff]; }
-    public float AttackSpeed { get => _data.AttackSpeed * _buffs[BuffKind.AttackSpeedBuff]; }
+    public float AttackCoolTime { get => _data.AttackCoolTime * _buffs[BuffKind.AttackCoolTimeBuff]; }
     public float AttackRange { get => _data.AttackRange * _buffs[BuffKind.AttackRangeBuff]; }
     public float Agility { get => _data.Agility * _buffs[BuffKind.AgilityBuff]; }
     private void Awake()
@@ -37,7 +37,7 @@ public class MobBase<MobDataKind> : MonoBehaviour, PauseManager.IPausable where 
         {
             LoadData(_baseData.Data);
         }
-        else Debug.LogWarning($"{gameObject.name}�Ƀf�[�^������܂���");
+        else Debug.LogWarning($"{gameObject.name}にデータがありません");
 
         PauseManager.IPausable.RegisterPauseManager(this);
 
@@ -58,9 +58,9 @@ public class MobBase<MobDataKind> : MonoBehaviour, PauseManager.IPausable where 
     public virtual void AddDamage(float damage)
     {
         //_currentHealth -= Mathf.Max(0, _currentHealth);
-        _currentHealth -= damage;//�I�[�g�q�[���̂��߂ɏ�L�̃X�N���v�g����؂�ւ��A�������������肪�N���邩��
+        _currentHealth -= damage;//オートヒールのために上記のスクリプトから切り替え、もしかしたら問題が起こるかも
         HitDamageBehaviour();
-        Debug.Log($"���݂�HP�́@{_currentHealth}");
+        Debug.Log($"現在のHPは　{_currentHealth}");
 
         if (_currentHealth <= 0)
         {
@@ -98,7 +98,7 @@ public enum BuffKind
 {
     HPBuff,
     AttackPowerBuff,
-    AttackSpeedBuff,
+    AttackCoolTimeBuff,
     AttackRangeBuff,
     AgilityBuff,
 }

@@ -49,7 +49,7 @@ public abstract class Servant_B : MobBase<MobData_S>
                     defense: 0,//ItemHaveValue[ItemKind.DefenseUp] * 0.1f * player.Data.Defense,
                     agility: BaseData.Data.Agility,
                     attackRange: 1.1f * BaseData.Data.AttackRange,
-                    attackSpeed: 1.1f * BaseData.Data.AttackSpeed));
+                    attackCoolTime: 1.1f * BaseData.Data.AttackCoolTime));
     }
     
     public abstract void Skill();

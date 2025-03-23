@@ -17,7 +17,7 @@ public class NormalShootManager : MonoBehaviour, PauseManager.IPausable
     //private float _bulletDuration = 2;
     //private float _attackPowerMultiplier = 1;
     private Vector3 _attackRange;//保留
-    private float _attackSpeed = 1;//保留
+    private float _attackCoolTime = 1;//保留
 
 
     [SerializeField]
@@ -37,20 +37,20 @@ public class NormalShootManager : MonoBehaviour, PauseManager.IPausable
     private void Init()
     {
         _nowWeapon = _weaponData[0].Data;
-        _attackSpeed = _nowWeapon.AttackSpeed;
-        GetComponent<Transform>().localScale = _attackRange = new Vector3(_nowWeapon.AttackRange, 0f, 0f);
+        _attackCoolTime = _nowWeapon.AttackCoolTimeModifier;
+        GetComponent<Transform>().localScale = _attackRange = new Vector3(_nowWeapon.AttackRangeMultiplier, 0f, 0f);
     }
 
     private void Update()
     {
-        if (_attackSpeed != _nowWeapon.AttackSpeed)
+        if (_attackCoolTime != controller.AttackCoolTime / _nowWeapon.AttackCoolTimeModifier)
         {
-            _attackSpeed = _nowWeapon.AttackSpeed;
+            _attackCoolTime = controller.AttackCoolTime / _nowWeapon.AttackCoolTimeModifier;
         }
 
-        if (_attackRange.x != _nowWeapon.AttackRange)
+        if (_attackRange.x != controller.AttackRange * _nowWeapon.AttackRangeMultiplier)
         {
-            _attackRange = new Vector3(_nowWeapon.AttackRange, 0f, 0f);
+            _attackRange = new Vector3(_nowWeapon.AttackRangeMultiplier, 0f, 0f);
             transform.localScale = _attackRange;
             Debug.Log($"�����W�� {_attackRange}");
         }
@@ -59,7 +59,7 @@ public class NormalShootManager : MonoBehaviour, PauseManager.IPausable
         {
             _timer += Time.deltaTime;
         }
-        else if (_timer + _attackSpeed < Time.time && enemies.Count > 0)
+        else if (_timer + _attackCoolTime < Time.time && enemies.Count > 0)
         {
             _timer = Time.time;
             Shoot();
@@ -137,11 +137,9 @@ public class NormalShootManager : MonoBehaviour, PauseManager.IPausable
     public void SetWeapon(int num)
     {
         _nowWeapon = _weaponData[(num)].Data;
-        _attackSpeed = _nowWeapon.AttackSpeed;
-        GetComponent<Transform>().localScale = _attackRange = new Vector3(_nowWeapon.AttackRange, 0f, 0f);
+        _attackCoolTime = _nowWeapon.AttackCoolTimeModifier;
+        GetComponent<Transform>().localScale = _attackRange = new Vector3(_nowWeapon.AttackRangeMultiplier, 0f, 0f);
     }
-
-
 
     [RequireComponent(typeof(Rigidbody2D), typeof(CircleCollider2D))]
     public class BulletManager : MonoBehaviour, PauseManager.IPausable
