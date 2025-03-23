@@ -11,12 +11,13 @@ public class PlayerController : MobBase<MobData_S>
     private SpriteRenderer _spriteRenderer;
 
     public event Action<MobData> OnChangeState;
+    public event Action OnDeath;
     protected override void Awake_S()
     {
         SingletonDirector.SetSinglton(this);
 
         _rigidbody = GetComponent<Rigidbody2D>();
-        //一番目のオブジェクトがPlayerの見た目
+        //荳逡ｪ逶ｮ縺ｮ繧ｪ繝悶ず繧ｧ繧ｯ繝医′Player縺ｮ隕九◆逶ｮ
         _spriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
         _spriteResolver = _spriteRenderer.GetComponent<SpriteResolver>();
     }
@@ -41,6 +42,7 @@ public class PlayerController : MobBase<MobData_S>
     protected override void DeathBehaviour()
     {
         _spriteRenderer.enabled = false;
+        OnDeath?.Invoke();
         enabled = false;
         _rigidbody.simulated = false;
     }

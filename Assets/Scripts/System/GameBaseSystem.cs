@@ -1,4 +1,5 @@
 using System.Collections;
+using SymphonyFrameWork.CoreSystem;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -26,6 +27,10 @@ public class GameBaseSystem : MonoBehaviour
 
     public async void ChangeScene(SceneKind kind)
     {
+        if (SingletonDirector.GetSingleton<PlayerController>())
+        {
+            SingletonDirector.DestroySingleton<PlayerController>();
+        }
         await SceneLoader.LoadSceneAsync(kind);
     }
 }
