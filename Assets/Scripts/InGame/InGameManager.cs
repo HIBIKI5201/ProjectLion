@@ -2,10 +2,11 @@ using SymphonyFrameWork.CoreSystem;
 using System;
 using UnityEngine;
 
-public class InGameManager : MonoBehaviour//, PauseManager.IPausable
+public class InGameManager : MonoBehaviour, PauseManager.IPausable
 {
     private float _time;
     bool _isPause;
+    public int EnemyKillCount;
 
     public Action<float> OnTimerChanged;
     private void Start()
@@ -20,21 +21,22 @@ public class InGameManager : MonoBehaviour//, PauseManager.IPausable
 
     private void Update()
     {
-
-        //ポーズテスト用
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Debug.Log("Pause");
-            PauseManager.Pause = _isPause = !_isPause;
-        }
-
-
         if (!_isPause)
         {
             _time += Time.deltaTime;
             OnTimerChanged?.Invoke(_time);
         }
 
+    }
+
+    void PauseManager.IPausable.Pause()
+    {
+        _isPause = true;
+    }
+
+    void PauseManager.IPausable.Resume()
+    {
+        _isPause = false;
     }
 }
 
