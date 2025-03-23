@@ -1,3 +1,4 @@
+using System;
 using SymphonyFrameWork.CoreSystem;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,6 +7,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Pool;
 using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 public class EnemyGenerator : MonoBehaviour
 {
@@ -20,6 +22,7 @@ public class EnemyGenerator : MonoBehaviour
     [SerializeField] private int _generateLimit = 100;
 
     private LevelContainer _levelContainer;
+    private InGameManager _inGameManager;
 
     [SerializeField] private bool _test = true; //TODO:HERE テスト用
 
@@ -28,6 +31,7 @@ public class EnemyGenerator : MonoBehaviour
         ObjectPoolInitialize(_enemyKinds);
         StartCoroutine(ObjectGet());
         _levelContainer = FindAnyObjectByType<LevelContainer>();
+        _inGameManager = FindAnyObjectByType<InGameManager>();
     }
 
     #region ObjectPoolパターン
@@ -41,7 +45,11 @@ public class EnemyGenerator : MonoBehaviour
             var pool = new ObjectPool<EnemyManager>(
                 createFunc: () => Instantiate(obj.EnemyPrefab, transform).GetComponent<EnemyManager>(),
                 //actionOnGet: enemy => enemy.Init(() => EnemyPools[obj.Kind].Release(enemy),1),
-                actionOnRelease: enemy => { enemy.gameObject.SetActive(false); },
+                actionOnRelease: enemy =>
+                {
+                    enemy.gameObject.SetActive(false);
+                    _inGameManager.EnemyKillCount += 1;
+                },
                 //AddExperiance(obj.BaseData.DropExperience); },
                 actionOnDestroy: enemy => Destroy(enemy.gameObject),
                 collectionCheck: false, defaultCapacity: 10, maxSize: _generateLimit);
@@ -140,5 +148,6 @@ public class EnemyGenerator : MonoBehaviour
         Explode,
         Attack,
         Mini,
+        
     }
 }

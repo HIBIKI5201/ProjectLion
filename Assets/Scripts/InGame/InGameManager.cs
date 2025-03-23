@@ -2,10 +2,11 @@ using SymphonyFrameWork.CoreSystem;
 using System;
 using UnityEngine;
 
-public class InGameManager : MonoBehaviour//, PauseManager.IPausable
+public class InGameManager : MonoBehaviour, PauseManager.IPausable
 {
     private float _time;
     bool _isPause;
+    public int EnemyKillCount;
 
     public Action<float> OnTimerChanged;
     private void Start()
@@ -21,7 +22,7 @@ public class InGameManager : MonoBehaviour//, PauseManager.IPausable
     private void Update()
     {
 
-        //ƒ|[ƒYƒeƒXƒg—p
+        //ï¿½|ï¿½[ï¿½Yï¿½eï¿½Xï¿½gï¿½p
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Debug.Log("Pause");
@@ -35,6 +36,16 @@ public class InGameManager : MonoBehaviour//, PauseManager.IPausable
             OnTimerChanged?.Invoke(_time);
         }
 
+    }
+
+    void PauseManager.IPausable.Pause()
+    {
+        _isPause = true;
+    }
+
+    void PauseManager.IPausable.Resume()
+    {
+        _isPause = false;
     }
 }
 
