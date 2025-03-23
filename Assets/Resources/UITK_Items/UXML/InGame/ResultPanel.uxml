@@ -1,0 +1,9 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <engine:VisualElement style="flex-grow: 1; background-color: rgba(0, 0, 0, 0.74); align-items: center; align-content: auto;">
+        <engine:VisualElement style="flex-grow: 1; position: absolute; align-self: center; top: 5%; width: 85%; height: 75%; background-image: resource(&apos;UITK_Items/UIAssets/ステータスアイコン配置枠&apos;);">
+            <engine:Label text="Result" style="top: 10%; color: rgb(255, 255, 255); -unity-font-style: bold; font-size: 86%; -unity-text-align: upper-center; white-space: nowrap; text-overflow: clip;" />
+            <engine:Label text="倒した敵の数：999" name="EnemyKillCount" style="top: 45%; color: rgb(255, 255, 255); -unity-font-style: bold; font-size: 45%; -unity-text-align: upper-center; white-space: nowrap; text-overflow: clip; position: absolute; align-self: center; -unity-font-definition: url(&quot;project://database/Library/unity%20default%20resources?fileID=10102&amp;guid=0000000000000000e000000000000000&amp;type=0#LegacyRuntime&quot;); left: auto;" />
+        </engine:VisualElement>
+        <engine:Button text="もう一度プレイする" name="RestartButton" style="position: absolute; top: 86%; left: auto; align-self: center; width: 80%; height: 7%; align-items: center; justify-content: center; -unity-font-definition: url(&quot;project://database/Library/unity%20default%20resources?fileID=10102&amp;guid=0000000000000000e000000000000000&amp;type=0#LegacyRuntime&quot;); -unity-font-style: bold; font-size: 46%;" />
+    </engine:VisualElement>
+</engine:UXML>

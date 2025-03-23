@@ -52,8 +52,13 @@ MonoBehaviour:
       m_Sprite: {fileID: -9008205362261826637, guid: 2491e6f8d9a08f546b64ad76fe429a31, type: 3}
       m_FromMain: 0
       m_SpriteOverride: {fileID: -9008205362261826637, guid: 2491e6f8d9a08f546b64ad76fe429a31, type: 3}
+    - m_Name: Lion
+      m_Hash: 1072689921
+      m_Sprite: {fileID: 8369541916566678783, guid: a3139898812ba6244b53999313425aad, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 8369541916566678783, guid: a3139898812ba6244b53999313425aad, type: 3}
     m_FromMain: 0
-    m_EntryOverrideCount: 7
+    m_EntryOverrideCount: 8
   - m_Name: Left
     m_Hash: 441796694
     m_CategoryList: []
@@ -93,8 +98,13 @@ MonoBehaviour:
       m_Sprite: {fileID: -6959554391341708676, guid: 2ac0765cb9a23a0479f220a28c2e99ff, type: 3}
       m_FromMain: 0
       m_SpriteOverride: {fileID: -6959554391341708676, guid: 2ac0765cb9a23a0479f220a28c2e99ff, type: 3}
+    - m_Name: Lion
+      m_Hash: 1072689921
+      m_Sprite: {fileID: -449085520725116767, guid: ede35dd526303ee47b43fa1c15d48cc6, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: -449085520725116767, guid: ede35dd526303ee47b43fa1c15d48cc6, type: 3}
     m_FromMain: 0
-    m_EntryOverrideCount: 7
+    m_EntryOverrideCount: 8
   m_PrimaryLibraryGUID: 
-  m_ModificationHash: 638759236998080053
+  m_ModificationHash: 638783241993822393
   m_Version: 1

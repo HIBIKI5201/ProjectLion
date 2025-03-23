@@ -5,14 +5,16 @@
     <engine:VisualElement style="position: absolute; width: 62%; height: 7%; right: 0; top: 6%; -unity-background-scale-mode: scale-to-fit; background-position-y: top 0; background-position-x: right 0; background-size: contain; background-color: rgba(103, 130, 255, 0);">
         <RewardUIManager name="RewardUI" style="flex-grow: 1;" />
     </engine:VisualElement>
-    <engine:VisualElement style="position: absolute; width: 17%; height: 10%; top: 16%; left: 5%; background-color: rgba(100, 255, 215, 0.39);" />
-    <engine:VisualElement style="position: absolute; width: 55%; height: 20%; -unity-background-scale-mode: scale-to-fit; background-position-y: top 0; background-position-x: left 0; background-color: rgba(255, 102, 105, 0); bottom: 3%; left: 3%;">
+    <engine:VisualElement enabled="true" style="position: absolute; width: 55%; height: 20%; -unity-background-scale-mode: scale-to-fit; background-position-y: top 0; background-position-x: left 0; background-color: rgba(255, 102, 105, 0); bottom: 3%; left: 3%; display: flex; visibility: visible;">
         <StatusUIManager picking-mode="Ignore" name="StatusUIManager" _ui-data="project://database/Assets/Resources/UITK_Items/Datas/ItemDataMastor.asset?fileID=11400000&amp;guid=c98fbbe91c2639a45ba0f09b6ee1a293&amp;type=2#ItemDataMastor" style="flex-grow: 1;" />
     </engine:VisualElement>
     <engine:VisualElement style="position: absolute; width: 33%; height: 19%; -unity-background-scale-mode: scale-to-fit; background-position-y: top 0; background-position-x: left 0; background-color: rgba(249, 102, 255, 0); bottom: 3%; right: 3%;">
         <SkillUI picking-mode="Ignore" name="SkillUI" _normal="0.619" style="flex-grow: 1;" />
     </engine:VisualElement>
-    <engine:VisualElement style="flex-grow: 0; flex-shrink: 0; align-self: center; top: 25%; height: 50%; width: 65%; background-color: rgba(255, 255, 255, 0); display: flex; opacity: 1; overflow: visible; visibility: hidden;">
+    <engine:VisualElement style="flex-grow: 0; flex-shrink: 0; align-self: center; top: 25%; height: 50%; width: 65%; background-color: rgba(255, 255, 255, 0); display: flex; opacity: 1; overflow: visible; visibility: visible;">
         <LevelUpPanel picking-mode="Ignore" enabled="true" name="LevelUpPanel" _ui-datas="project://database/Assets/Resources/UITK_Items/Datas/ItemDataMastor.asset?fileID=11400000&amp;guid=c98fbbe91c2639a45ba0f09b6ee1a293&amp;type=2#ItemDataMastor" style="visibility: visible; flex-grow: 1;" />
+    </engine:VisualElement>
+    <engine:VisualElement style="position: absolute; width: 100%; height: 100%; visibility: hidden;">
+        <ResultPanel _load-scene-name="Ingame" style="flex-grow: 1;" />
     </engine:VisualElement>
 </engine:UXML>

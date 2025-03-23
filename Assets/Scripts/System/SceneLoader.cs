@@ -7,9 +7,9 @@ public class SceneLoader : MonoBehaviour
 {
     private readonly static Dictionary<SceneKind, string> _sceneNames = new()
     {
-        {SceneKind.Title, "" },
+        {SceneKind.Title, "Title" },
         {SceneKind.Home, "" },
-        {SceneKind.Ingame, "" },
+        {SceneKind.Ingame, "SampleScene" },
         {SceneKind.Result, "ResultScene" }
     };
 
