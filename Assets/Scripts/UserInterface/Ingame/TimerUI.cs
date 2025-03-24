@@ -13,9 +13,10 @@ public partial class TimerUI : UIElement_B
     }
     public void OnTimerChanged(float minutes, float seconds)
     {
+        
         if (_timer != null)
         {
-            _timer.text = $"{minutes.ToString("00")}:{seconds.ToString("00")}";
+            _timer.text = $"{((int)minutes).ToString("00")}:{((int)seconds).ToString("00")}";
         }
     }
 }
