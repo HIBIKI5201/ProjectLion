@@ -9,7 +9,7 @@ public class InGameUIManager : MonoBehaviour
     UIDocument _document;
     VisualElement _root;
 
-    [SerializeField] MastorData _uiDatas;
+    [SerializeField] ItemUIDataList _uiDatasList;
     PlayerController _playerController;
     private async void Start()
     {
@@ -33,6 +33,7 @@ public class InGameUIManager : MonoBehaviour
         SkillUI skill = _root.Q<SkillUI>();
         RewardUIManager reward = _root.Q<RewardUIManager>();
         ResultPanel result = _root.Q<ResultPanel>();
+        WeaponUI weapon = _root.Q<WeaponUI>();
 
         var levelUpManager = FindFirstObjectByType<LevelUpManager>();
         var inGameManager = FindFirstObjectByType<InGameManager>();
@@ -44,31 +45,27 @@ public class InGameUIManager : MonoBehaviour
             timerText.InitializeTask,
             status.InitializeTask,
             skill.InitializeTask,
-            reward.InitializeTask);
+            reward.InitializeTask,
+            result.InitializeTask
+            //weapon.InitializeTask
+            );
 
-        levelUpManager.OnLevelChanged += (kind, action) => panel.OnLevelUp(kind, action, _uiDatas);
+        levelUpManager.OnLevelChanged += (kind, action) => panel.OnLevelUp(kind, action, _uiDatasList);
         levelUpManager.OnGetItem += () => status?.OnStatusChange(LevelUpManager.ItemHaveValue);
         inGameManager.OnTimerChanged += x => timerText.OnTimerChanged(x / 60, x % 60);
         specialAttackManager.SpecialEvant += skill.ChangeSkillGage;
         skill.OnUseUltimate += specialAttackManager.SpecialAttack;
         levelContainer.OnAddExperiance += reward.ChangeEXP;
         _playerController.OnDeath += () => result.ActivateResultPanel(inGameManager.EnemyKillCount);
+        //+= weapon.ChangeWeaponUI; //ToDo:Here 武器の変更ごとに発火されるActionがいる
     }
-    //private void OnDisable()
-    //{
-    //    LevelUpPanel panel = _root.Q<LevelUpPanel>("LevelUpPanel");
-    //    TimerUI timerText = _root.Q<TimerUI>("TimerUI");
-    //    StatusUIManager status = _root.Q<StatusUIManager>("StatusUIManager");
-    //    SkillUI skill = _root.Q<SkillUI>("");
-    //    RewardUIManager reward = _root.Q<RewardUIManager>("RewardUI");
 
-    //    _levelUpManager.OnLevelChanged -= (x, y) => panel.OnLevelUp(x, y, _uiDatas);
-    //    _inGameManager.OnTimerChanged -= x => timerText.OnTimerChanged(x / 60, x % 60);
-    //    _levelUpManager.OnGetItem -= () => status?.OnStatusChange(LevelUpManager.ItemHaveValue);
-        //_specialAttackManager.SpecialEvant -= x => skill.ChangeSkillGage(
-        //    _specialAttackManager.SpecialExperiancePoint,
-        //    _specialAttackManager.SpecialRequirePoint);
-    //    skill.OnUseUltimate -= () => _specialAttackManager.SpecialAttack();
-    //    _levelContainer.OnAddExperiance -= (x, y) => reward.ChangeEXP(x, y);
-    //}
+    [SerializeField]
+    WeaponData_S TestWeapondata;
+    [ContextMenu("TestUI")]
+    public void TestUI()
+    {
+        WeaponUI weapon = _root.Q<WeaponUI>();
+        weapon.ChangeWeaponUI(TestWeapondata);
+    }
 }

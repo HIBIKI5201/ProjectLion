@@ -2,12 +2,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "MastorData/ItemDataMastor", fileName = "ItemDataMastor")]
-public class MastorData : ScriptableObject
+public class ItemUIDataList : ScriptableObject
 {
     [SerializeField]List<ItemUIData> itemData;
     public ItemUIData FindEnum(ItemKind kind) => itemData.Find(x => x.Kind == kind);
 }
-public class MastorData<T> : ScriptableObject where T : DataBase
+public class ItemUIDataList<T> : ScriptableObject where T : DataBase
 {
     protected List<T> _datas = new();
     public T FindID(int id) => _datas.Find(x => x.ID == id);

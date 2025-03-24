@@ -17,7 +17,7 @@ public partial class LevelUpPanel : UIElement_B
         return Task.CompletedTask;
     }
 
-    public void OnLevelUp(IEnumerable<ItemKind> kinds, Action<ItemKind> callBack, MastorData uiDatas)
+    public void OnLevelUp(IEnumerable<ItemKind> kinds, Action<ItemKind> callBack, ItemUIDataList uiDatasList)
     {
         if (kinds.Count() != _levelUpPanel.Count)//�G���[���N���Ȃ��悤�ɗ����̗v�f�̌����m�F
         {
@@ -31,7 +31,7 @@ public partial class LevelUpPanel : UIElement_B
         for (var i = 0; i < _levelUpPanel.Count(); i++)
         {
             //�����ڂ̕ύX.
-            var uiData = uiDatas.FindEnum(kinds.ElementAt(i));
+            var uiData = uiDatasList.FindEnum(kinds.ElementAt(i));
             _levelUpPanel[i].ChangeStyle(uiData.Texture, uiData.Name, uiData.Information);
 
             //callback

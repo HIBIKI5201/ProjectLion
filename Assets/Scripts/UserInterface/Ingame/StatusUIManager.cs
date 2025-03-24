@@ -9,7 +9,7 @@ using UnityEngine.UIElements;
 public partial class StatusUIManager : UIElement_B
 {
     [UxmlAttribute]
-    MastorData _uiData;
+    ItemUIDataList _uiDataList;
     public StatusUIManager() : base("UITK_Items/UXML/InGame/Status") { }
 
     Dictionary<ItemKind, StatusUI> _statusPanels = new Dictionary<ItemKind, StatusUI>();
@@ -34,7 +34,7 @@ public partial class StatusUIManager : UIElement_B
         //status�̃A�C�R���ݒ�
         foreach (var item in _statusPanels)
         {
-            item.Value.SetIcon(_uiData.FindEnum(item.Key).Texture, Color.white);
+            item.Value.SetIcon(_uiDataList.FindEnum(item.Key).Texture, Color.white);
             item.Value.OnStatusChanged(0);
         }
     }
