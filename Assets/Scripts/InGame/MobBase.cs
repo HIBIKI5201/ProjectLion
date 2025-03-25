@@ -60,7 +60,7 @@ public class MobBase<MobDataKind> : MonoBehaviour, PauseManager.IPausable where 
         //_currentHealth -= Mathf.Max(0, _currentHealth);
         _currentHealth -= damage;//オートヒールのために上記のスクリプトから切り替え、もしかしたら問題が起こるかも
         HitDamageBehaviour();
-        Debug.Log($"現在のHPは　{_currentHealth}");
+        //Debug.Log($"現在のHPは　{_currentHealth}");
 
         if (_currentHealth <= 0)
         {
