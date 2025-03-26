@@ -1,6 +1,8 @@
 using SymphonyFrameWork.CoreSystem;
 using UnityEngine;
-
+/// <summary>
+/// このスクリプトは使わないです
+/// </summary>
 public class PickUpManager : MonoBehaviour
 {
     private PlayerController _player;
@@ -12,13 +14,13 @@ public class PickUpManager : MonoBehaviour
         _shooter = GetComponentInChildren<NormalShootManager>();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.TryGetComponent(out DropItemManager dropItem))
         {
             ItemPicUp(dropItem);
             Destroy(collision.gameObject);
-        }
+        }   
     }
 
     /// <summary>
@@ -39,10 +41,14 @@ public class PickUpManager : MonoBehaviour
                 _shooter.SetWeapon(2);
                 break;
             case DropItemManager.ItemWeaponType.HealItem:
-                Debug.Log("回復アイテムを拾いました");
-                _player.AddDamage(-dropItem.Healpoint);
+                Debug.Log($"回復アイテムを拾いました{_player.CurrentHealth}");
+
+                if (_player.MaxHealth >= _player.CurrentHealth + dropItem.Healpoint)
+                {
+                    _player.AddDamage(-dropItem.Healpoint);
+                    Debug.Log($"回復しました{_player.CurrentHealth}");
+                }
                 break;
         }
     }
 }
-
