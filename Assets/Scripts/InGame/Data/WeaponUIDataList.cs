@@ -14,9 +14,9 @@ public class WeaponUIDataList : ScriptableObject
     /// </summary>
     /// <param name="data">検索したい武器データ</param>
     /// <returns>最初に見つかった武器データ。該当がない場合はnull</returns>
-    public WeaponUIData GetWeaponUIData(WeaponData_S data)
+    public WeaponUIData GetWeaponUIData(WeaponData data)
     {
-        return _detaList.FirstOrDefault(x=>x.WeaponData == data);
+        return _detaList.FirstOrDefault(x=>x.WeaponData.Data == data);
     }
 }
 
