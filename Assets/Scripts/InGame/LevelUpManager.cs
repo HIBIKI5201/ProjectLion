@@ -59,7 +59,7 @@ public class LevelUpManager : MonoBehaviour
         }
         Debug.Log($"level up and selected items are 「{string.Join(" ", kinds)}」");
 
-        if (OnLevelChange.GetInvocationList().Length == 0) { AddItem(ItemKind.HealthUp); return; } //レベルアップ時にuiが存在しなかった場合のハンドリング
+        if (OnLevelChanged is null) { AddItem(ItemKind.HealthUp); return; } //レベルアップ時にuiが存在しなかった場合のハンドリング
 
         PauseManager.Pause = true;
         OnLevelChanged?.Invoke(kinds, callback =>
