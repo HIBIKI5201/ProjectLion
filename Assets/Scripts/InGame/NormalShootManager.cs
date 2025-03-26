@@ -1,4 +1,5 @@
 using SymphonyFrameWork.CoreSystem;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -10,6 +11,9 @@ public class NormalShootManager : MonoBehaviour, PauseManager.IPausable
     private AudioManager _audioManager;
 
     private WeaponData _nowWeapon;
+    public WeaponData NowWeapon { get => _nowWeapon; } 
+    public event Action<WeaponData> OnChangeWeapon;
+
     private List<EnemyManager> enemies = new();
     private float _timer = 0;
 
@@ -52,7 +56,7 @@ public class NormalShootManager : MonoBehaviour, PauseManager.IPausable
         {
             _attackRange = new Vector3(_nowWeapon.AttackRangeMultiplier, 0f, 0f);
             transform.localScale = _attackRange;
-            Debug.Log($"�����W�� {_attackRange}");
+            //Debug.Log($"�����W�� {_attackRange}");
         }
 
         if (_isPause)
@@ -137,6 +141,7 @@ public class NormalShootManager : MonoBehaviour, PauseManager.IPausable
     public void SetWeapon(int num)
     {
         _nowWeapon = _weaponData[(num)].Data;
+        OnChangeWeapon?.Invoke(_nowWeapon);
         _attackCoolTime = _nowWeapon.AttackCoolTimeModifier;
         GetComponent<Transform>().localScale = _attackRange = new Vector3(_nowWeapon.AttackRangeMultiplier, 0f, 0f);
     }

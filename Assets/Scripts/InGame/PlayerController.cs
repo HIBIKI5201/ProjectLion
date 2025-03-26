@@ -11,11 +11,11 @@ public class PlayerController : MobBase<MobData_S>
     private SpriteRenderer _spriteRenderer;
 
     public event Action<MobData> OnChangeState;
+    public event Action<float> OnDamage;
     public event Action OnDeath;
     protected override void Awake_S()
     {
         SingletonDirector.SetSinglton(this);
-
         _rigidbody = GetComponent<Rigidbody2D>();
         //一番目のオブジェクトがPlayerの見た目
         _spriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
@@ -50,6 +50,7 @@ public class PlayerController : MobBase<MobData_S>
     protected override async void HitDamageBehaviour()
     {
         base.HitDamageBehaviour();
+        OnDamage?.Invoke(CurrentHealth);
         AudioManager.Instance.PlaySE("SE_Damage");
         _spriteRenderer.color = Color.red;
         await Awaitable.WaitForSecondsAsync(0.2f);

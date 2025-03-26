@@ -4,45 +4,21 @@ using UnityEngine;
 public class DropItemManager : MonoBehaviour
 {
     private PlayerController _player;
+    private NormalShootManager _shooter;
 
     private float _timer = 0;
 
-    [Header("ƒAƒCƒeƒ€‚Ìİ’è")]
+    [Header("ã‚¢ã‚¤ãƒ†ãƒ ã®è¨­å®š")]
 
-    [Tooltip("ƒAƒCƒeƒ€‚Ìí—Ş")][SerializeField]
+    [Tooltip("ã‚¢ã‚¤ãƒ†ãƒ ã®ç¨®é¡")][SerializeField]
     private ItemWeaponType _weaponType;
     public ItemWeaponType WeaponType { get => _weaponType; }    
-    [Tooltip("ƒAƒCƒeƒ€‚Ì¶‘¶ŠÔ")][SerializeField]
+    [Tooltip("ã‚¢ã‚¤ãƒ†ãƒ ã®ç”Ÿå­˜æ™‚é–“")][SerializeField]
     private float _itemLifeTime = 10;
 
+    [Header("å›å¾©ã‚¢ã‚¤ãƒ†ãƒ ã®è¨­å®š")]
 
-    //[Header("’eŠÛ‚Ìİ’è")]
-
-    //[Tooltip("’e‘¬")]
-    //[SerializeField]
-    //private float _bulletSpeed = 5;
-    //public float BulletSpeed { get => _bulletSpeed; }
-    //[Tooltip("’eŠÛ‚Ì‘±ŠÔ")]
-    //[SerializeField]
-    //private float _bulletDuration = 2;
-    //public float BulletDuration { get => _bulletDuration; }
-    //[Tooltip("UŒ‚—Í‚Ì”{—¦")]
-    //[SerializeField]
-    //private float _attackPowerMultiplier = 1;
-    //public float AttackPowerMultiplier { get => _attackPowerMultiplier; }
-    //[Tooltip("Ë’ö”ÍˆÍ")]
-    //[SerializeField]
-    //private float _attackRange = 1;
-    //public float AttackRange { get => _attackRange; }
-    //[Tooltip("UŒ‚‘¬“x")]
-    //[SerializeField]
-    //private float _attackSpeed = 1;
-    //public float AttackSpeed { get => _attackSpeed; }
-
-
-    [Header("‰ñ•œƒAƒCƒeƒ€‚Ìİ’è")]
-
-    [Tooltip("‰ñ•œ—Ê")][SerializeField]
+    [Tooltip("å›å¾©é‡")][SerializeField]
     private float _healpoint = 0;
     public float Healpoint { get => _healpoint; }
 
@@ -50,6 +26,7 @@ public class DropItemManager : MonoBehaviour
     public void Initialize()
     {
         _player = SingletonDirector.GetSingleton<PlayerController>();
+        _shooter = _player.GetComponentInChildren<NormalShootManager>();
         _timer = Time.time;
     }
 
@@ -58,17 +35,60 @@ public class DropItemManager : MonoBehaviour
     {
         if (_itemLifeTime + _timer < Time.time)
         {
-            Debug.Log($"{_weaponType} ‚ªÁ–Å‚µ‚Ü‚µ‚½");
+            Debug.Log($"{_weaponType} ãŒæ¶ˆæ»…ã—ã¾ã—ãŸ");
             Destroy(gameObject);
         }
     }
 
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            ItemPicUp(this);
+            Destroy(gameObject);
+        }
+    }
+
+    /// <summary>
+    /// ã‚¢ã‚¤ãƒ†ãƒ ã‚’æ‹¾ã£ãŸéš›ã«å‘¼ã³å‡ºã™å‡¦ç†
+    /// </summary>
+    /// <param name="dropItem"></param>
+    private void ItemPicUp(DropItemManager dropItem)
+    {
+        switch (dropItem.WeaponType)
+        {
+            case DropItemManager.ItemWeaponType.Weapon1Item:
+                _shooter.SetWeapon(0);
+                break;
+            case DropItemManager.ItemWeaponType.Weapon2Item:
+                _shooter.SetWeapon(1);
+                break;
+            case DropItemManager.ItemWeaponType.Weapon3Item:
+                _shooter.SetWeapon(2);
+                break;
+            case DropItemManager.ItemWeaponType.HealItem:
+                Debug.Log($"å›å¾©ã‚¢ã‚¤ãƒ†ãƒ ã‚’æ‹¾ã„ã¾ã—ãŸ{_player.CurrentHealth}");
+
+                if (_player.MaxHealth >= _player.CurrentHealth + dropItem.Healpoint)
+                {
+                    _player.AddDamage(-dropItem.Healpoint);
+                    Debug.Log($"å›å¾©ã—ã¾ã—ãŸ{_player.CurrentHealth}");
+                }
+                else
+                {
+                    _player.AddDamage(_player.CurrentHealth - _player.MaxHealth);
+                    Debug.Log($"å›å¾©ã—ã¾ã—ãŸ MaxHP{_player.CurrentHealth}");
+                }
+                break;
+        }
+    }
     public enum ItemWeaponType
     {
         Weapon1Item,
         Weapon2Item,
         Weapon3Item,
-        //‰ñ•œƒAƒCƒeƒ€‚Í•Êˆ—
+        //å›å¾©ã‚¢ã‚¤ãƒ†ãƒ ã¯åˆ¥å‡¦ç†
         HealItem
     }
 }
