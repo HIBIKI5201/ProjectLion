@@ -11,6 +11,7 @@ public class InGameManager : MonoBehaviour, PauseManager.IPausable
     public Action<float> OnTimerChanged;
     private void Start()
     {
+        PauseManager.IPausable.RegisterPauseManager(this);
         Init();
     }
     private void Init()
@@ -27,6 +28,11 @@ public class InGameManager : MonoBehaviour, PauseManager.IPausable
             OnTimerChanged?.Invoke(_time);
         }
 
+    }
+
+    private void OnDestroy()
+    {
+        PauseManager.IPausable.RemovePauseManager(this);
     }
 
     void PauseManager.IPausable.Pause()

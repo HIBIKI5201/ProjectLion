@@ -1,0 +1,6 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <engine:VisualElement style="flex-grow: 1; flex-direction: row; background-image: resource(&apos;UITK_Items/UIAssets/ステータスアイコン配置枠&apos;);">
+        <engine:VisualElement name="WeaponTexture" style="flex-grow: 1; background-image: resource(&apos;UITK_Items/UIAssets/Icon/5秒ごとにHP回復&apos;); flex-basis: auto; position: relative; flex-shrink: 1; width: 70%; max-width: none; min-width: auto; margin-top: 3%; margin-right: 3%; margin-bottom: 3%; margin-left: 3%;" />
+        <engine:Label text="TestMod" name="WeaponLabel" style="-unity-text-align: middle-center; font-size: 30%; flex-shrink: 1; flex-grow: 1; -unity-font-definition: url(&quot;project://database/Library/unity%20default%20resources?fileID=10102&amp;guid=0000000000000000e000000000000000&amp;type=0#LegacyRuntime&quot;); color: rgb(255, 255, 255); white-space: normal;" />
+    </engine:VisualElement>
+</engine:UXML>

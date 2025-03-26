@@ -21,11 +21,20 @@ public class SceneLoader : MonoBehaviour
 
         if (activeScene.isLoaded)
         {
-            SceneManager.UnloadSceneAsync(activeScene);
+            var ta = SceneManager.UnloadSceneAsync(activeScene);
         }
         
         var task = SceneManager.LoadSceneAsync(activeScene.name, LoadSceneMode.Additive);
-        await task;
+        task.allowSceneActivation = false;
+        Debug.Log($"Loading Scene: {activeScene.name}");
+        while (!task.isDone)
+        {
+            if (task.progress >= 0.9f)
+            {
+                task.allowSceneActivation = true; // シーンをアクティブにする
+            }
+            await Task.Yield();
+        }
         activeScene = SceneManager.GetSceneByName(_sceneNames[kind]);
         SceneManager.SetActiveScene(activeScene);
         if (_currentScene.name is not null)
