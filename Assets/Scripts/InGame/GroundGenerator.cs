@@ -34,7 +34,7 @@ public class GroundGenerator : MonoBehaviour
 
     void Update()
     {
-        if (_player is null) return;
+        if (!_player) return;
 
         var distanseX = _player.transform.position.x - _grounds[0].transform.position.x;
         var distanseY = _player.transform.position.y - _grounds[0].transform.position.y;

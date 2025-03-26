@@ -24,10 +24,12 @@ public class HPBarManager : MonoBehaviour
     }
     private void Update()
     {
-        _hpBar.transform.position = _camera.WorldToScreenPoint(_player.transform.position - new Vector3(0, _yOffset, 0));
+        if(!_player)return;
+
+        _hpBar.transform.position = Camera.main.WorldToScreenPoint(_player.transform.position - new Vector3(0, _yOffset, 0));
 
 
-        if (_player.CurrentHealth != _curentHelth)//ToDo:HERE ƒCƒxƒ“ƒg‹ì“®‚É‚·‚é
+        if (_player.CurrentHealth != _curentHelth)//ToDo:HERE ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã«å¤‰æ›´
         {
             SliderUpdate(_player.CurrentHealth / _player.MaxHealth);
         }
