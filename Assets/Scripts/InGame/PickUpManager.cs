@@ -1,6 +1,8 @@
 using SymphonyFrameWork.CoreSystem;
 using UnityEngine;
-
+/// <summary>
+/// このスクリプトは使わないです
+/// </summary>
 public class PickUpManager : MonoBehaviour
 {
     private PlayerController _player;
@@ -12,13 +14,13 @@ public class PickUpManager : MonoBehaviour
         _shooter = GetComponentInChildren<NormalShootManager>();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.TryGetComponent(out DropItemManager dropItem))
         {
             ItemPicUp(dropItem);
             Destroy(collision.gameObject);
-        }
+        }   
     }
 
     /// <summary>
