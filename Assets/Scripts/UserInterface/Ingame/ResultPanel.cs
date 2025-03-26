@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using SymphonyFrameWork.CoreSystem;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -23,6 +24,7 @@ public partial class ResultPanel : UIElement_B
 
         ResetButton.clickable = new Clickable(() =>
         {
+            PauseManager.Pause = false;
             Debug.Log("Restart");
             //SceneLoader.LoadSceneAsync(loadScene);
             GameBaseSystem.instance.ChangeScene(loadScene);
@@ -32,6 +34,7 @@ public partial class ResultPanel : UIElement_B
 
     public Task ActivateResultPanel(int enmeyKillCount)
     {
+        PauseManager.Pause = true;
         EnemyKillCount.text　= _enemyCountText + enmeyKillCount.ToString();
         style.visibility = Visibility.Visible;
         return Task.CompletedTask;

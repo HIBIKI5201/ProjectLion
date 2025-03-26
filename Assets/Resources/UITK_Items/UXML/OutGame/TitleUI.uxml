@@ -1,0 +1,5 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <engine:VisualElement style="flex-grow: 1; background-image: url(&quot;project://database/Assets/AssetStoreTools/Cartoon_Texture_Pack/ROOF/ROOF_Hay/Textures/Roof_Hay_Basecolor.png?fileID=2800000&amp;guid=542840ef7c5c42c46a0fe3c49b7cc5ad&amp;type=3#Roof_Hay_Basecolor&quot;);">
+        <engine:Label text="たいとる" style="position: absolute; align-self: center; top: 20%; font-size: 38%; -unity-font-definition: url(&quot;project://database/Library/unity%20default%20resources?fileID=10102&amp;guid=0000000000000000e000000000000000&amp;type=0#LegacyRuntime&quot;); -unity-font-style: bold; color: rgb(255, 255, 255); -unity-text-align: middle-center;" />
+    </engine:VisualElement>
+</engine:UXML>
