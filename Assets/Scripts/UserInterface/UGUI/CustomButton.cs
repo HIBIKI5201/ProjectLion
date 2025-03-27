@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -27,8 +28,8 @@ public class CustomButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         Debug.Log($"OnPointerExit: {eventData}");
     }
 
-    public void ChangeScene(string str)
+    public async Task ChangeScene(string str)
     {
-        SceneLoader.LoadSceneAsync(str);
+        await　SceneLoader.LoadSceneAsync(str);
     }
 }
