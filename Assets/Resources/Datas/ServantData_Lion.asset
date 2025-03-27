@@ -18,6 +18,6 @@ MonoBehaviour:
     _attack: 5
     _defense: 5
     _agility: 20
-    _attackSpeed: 5
+    _attackCoolTime: 6.37
     _attackRange: 5
   _name: Lion
