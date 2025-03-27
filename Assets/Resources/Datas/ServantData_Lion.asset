@@ -21,6 +21,14 @@ MonoBehaviour:
     _attackCoolTime: 1
     _attackRange: 5
   _moveStopDistanse: 3
+  _levelScaleData:
+    _name: 
+    _maxHealth: 1
+    _attack: 1.1
+    _defense: 0
+    _agility: 1.1
+    _attackCoolTime: 1.1
+    _attackRange: 1.1
   _skillTime: 10
   _skillCoolTime: 5
   _buffKind: 1

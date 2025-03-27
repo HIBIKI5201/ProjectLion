@@ -23,9 +23,9 @@ MonoBehaviour:
   _moveStopDistanse: 3
   _levelScaleData:
     _name: 
-    _maxHealth: 1.1
+    _maxHealth: 1
     _attack: 1.1
-    _defense: 1.1
+    _defense: 0
     _agility: 1.1
     _attackCoolTime: 1.1
     _attackRange: 1.1
