@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 public class LevelUpManager : MonoBehaviour
 {
     public static readonly Dictionary<ItemKind, int> ItemHaveValue = new();
-    private readonly int _itemKindValue = Enum.GetValues(typeof(ItemKind)).Length;
+    private readonly int _itemKindValue = 6;
     private readonly Dictionary<ItemKind, int> _itemLimitDict = new()
     {
         { ItemKind.HealthUp, 30 },
@@ -132,7 +132,6 @@ public class LevelUpManager : MonoBehaviour
             case ItemKind.HealOfTime:
                 autoHeal.Healvalue += 0.01f * autoHeal.InitHealValue;
                 break;
-            //以下二つの実装がスマートな感じな気がするから、時間があるタイミングで上二つも修正したい
             case ItemKind.ExperianceUp:
                 levelContainer.ExperianceUp = ItemHaveValue[ItemKind.ExperianceUp];
                 break;
@@ -160,12 +159,13 @@ public enum ItemKind
     //DefenseUp,
     AgilityUp,
     AttackSpeedUp,
-    AttackRangeUp,
+    ExperianceUp,
 
+    //以下オミット
+    AttackRangeUp,
     //以下特殊バフ
     SkillCoolTimeDown,
     HealOfTime,
-    ExperianceUp,
     //KnockBackUp,
     SkillPowerUp,
     //GetCoinValueUp,
