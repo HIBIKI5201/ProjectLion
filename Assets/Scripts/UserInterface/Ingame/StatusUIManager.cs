@@ -34,6 +34,9 @@ public partial class StatusUIManager : UIElement_B
         //status�̃A�C�R���ݒ�
         foreach (var item in _statusPanels)
         {
+            var data = _uiDataList.FindEnum(item.Key);
+            if(!data) continue;
+            
             item.Value.SetIcon(_uiDataList.FindEnum(item.Key).Texture, Color.white);
             item.Value.OnStatusChanged(0);
         }

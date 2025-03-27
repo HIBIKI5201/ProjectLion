@@ -5,12 +5,12 @@
             <StatusUI name="KnockBack" style="flex-grow: 1; max-width: 20%; display: none; visibility: visible;" />
         </engine:VisualElement>
         <engine:VisualElement style="flex-grow: 1; padding-top: 2%; padding-right: 2%; padding-bottom: 2%; padding-left: 2%; flex-direction: row;">
-            <StatusUI picking-mode="Ignore" name="SkillPower" style="flex-grow: 1; max-width: 20%;" />
-            <StatusUI name="SkillCoolTime" style="flex-grow: 1; width: auto; max-width: 20%;" />
-            <StatusUI picking-mode="Ignore" name="HealthRegen" style="flex-grow: 1; width: auto; max-width: 20%;" />
+            <StatusUI picking-mode="Ignore" name="SkillPower" style="flex-grow: 1; max-width: 20%; visibility: hidden;" />
+            <StatusUI name="SkillCoolTime" style="flex-grow: 1; width: auto; max-width: 20%; visibility: hidden;" />
+            <StatusUI picking-mode="Ignore" name="AttackRange" style="flex-grow: 1; max-width: 20%; visibility: hidden;" />
+            <StatusUI picking-mode="Ignore" name="HealthRegen" style="flex-grow: 1; width: auto; max-width: 20%; visibility: hidden;" />
             <StatusUI picking-mode="Ignore" name="ExperianceUp" style="flex-grow: 1; width: auto; max-width: 20%;" />
             <StatusUI name="Agility" style="flex-grow: 1; max-width: 20%;" />
-            <StatusUI picking-mode="Ignore" name="AttackRange" style="flex-grow: 1; max-width: 20%;" />
             <StatusUI _icon="project://database/Assets/Resources/Visual%20Resource/Sprite/%E3%83%9A%E3%83%B3%E3%82%AE%E3%83%B3%E9%80%8F%E9%81%8E1.png?fileID=2800000&amp;guid=2ac0765cb9a23a0479f220a28c2e99ff&amp;type=3#ペンギン透過1" _text=".p" _defalt-icon="project://database/Assets/Resources/UITK_Items/UIAssets/Icon/%E6%94%BB%E6%92%83%E9%80%9F%E5%BA%A6.png?fileID=2800000&amp;guid=2f0bc8b177b47dc4ab5bea8e4b9c2a24&amp;type=3#攻撃速度" _defalt-color="#FFFFFFFF" name="AttackSpeed" style="flex-grow: 1; width: auto; flex-shrink: 1; max-width: 20%;" />
             <StatusUI picking-mode="Ignore" _icon="project://database/Assets/Resources/Visual%20Resource/Sprite/%E3%82%BB%E3%83%90%E3%82%B9%E3%83%87%E3%83%95%E3%82%A9%E3%83%AB%E3%83%A1%20%20%E5%B7%A6%E5%90%91%E3%81%8D.png?fileID=2800000&amp;guid=33e66b4f48986f641bbcd9eed1f1ea0f&amp;type=3#セバスデフォルメ  左向き" _text="seb" _defalt-icon="project://database/Assets/Resources/UITK_Items/UIAssets/Icon/%E6%94%BB%E6%92%83%E7%AF%84%E5%9B%B2.png?fileID=2800000&amp;guid=4f736c500b6121e49a1bdfd053d0476b&amp;type=3#攻撃範囲" _defalt-color="#FFFFFFFF" name="AttackPower" style="flex-grow: 1; flex-shrink: 1; width: auto; margin-right: 0; margin-bottom: 0; margin-left: 0; margin-top: 0; max-width: 20%;" />
             <StatusUI picking-mode="Ignore" _icon="project://database/Assets/Resources/Visual%20Resource/Sprite/%E3%82%A2%E3%83%BC%E3%82%B5%E3%83%BC%E9%80%8F%E9%81%8E2.png?fileID=2800000&amp;guid=d9e009fd132b8fb4caaf73f5f250bbab&amp;type=3#アーサー透過2" _text="aruto" _test-icon="project://database/Assets/Resources/UITK_Items/UIAssets/Icon/%E6%94%BB%E6%92%83%E5%8A%9B.png?fileID=2800000&amp;guid=93425b2e7dc92334d8378e206c5ecc05&amp;type=3#攻撃力" _defalt-icon="project://database/Assets/Resources/UITK_Items/UIAssets/Icon/%E6%94%BB%E6%92%83%E5%8A%9B.png?fileID=2800000&amp;guid=93425b2e7dc92334d8378e206c5ecc05&amp;type=3#攻撃力" _defalt-color="#FFFFFFFF" name="Health" style="flex-grow: 1; flex-shrink: 1; max-width: 20%;" />
