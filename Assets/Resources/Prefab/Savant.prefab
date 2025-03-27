@@ -82,8 +82,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bullet: {fileID: 2875977998387469546, guid: 42142a5578e8e5647beda9fe7c96d5b6, type: 3}
-  _bulletSpeed: 3
-  _bulletDuration: 2
+  _weaponData: []
 --- !u!1 &4238770277119736926
 GameObject:
   m_ObjectHideFlags: 0
@@ -289,10 +288,5 @@ MonoBehaviour:
     _attack: 5
     _defense: 5
     _agility: 5
-    _attackSpeed: 1
+    _attackCoolTime: 0
     _attackRange: 5
-  _moveStopDistanse: 3
-  _skillTime: 1
-  _skillCoolTime: 1
-  _buffKind: 0
-  _buffLatio: 1

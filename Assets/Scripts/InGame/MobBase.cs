@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.U2D.Animation;
 
-public class MobBase<MobDataKind> : MonoBehaviour, PauseManager.IPausable where MobDataKind : MobData_S
+public class MobBase<MobDataKind> : MonoBehaviour, PauseManager.IPausable, IHaveMobData where MobDataKind : MobData_S
 {
     [SerializeField]
     private MobDataKind _baseData;
