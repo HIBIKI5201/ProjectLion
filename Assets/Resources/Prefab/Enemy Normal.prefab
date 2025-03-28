@@ -91,6 +91,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _baseData: {fileID: 11400000, guid: d5bc56e04f161294a9327c4ee6b6a9fa, type: 2}
   _data:
+    _name: 
     _maxHealth: 0
     _attack: 0
     _defense: 0
@@ -98,3 +99,4 @@ MonoBehaviour:
     _attackSpeed: 0
     _attackRange: 0
   _experianceObj: {fileID: 3379163876735906355, guid: 8371d16512f717140a2ba29d8d3f6426, type: 3}
+  _dropObj: []
