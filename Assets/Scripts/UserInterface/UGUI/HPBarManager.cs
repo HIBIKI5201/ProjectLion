@@ -23,12 +23,10 @@ public class HPBarManager : MonoBehaviour
         _player.OnDamage += hp=>
         {
             SliderUpdate(hp / _player.MaxHealth);
-            Debug.Log("Damaged");
         };
         _player.OnDeath += () =>
         {
             SliderUpdate(0);
-            Debug.Log("Death");
         };
     }
     private void Update()
