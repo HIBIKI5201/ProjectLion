@@ -2,7 +2,7 @@
     <engine:VisualElement data-source-path="Texture" style="flex-grow: 1; background-image: none; flex-direction: row;">
         <engine:VisualElement style="flex-grow: 0; background-size: 100% 100%; flex-shrink: 0; background-image: resource(&apos;UITK_Items/UIAssets/選択肢区切りライン&apos;); position: absolute; align-self: auto; width: 100%; height: 2%; top: 99%; bottom: 100%;" />
         <engine:VisualElement style="flex-grow: 0; width: 35%; background-image: resource(&apos;UITK_Items/UIAssets/アイコンボックス&apos;);">
-            <engine:VisualElement name="StatusIcon" style="flex-grow: 1; background-image: resource(&apos;UITK_Items/UIAssets/Icon/5秒ごとにHP回復&apos;); padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 2%; margin-right: 2%; margin-bottom: 2%; margin-left: 2%;" />
+            <engine:VisualElement name="StatusIcon" style="flex-grow: 1; background-image: resource(&apos;UITK_Items/UIAssets/Icon/5秒ごとにHP回復&apos;); padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; margin-top: 6%; margin-right: 6%; margin-bottom: 6%; margin-left: 6%;" />
         </engine:VisualElement>
         <engine:VisualElement style="flex-grow: 1; align-content: center; justify-content: center;">
             <engine:Label text="attack" name="StatusName" style="-unity-text-align: middle-left; font-size: 20%; position: absolute; width: 36%; align-self: center; left: 15%; color: rgb(255, 255, 255); top: 5%;" />

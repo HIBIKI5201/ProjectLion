@@ -13,24 +13,20 @@ public class HPBarManager : MonoBehaviour
     [SerializeField]
     Camera _camera;
 
-    MobBase<MobData_S> _player;
+    PlayerController _player;
 
     float _curentHelth;
 
     void Start()
     {
         _player = SingletonDirector.GetSingleton<PlayerController>();
-        if(_camera == null)_camera= Camera.main;
+        _player.OnDamage += (hp=> SliderUpdate(hp/_player.MaxHealth));
     }
     private void Update()
     {
-        _hpBar.transform.position = _camera.WorldToScreenPoint(_player.transform.position - new Vector3(0, _yOffset, 0));
+        if(!_player)return;
 
-
-        if (_player.CurrentHealth != _curentHelth)//ToDo:HERE ƒCƒxƒ“ƒg‹ì“®‚É‚·‚é
-        {
-            SliderUpdate(_player.CurrentHealth / _player.MaxHealth);
-        }
+        _hpBar.transform.position = Camera.main.WorldToScreenPoint(_player.transform.position - new Vector3(0, _yOffset, 0));
     }
     void SliderUpdate(float normalizedCurent)
     {

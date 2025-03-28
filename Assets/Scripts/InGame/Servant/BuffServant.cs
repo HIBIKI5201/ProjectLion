@@ -1,11 +1,7 @@
 using UnityEngine;
 
-public class BuffServant : Servant_B
+public class BuffServant : Servant_B<BuffServantData_S>
 {
-    [Space] [SerializeField] float _skillTime;
-    [SerializeField] float _skillCoolTime;
-    [Space] [SerializeField] BuffKind _buffKind;
-    [SerializeField] float _buffLatio = 1;
 
     bool _useSkill;
     protected float _timer = 0;
@@ -17,14 +13,14 @@ public class BuffServant : Servant_B
     void Update()
     {
         _timer += Time.deltaTime;
-        if (_timer > _skillCoolTime && !_useSkill)
+        if (_timer > BaseData.SkillCoolTime && !_useSkill)
         {
             _timer = 0;
             _useSkill = true;
-            _player.Setbuff(BuffKind.AttackPowerBuff, latio: _buffLatio);
+            _player.Setbuff(BuffKind.AttackPowerBuff, latio: BaseData.BuffLate);
             //Debug.Log("buff" + _player.Attack.ToString());
         }
-        else if (_timer > _skillTime && _useSkill)
+        else if (_timer > BaseData.SkillTime && _useSkill)
         {
             _timer = 0;
             _useSkill = false;

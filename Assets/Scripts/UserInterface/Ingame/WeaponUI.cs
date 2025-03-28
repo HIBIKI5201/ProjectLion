@@ -26,7 +26,7 @@ public partial class WeaponUI : UIElement_B
         return Task.CompletedTask;
     }
 
-    public void ChangeWeaponUI(WeaponData_S weapondata)
+    public void ChangeWeaponUI(WeaponData weapondata)
     {
         var data = _data.GetWeaponUIData(weapondata);
         if(data == null) return;

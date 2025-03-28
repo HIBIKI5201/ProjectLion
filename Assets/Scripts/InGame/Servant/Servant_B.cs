@@ -4,9 +4,8 @@ using UnityEngine;
 using UnityEngine.U2D.Animation;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public abstract class Servant_B : MobBase<MobData_S>
+public abstract class Servant_B<MobDataKind> : MobBase<MobDataKind> where MobDataKind : ServantData
 {
-    [SerializeField] float _moveStopDistanse;
 
     protected PlayerController _player;
     protected SpriteRenderer _spriteRenderer;
@@ -32,9 +31,9 @@ public abstract class Servant_B : MobBase<MobData_S>
         void Move()
         {
             Vector2 direction = _player.transform.position - this.transform.position;
-            if (direction.sqrMagnitude > _moveStopDistanse * _moveStopDistanse)
+            if (direction.sqrMagnitude > BaseData.MoveStopDistanse * BaseData.MoveStopDistanse)
             {
-                var moveVec = direction - direction.normalized * _moveStopDistanse;
+                var moveVec = direction - direction.normalized * BaseData.MoveStopDistanse;
                 _rb.linearVelocity = moveVec * Data.Agility * 0.1f;//移動速度調整
             }
             ChangeSprite(direction.x >= 0 ? "Right" : "Left", BaseData.Data.Name);
@@ -44,12 +43,12 @@ public abstract class Servant_B : MobBase<MobData_S>
     protected virtual void LevelUp(Dictionary<ItemKind, int> haveItem)
     {
         LoadData(new MobData(Data,
-                    health: 1.1f * BaseData.Data.MaxHealth,
-                    attack: 1.1f * BaseData.Data.Attack,
+                    health: BaseData.LevelScaleData.MaxHealth * BaseData.Data.MaxHealth,
+                    attack: BaseData.LevelScaleData.Attack * BaseData.Data.Attack,
                     defense: 0,//ItemHaveValue[ItemKind.DefenseUp] * 0.1f * player.Data.Defense,
-                    agility: BaseData.Data.Agility,
-                    attackRange: 1.1f * BaseData.Data.AttackRange,
-                    attackCoolTime: 1.1f * BaseData.Data.AttackCoolTime));
+                    agility: BaseData.LevelScaleData.Agility * BaseData.Data.Agility,
+                    attackRange: BaseData.LevelScaleData.AttackRange * BaseData.Data.AttackRange,
+                    attackCoolTime: BaseData.LevelScaleData.AttackCoolTime * BaseData.Data.AttackCoolTime));
     }
     
     public abstract void Skill();
