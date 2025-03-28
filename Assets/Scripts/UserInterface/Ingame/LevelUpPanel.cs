@@ -19,7 +19,7 @@ public partial class LevelUpPanel : UIElement_B
 
     public void OnLevelUp(IEnumerable<ItemKind> kinds, Action<ItemKind> callBack, ItemUIDataList uiDatasList)
     {
-        if (kinds.Count() != _levelUpPanel.Count)//�G���[���N���Ȃ��悤�ɗ����̗v�f�̌����m�F
+        if (kinds.Count() != _levelUpPanel.Count)
         {
             Debug.LogWarning($"kinds not equal _stateusPanel\nkinds:{kinds.Count()}, StateusPanel:{_levelUpPanel.Count}");
             callBack?.Invoke(0);
@@ -30,14 +30,14 @@ public partial class LevelUpPanel : UIElement_B
 
         for (var i = 0; i < _levelUpPanel.Count(); i++)
         {
-            //�����ڂ̕ύX.
             var uiData = uiDatasList.FindEnum(kinds.ElementAt(i));
             _levelUpPanel[i].ChangeStyle(uiData.Texture, uiData.Name, uiData.Information);
 
             //callback
-            int index = i;//�N���[�W��
+            int index = i;
             _levelUpPanel[i].OnLevelUpChoiced += () =>
             {
+                //Debug.Log("Click!");
                 callBack?.Invoke(kinds.ElementAt(index));
                 this.style.visibility = Visibility.Hidden;
                 ResetEvent();

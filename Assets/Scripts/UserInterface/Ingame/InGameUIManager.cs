@@ -57,15 +57,7 @@ public class InGameUIManager : MonoBehaviour
         skill.OnUseUltimate += specialAttackManager.SpecialAttack;
         levelContainer.OnAddExperiance += reward.ChangeEXP;
         _playerController.OnDeath += () => result.ActivateResultPanel(inGameManager.EnemyKillCount);
-        //+= weapon.ChangeWeaponUI; //ToDo:Here 武器の変更ごとに発火されるActionがいる
+        _playerController.transform.GetComponentInChildren<NormalShootManager>().OnChangeWeapon += weapon.ChangeWeaponUI; //ToDo:Here 武器の変更ごとに発火されるActionがいる
     }
 
-    [SerializeField]
-    WeaponData_S TestWeapondata;
-    [ContextMenu("TestUI")]
-    public void TestUI()
-    {
-        WeaponUI weapon = _root.Q<WeaponUI>();
-        weapon.ChangeWeaponUI(TestWeapondata);
-    }
 }

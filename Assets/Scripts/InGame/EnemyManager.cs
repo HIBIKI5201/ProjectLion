@@ -37,6 +37,8 @@ public class EnemyManager : MobBase<EnemyData>
 
     private void Update()
     {
+        if(!_player) return;
+
         float distance = Vector2.Distance(_player.transform.position, transform.position);
         if (distance <= _repopRange)
         {

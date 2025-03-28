@@ -7,7 +7,8 @@ using UnityEngine;
 [RequireComponent(typeof(CircleCollider2D))]
 public class NormalShootManager : MonoBehaviour, PauseManager.IPausable
 {
-    private MobBase<MobData_S> controller;
+    private GameObject _controller;
+    private MobData _data;
     private AudioManager _audioManager;
 
     private WeaponData _nowWeapon;
@@ -33,7 +34,9 @@ public class NormalShootManager : MonoBehaviour, PauseManager.IPausable
 
     private void Start()
     {
-        controller = transform.parent.GetComponent<MobBase<MobData_S>>();
+        _controller = transform.parent.gameObject;
+        _data = _controller.GetComponent<IHaveMobData>().Data;
+        Debug.Log(_controller);
         Init();
         PauseManager.IPausable.RegisterPauseManager(this);
     }
@@ -47,12 +50,12 @@ public class NormalShootManager : MonoBehaviour, PauseManager.IPausable
 
     private void Update()
     {
-        if (_attackCoolTime != controller.AttackCoolTime / _nowWeapon.AttackCoolTimeModifier)
+        if (_attackCoolTime != _data.AttackCoolTime / _nowWeapon.AttackCoolTimeModifier)
         {
-            _attackCoolTime = controller.AttackCoolTime / _nowWeapon.AttackCoolTimeModifier;
+            _attackCoolTime = _data.AttackCoolTime / _nowWeapon.AttackCoolTimeModifier;
         }
 
-        if (_attackRange.x != controller.AttackRange * _nowWeapon.AttackRangeMultiplier)
+        if (_attackRange.x != _data.AttackRange * _nowWeapon.AttackRangeMultiplier)
         {
             _attackRange = new Vector3(_nowWeapon.AttackRangeMultiplier, 0f, 0f);
             transform.localScale = _attackRange;
@@ -73,11 +76,11 @@ public class NormalShootManager : MonoBehaviour, PauseManager.IPausable
 
     private async void Shoot()
     {
-        EnemyManager target = enemies.OrderBy(e => Vector2.Distance(controller.transform.position, e.transform.position)).First();
+        EnemyManager target = enemies.OrderBy(e => Vector2.Distance(_controller.transform.position, e.transform.position)).First();
         if (target is not null)
         {
-            Vector2 direction = (target.transform.position - controller.transform.position).normalized;
-            AsyncInstantiateOperation operation = InstantiateAsync(_bullet, controller.transform.position, Quaternion.Euler(direction));
+            Vector2 direction = (target.transform.position - _controller.transform.position).normalized;
+            AsyncInstantiateOperation operation = InstantiateAsync(_bullet, _controller.transform.position, Quaternion.Euler(direction));
             await operation;
             foreach (GameObject obj in operation.Result)
             {
@@ -86,7 +89,7 @@ public class NormalShootManager : MonoBehaviour, PauseManager.IPausable
                 if (!obj.TryGetComponent<BulletManager>(out var mg))
                     mg = obj.AddComponent<BulletManager>();
 
-                mg.SetStatus(controller.Attack, _nowWeapon.AttackPowerMultiplier);
+                mg.SetStatus(_data.Attack, _nowWeapon.AttackPowerMultiplier);
 
                 if (obj.TryGetComponent<Rigidbody2D>(out var rb))
                 {
@@ -186,4 +189,9 @@ public class NormalShootManager : MonoBehaviour, PauseManager.IPausable
             _rb.simulated = true;
         }
     }
+}
+
+public interface IHaveMobData
+{
+    MobData Data { get; }
 }

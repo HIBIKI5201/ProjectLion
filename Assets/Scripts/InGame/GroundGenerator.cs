@@ -4,11 +4,11 @@ using UnityEngine;
 public class GroundGenerator : MonoBehaviour
 {
     [SerializeField]
-    GameObject _groundPrefab;//’n–Ê‚Ìoriginal
+    GameObject _groundPrefab;//åœ°é¢ã®original
 
     /// <summary>
-    /// ’n–Ê‚ğŠi”[‚µ‚Ä‚¨‚­”z—ñB
-    /// [0]Œ»İæ‚Á‚Ä‚¢‚é•”•ªF[1]c²‚É‚¸‚ç‚µ‚½•”•ªF[2]‰¡²‚É‚¸‚ç‚µ‚½•”•ªF[3]—¼•û‚É‚¸‚ç‚µ‚½•”•ª
+    /// åœ°é¢ã‚’æ ¼ç´ã—ã¦ãŠãé…åˆ—ã€‚
+    /// [0]ç¾åœ¨ä¹—ã£ã¦ã„ã‚‹éƒ¨åˆ†ï¼š[1]ç¸¦è»¸ã«ãšã‚‰ã—ãŸéƒ¨åˆ†ï¼š[2]æ¨ªè»¸ã«ãšã‚‰ã—ãŸéƒ¨åˆ†ï¼š[3]ä¸¡æ–¹ã«ãšã‚‰ã—ãŸéƒ¨åˆ†
     /// </summary>
     GameObject[] _grounds = new GameObject[4];
 
@@ -22,7 +22,7 @@ public class GroundGenerator : MonoBehaviour
         var spriteRenderer = _groundPrefab.GetComponent<SpriteRenderer>();
         _groundSize = spriteRenderer.bounds.size;
 
-        //‰Šú‰»
+        //åˆæœŸåŒ–
         for (var i = 0; i < 4; i++)
         {
             _grounds[i] = Instantiate(_groundPrefab, _player.transform.position, Quaternion.identity);
@@ -34,30 +34,32 @@ public class GroundGenerator : MonoBehaviour
 
     void Update()
     {
+        if (!_player) return;
+
         var distanseX = _player.transform.position.x - _grounds[0].transform.position.x;
         var distanseY = _player.transform.position.y - _grounds[0].transform.position.y;
 
-        //playar‚ªæ‚Á‚Ä‚¢‚éƒIƒuƒWƒFƒNƒg‚ª•Ï‚í‚Á‚½‚Ìˆ—
+        //playarãŒä¹—ã£ã¦ã„ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒå¤‰ã‚ã£ãŸæ™‚ã®å‡¦ç†
         if (Mathf.Abs(distanseX) > _groundSize.x / 2)
         {
             (_grounds[0], _grounds[1]) = (_grounds[1], _grounds[0]);
             (_grounds[2], _grounds[3]) = (_grounds[3], _grounds[2]);
-            //’l‚ÌXV
+            //å€¤ã®æ›´æ–°
             distanseX = _player.transform.position.x - _grounds[0].transform.position.x;
         }
         if (Mathf.Abs(distanseY) > _groundSize.y / 2)
         {
             (_grounds[0], _grounds[2]) = (_grounds[2], _grounds[0]);
             (_grounds[1], _grounds[3]) = (_grounds[3], _grounds[1]);
-            //’l‚ÌXV
+            //å€¤ã®æ›´æ–°
             distanseY = _player.transform.position.y - _grounds[0].transform.position.y;
         }
 
-        //ƒvƒŒƒCƒ„[‚ª’n–Ê‚Ì‚Ç‚Ì•”•ª‚Éæ‚Á‚Ä‚¢‚é‚©‚Ì”»’è
+        //ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãŒåœ°é¢ã®ã©ã®éƒ¨åˆ†ã«ä¹—ã£ã¦ã„ã‚‹ã‹ã®åˆ¤å®š
         var xDir = Mathf.Sign(distanseX);
         var yDir = Mathf.Sign(distanseY);
 
-        //player‚ªæ‚Á‚Ä‚¢‚éêŠ‚É‚æ‚Á‚Ä’n–Ê‚ğÄ¶¬‚·‚éˆ—B
+        //playerãŒä¹—ã£ã¦ã„ã‚‹å ´æ‰€ã«ã‚ˆã£ã¦åœ°é¢ã‚’å†ç”Ÿæˆã™ã‚‹å‡¦ç†ã€‚
         _grounds[1].transform.position = new Vector2(_grounds[0].transform.position.x + _groundSize.x * xDir, _grounds[0].transform.position.y);
         _grounds[2].transform.position = new Vector2(_grounds[0].transform.position.x, _grounds[0].transform.position.y + _groundSize.y * yDir);
         _grounds[3].transform.position = new Vector2(_grounds[0].transform.position.x + _groundSize.x * xDir, _grounds[0].transform.position.y + _groundSize.y * yDir);

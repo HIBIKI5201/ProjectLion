@@ -20,12 +20,12 @@ public partial class RewardUIManager : UIElement_B
         await _expSlider.InitializeTask;
 
         _expSlider.OnSliderChange(0);
-        _expText.text = "0";
+        if(_expText is not null) _expText.text = "0";
     }
     public void ChangeGold(int gold) => _goldText.text = gold.ToString();
     public void ChangeEXP(float currentExp, float nextLevelExp)
     {
-        _expText.text= currentExp.ToString();
+        if(_expText is not null) _expText.text= currentExp.ToString();
         _expSlider.OnSliderChange(currentExp / nextLevelExp);
     }
 }
