@@ -72,12 +72,12 @@ public class DropItemManager : MonoBehaviour
 
                 if (_player.MaxHealth >= _player.CurrentHealth + dropItem.Healpoint)
                 {
-                    _player.AddDamage(-dropItem.Healpoint);
+                    _player.AddHealth(dropItem.Healpoint);
                     Debug.Log($"回復しました{_player.CurrentHealth}");
                 }
                 else
                 {
-                    _player.AddDamage(_player.CurrentHealth - _player.MaxHealth);
+                    _player.AddHealth(_player.MaxHealth - _player.CurrentHealth);
                     Debug.Log($"回復しました MaxHP{_player.CurrentHealth}");
                 }
                 break;
