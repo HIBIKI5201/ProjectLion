@@ -28,8 +28,8 @@ public class CustomButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         Debug.Log($"OnPointerExit: {eventData}");
     }
 
-    public async Task ChangeScene(string str)
+    public void ChangeScene(string str)
     {
-        await　SceneLoader.LoadSceneAsync(str);
+        SceneLoader.LoadSceneAsync(str);
     }
 }
