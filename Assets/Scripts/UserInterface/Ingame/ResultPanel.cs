@@ -7,6 +7,7 @@ using UnityEngine.UIElements;
 public partial class ResultPanel : UIElement_B
 {
     [UxmlAttribute] private SceneKind loadScene;
+    [UxmlAttribute] private float _waitResultPanel;
 
     [UxmlAttribute] private string _enemyCountText = "倒した敵の数：";
 
@@ -32,11 +33,11 @@ public partial class ResultPanel : UIElement_B
         return Task.CompletedTask;
     }
 
-    public Task ActivateResultPanel(int enmeyKillCount)
+    public async Task ActivateResultPanel(int enmeyKillCount)
     {
         PauseManager.Pause = true;
+        await Awaitable.WaitForSecondsAsync(_waitResultPanel);
         EnemyKillCount.text　= _enemyCountText + enmeyKillCount.ToString();
         style.visibility = Visibility.Visible;
-        return Task.CompletedTask;
     }
 }

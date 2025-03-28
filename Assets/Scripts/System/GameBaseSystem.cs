@@ -31,6 +31,19 @@ public class GameBaseSystem : MonoBehaviour
         {
             SingletonDirector.DestroySingleton<PlayerController>();
         }
+
+        await FadeSystem.Instance.Fade(FadeSystem.FadeMode.FadeOut);
         await SceneLoader.LoadSceneAsync(kind);
+        await FadeSystem.Instance.Fade(FadeSystem.FadeMode.FadeIn);
+    }    public async void ChangeScene(string str)
+    {
+        if (SingletonDirector.GetSingleton<PlayerController>())
+        {
+            SingletonDirector.DestroySingleton<PlayerController>();
+        }
+
+        await FadeSystem.Instance.Fade(FadeSystem.FadeMode.FadeOut);
+        await SceneLoader.LoadSceneAsync(str);
+        await FadeSystem.Instance.Fade(FadeSystem.FadeMode.FadeIn);
     }
 }
