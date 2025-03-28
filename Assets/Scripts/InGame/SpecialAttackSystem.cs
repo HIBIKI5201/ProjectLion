@@ -1,11 +1,14 @@
 using SymphonyFrameWork.CoreSystem;
 using UnityEngine;
+using System.Collections;
 
 public class SpecialAttackSystem : MonoBehaviour
 {
     [SerializeField]
     private float _damageRate = 100;
     private float _attack;
+
+    private Coroutine _attackCoroutine;
 
     private float _attackbuff;
     public float Attackbuff { set { _attackbuff = value; } }
@@ -32,14 +35,29 @@ public class SpecialAttackSystem : MonoBehaviour
         _boxCollider.enabled = false;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private static class SpecialAttack
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        public static IEnumerator Attack(EnemyManager enemy, float damage)
         {
-            if (collision.gameObject.TryGetComponent(out EnemyManager enemy))
+            while (true)
             {
-                enemy.AddDamage(_damageRate * _attack);
+                enemy.AddDamage(damage);
+                yield return new WaitForSeconds(1);
             }
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.TryGetComponent(out EnemyManager enemy))
+        {
+            _attackCoroutine = StartCoroutine(SpecialAttack.Attack(enemy, _attack * _damageRate));
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.TryGetComponent<PlayerController>(out _))
+            StopCoroutine(_attackCoroutine);
     }
 }
