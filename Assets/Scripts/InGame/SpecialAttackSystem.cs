@@ -1,6 +1,7 @@
 using SymphonyFrameWork.CoreSystem;
 using UnityEngine;
 using System.Collections;
+using TMPro;
 
 public class SpecialAttackSystem : MonoBehaviour
 {
@@ -31,6 +32,7 @@ public class SpecialAttackSystem : MonoBehaviour
     }
     public void End()
     {
+        _attackCoroutine = null;
         _spriteRenderer.enabled = false;
         _boxCollider.enabled = false;
     }
@@ -41,6 +43,7 @@ public class SpecialAttackSystem : MonoBehaviour
         {
             while (true)
             {
+                Debug.Log($"必殺技{damage}");
                 enemy.AddDamage(damage);
                 yield return new WaitForSeconds(1);
             }
