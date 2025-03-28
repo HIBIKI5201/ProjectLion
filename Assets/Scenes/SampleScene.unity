@@ -3863,7 +3863,6 @@ GameObject:
   - component: {fileID: 1600755329}
   - component: {fileID: 1600755331}
   - component: {fileID: 1600755332}
-  - component: {fileID: 1600755333}
   m_Layer: 6
   m_Name: Shooter
   m_TagString: Untagged
@@ -3939,18 +3938,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 597d4e142e3a2e444940cdda863d1301, type: 2}
   - {fileID: 11400000, guid: a2add2a50aa615f4c9e3a2e1f8c27bb5, type: 2}
   - {fileID: 11400000, guid: dd4205da8d530c04c970a908f24c8a3f, type: 2}
---- !u!114 &1600755333
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1600755328}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fc4fb5710dbcf64aa77e7b2c06b366f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1655495854
 GameObject:
   m_ObjectHideFlags: 0
@@ -5153,7 +5140,7 @@ MonoBehaviour:
     _attack: 0
     _defense: 0
     _agility: 0
-    _attackSpeed: 0
+    _attackCoolTime: 0
     _attackRange: 0
 --- !u!4 &1993525106
 Transform:
