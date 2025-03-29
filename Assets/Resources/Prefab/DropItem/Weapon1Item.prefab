@@ -103,11 +103,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _weaponType: 0
   _itemLifeTime: 10
-  _bulletSpeed: 100
-  _bulletDuration: 2
-  _attackPowerMultiplier: 1
-  _attackRange: 1
-  _attackSpeed: 1
   _healpoint: 0
 --- !u!58 &4613201317304363980
 CircleCollider2D:

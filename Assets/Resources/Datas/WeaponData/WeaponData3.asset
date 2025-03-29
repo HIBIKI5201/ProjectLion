@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: WeaponData3
   m_EditorClassIdentifier: 
   _data:
-    _bulletSpeed: 5
-    _bulletDuration: 2
-    _attackPowerMultiplier: 1
-    _attackRange: 1
-    _attackSpeed: 1
+    _bulletSpeed: 3
+    _bulletDuration: 3
+    _attackPowerMultiplier: 10
+    _attackRangeMultiplier: 5
+    _attackCoolTimeModifier: 1

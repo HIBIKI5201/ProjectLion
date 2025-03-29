@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using System.Threading.Tasks;
 using SymphonyFrameWork.CoreSystem;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -6,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class GameBaseSystem : MonoBehaviour
 {
     public static GameBaseSystem instance;
+    public static Action OnReset;
 
     private AudioManager _audioManager;
     private void Awake()
@@ -25,25 +28,29 @@ public class GameBaseSystem : MonoBehaviour
         _audioManager = GetComponentInChildren<AudioManager>();
     }
 
-    public async void ChangeScene(SceneKind kind)
+    public async Task ChangeScene(SceneKind kind)
     {
-        if (SingletonDirector.GetSingleton<PlayerController>())
-        {
-            SingletonDirector.DestroySingleton<PlayerController>();
-        }
-
         await FadeSystem.Instance.Fade(FadeSystem.FadeMode.FadeOut);
+        LoadReset();
         await SceneLoader.LoadSceneAsync(kind);
+        //PauseManager.Pause = false;
         await FadeSystem.Instance.Fade(FadeSystem.FadeMode.FadeIn);
-    }    public async void ChangeScene(string str)
+    }    
+    public async Task ChangeScene(string str)
+    {
+
+        await FadeSystem.Instance.Fade(FadeSystem.FadeMode.FadeOut);
+        LoadReset();
+        await SceneLoader.LoadSceneAsync(str);
+        PauseManager.Pause = false;
+        await FadeSystem.Instance.Fade(FadeSystem.FadeMode.FadeIn);
+    }
+    public void LoadReset()
     {
         if (SingletonDirector.GetSingleton<PlayerController>())
         {
             SingletonDirector.DestroySingleton<PlayerController>();
         }
-
-        await FadeSystem.Instance.Fade(FadeSystem.FadeMode.FadeOut);
-        await SceneLoader.LoadSceneAsync(str);
-        await FadeSystem.Instance.Fade(FadeSystem.FadeMode.FadeIn);
+        OnReset?.Invoke();
     }
 }

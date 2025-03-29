@@ -20,5 +20,5 @@ MonoBehaviour:
     _agility: 5
     _attackCoolTime: 3
     _attackRange: 20
-  _dropExperience: 200
+  _dropExperience: 300
   _name: Docter

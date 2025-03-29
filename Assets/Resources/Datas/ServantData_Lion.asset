@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _data:
     _name: Lion
-    _maxHealth: 1
-    _attack: 5
-    _defense: 1
-    _agility: 20
-    _attackCoolTime: 1
-    _attackRange: 5
+    _maxHealth: 2
+    _attack: 2
+    _defense: 2
+    _agility: 15
+    _attackCoolTime: 3
+    _attackRange: 2
   _moveStopDistanse: 3
   _levelScaleData:
     _name: 
