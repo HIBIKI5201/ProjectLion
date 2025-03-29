@@ -155,6 +155,10 @@ public static class PlayerAttack
         while (true)
         {
             player.AddDamage(damage);
+            if (player.CurrentHealth <= 0)
+            {
+                break;
+            }
             yield return PauseManager.PausableWaitForSecond(1);
         }
     }
