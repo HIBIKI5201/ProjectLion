@@ -26,7 +26,7 @@ public class EnemyManager : MobBase<EnemyData>
     [SerializeField]
     private GameObject[] _dropObj;
 
-    protected override void Awake_S()
+    private void Start()
     {
         _player = SingletonDirector.GetSingleton<PlayerController>().gameObject;
         _playerCollider = _player.GetComponent<CircleCollider2D>();
