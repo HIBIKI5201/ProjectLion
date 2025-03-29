@@ -108,14 +108,13 @@ public class EnemyShootManager : MonoBehaviour, PauseManager.IPausable
         }
         public void Pause()
         {
-            if (_rb != null)
+            if (_rb)
                 _rb.simulated = false;
-            Debug.Log(_rb.ToString());
         }
 
         public void Resume()
         {
-            if (_rb != null)
+            if (_rb)
                 _rb.simulated = true;
         }
     }
