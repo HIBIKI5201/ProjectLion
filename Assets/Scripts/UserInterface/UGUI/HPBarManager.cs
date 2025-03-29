@@ -20,7 +20,14 @@ public class HPBarManager : MonoBehaviour
     void Start()
     {
         _player = SingletonDirector.GetSingleton<PlayerController>();
-        _player.OnDamage += (hp=> SliderUpdate(hp/_player.MaxHealth));
+        _player.OnDamage += hp=>
+        {
+            SliderUpdate(hp / _player.MaxHealth);
+        };
+        _player.OnDeath += () =>
+        {
+            SliderUpdate(0);
+        };
     }
     private void Update()
     {

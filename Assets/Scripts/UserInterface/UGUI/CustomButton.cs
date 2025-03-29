@@ -30,6 +30,6 @@ public class CustomButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
     public void ChangeScene(string str)
     {
-        SceneLoader.LoadSceneAsync(str);
+        GameBaseSystem.instance.ChangeScene(str);
     }
 }
