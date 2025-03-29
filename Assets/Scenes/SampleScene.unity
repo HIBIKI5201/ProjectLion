@@ -4898,7 +4898,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34f9d6fc0eece594bbf45de95a53f8fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _initRequirePoint: 100
+  _initRequirePoint: 3000
   _specialObj: {fileID: 72801065}
   _systemSub: {fileID: 121610968}
   _specialTime: 3

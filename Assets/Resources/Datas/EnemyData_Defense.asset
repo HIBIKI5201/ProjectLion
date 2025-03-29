@@ -20,5 +20,5 @@ MonoBehaviour:
     _agility: 10
     _attackCoolTime: 3
     _attackRange: 5
-  _dropExperience: 100
+  _dropExperience: 200
   _name: Smith
