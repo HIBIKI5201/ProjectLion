@@ -3118,6 +3118,38 @@ MonoBehaviour:
     _enemyKind: 3
   - _enemyPrefab: {fileID: 936768549752203763, guid: bb178090063a15046b823be1fda862ff, type: 3}
     _enemyKind: 2
+  - _enemyPrefab: {fileID: 936768549752203763, guid: bb178090063a15046b823be1fda862ff, type: 3}
+    _enemyKind: 5
+  - _enemyPrefab: {fileID: 6239651793020116439, guid: 816943b9cf963ed4fb3d55c67190ff23, type: 3}
+    _enemyKind: 10
+  - _enemyPrefab: {fileID: 6239651793020116439, guid: b8a7501731b03fb47b71acdf84a400e1, type: 3}
+    _enemyKind: 15
+  - _enemyPrefab: {fileID: 6239651793020116439, guid: bf46a2abf6da77a49948c2a3742ac23a, type: 3}
+    _enemyKind: 20
+  - _enemyPrefab: {fileID: 6239651793020116439, guid: 6ddb8d50ae243f3408729c94516c54b0, type: 3}
+    _enemyKind: 6
+  - _enemyPrefab: {fileID: 6239651793020116439, guid: 5a6da09f8846d1f44ad62e3355bbc520, type: 3}
+    _enemyKind: 11
+  - _enemyPrefab: {fileID: 6239651793020116439, guid: 6adea4c234101ad4e8470a12a997208a, type: 3}
+    _enemyKind: 16
+  - _enemyPrefab: {fileID: 6239651793020116439, guid: 377c2e6002813474e935673353e050cf, type: 3}
+    _enemyKind: 21
+  - _enemyPrefab: {fileID: 6239651793020116439, guid: 4f25ca9a4af4c1c4289e3af9444fa2f3, type: 3}
+    _enemyKind: 8
+  - _enemyPrefab: {fileID: 6239651793020116439, guid: 0f5f96eba0b29ce429efbb52c4db56c0, type: 3}
+    _enemyKind: 13
+  - _enemyPrefab: {fileID: 6239651793020116439, guid: 3bf60a7eceef79f459a71835ee7e0903, type: 3}
+    _enemyKind: 18
+  - _enemyPrefab: {fileID: 6239651793020116439, guid: 4353221a2ec81d445a1f4ef80885f96a, type: 3}
+    _enemyKind: 23
+  - _enemyPrefab: {fileID: 6239651793020116439, guid: c497c4ac412683642b8d345c8e755741, type: 3}
+    _enemyKind: 9
+  - _enemyPrefab: {fileID: 6239651793020116439, guid: 1b690485d61509c4fa10c9b7312621b6, type: 3}
+    _enemyKind: 14
+  - _enemyPrefab: {fileID: 6239651793020116439, guid: 2460f221d71331c4aac01a7543c97ff1, type: 3}
+    _enemyKind: 19
+  - _enemyPrefab: {fileID: 6239651793020116439, guid: bf44f287d5f734240b965b5aad75eeb5, type: 3}
+    _enemyKind: 24
   _spawnData: {fileID: 11400000, guid: 7cf9099e07ee62d4286447a7b19ec394, type: 2}
   _generateIntarval: 1
   _generateLimit: 100

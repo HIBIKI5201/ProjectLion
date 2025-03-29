@@ -110,5 +110,6 @@ MonoBehaviour:
     _agility: 0
     _attackCoolTime: 0
     _attackRange: 0
-  _experianceObj: {fileID: 8298091702221717961, guid: 5f2c42fd9631d8c45a53375aa91ab2e6, type: 3}
-  _dropObj: []
+  _experianceObj: {fileID: 3379163876735906355, guid: 8371d16512f717140a2ba29d8d3f6426, type: 3}
+  _dropObj:
+  - {fileID: 8298091702221717961, guid: 5f2c42fd9631d8c45a53375aa91ab2e6, type: 3}
