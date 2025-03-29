@@ -2,17 +2,17 @@ using SymphonyFrameWork.CoreSystem;
 using UnityEngine;
 
 public class EnemyShootManager : MonoBehaviour, PauseManager.IPausable
-{//TODO:HERE NormalShoot‚Æ“‡‚·‚é
-    [Header("”­ËŠÔŠu")]
+{//TODO:HERE NormalShootã¨çµ±åˆã™ã‚‹
+    [Header("ç™ºå°„é–“éš”")]
     [SerializeField]
     private float _interval = 1;
 
-    [Header("”ò‚Î‚·’eŠÛ‚Ìİ’è")]
+    [Header("é£›ã°ã™å¼¾ä¸¸ã®è¨­å®š")]
     [SerializeField]
     private GameObject _bullet;
     [SerializeField]
     private float _bulletSpeed = 3;
-    [Tooltip("’eŠÛ‚ª”ò‚Ñ‘±‚¯‚é•b”")]
+    [Tooltip("å¼¾ä¸¸ãŒé£›ã³ç¶šã‘ã‚‹ç§’æ•°")]
     [SerializeField]
     private float _bulletDuration = 2;
 
@@ -45,7 +45,7 @@ public class EnemyShootManager : MonoBehaviour, PauseManager.IPausable
 
     private async void Shoot()
     {
-        if (_playerController is not null)
+        if (!_playerController)
         {
             Vector2 direction = (_playerController.transform.position - _enemyManager.transform.position).normalized;
             AsyncInstantiateOperation operation = InstantiateAsync(_bullet, transform.position, Quaternion.Euler(direction));
