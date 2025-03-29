@@ -11,8 +11,12 @@ public class ExplodeObjManager : MonoBehaviour
 
     private async void Start()
     {
-        await PauseManager.PausableWaitForSecondAsync(_time);
-        Destroy(gameObject);
+        try
+        {
+            await PauseManager.PausableWaitForSecondAsync(_time, destroyCancellationToken);
+            Destroy(gameObject);
+        }
+        catch { }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

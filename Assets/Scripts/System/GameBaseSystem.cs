@@ -30,26 +30,27 @@ public class GameBaseSystem : MonoBehaviour
 
     public async Task ChangeScene(SceneKind kind)
     {
-        if (SingletonDirector.GetSingleton<PlayerController>())
-        {
-            SingletonDirector.DestroySingleton<PlayerController>();
-        }
-    
         await FadeSystem.Instance.Fade(FadeSystem.FadeMode.FadeOut);
-        PauseManager.Pause = false;
+        LoadReset();
         await SceneLoader.LoadSceneAsync(kind);
+        //PauseManager.Pause = false;
         await FadeSystem.Instance.Fade(FadeSystem.FadeMode.FadeIn);
     }    
     public async Task ChangeScene(string str)
+    {
+
+        await FadeSystem.Instance.Fade(FadeSystem.FadeMode.FadeOut);
+        LoadReset();
+        await SceneLoader.LoadSceneAsync(str);
+        PauseManager.Pause = false;
+        await FadeSystem.Instance.Fade(FadeSystem.FadeMode.FadeIn);
+    }
+    public void LoadReset()
     {
         if (SingletonDirector.GetSingleton<PlayerController>())
         {
             SingletonDirector.DestroySingleton<PlayerController>();
         }
         OnReset?.Invoke();
-
-        await FadeSystem.Instance.Fade(FadeSystem.FadeMode.FadeOut);
-        await SceneLoader.LoadSceneAsync(str);
-        await FadeSystem.Instance.Fade(FadeSystem.FadeMode.FadeIn);
     }
 }

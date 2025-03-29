@@ -96,6 +96,8 @@ public class EnemyManager : MobBase<EnemyData>
         }
         else angle = angle * Mathf.Deg2Rad;
 
+        if (!_player && !_rigidBody) return;
+
         _rigidBody.AddForce(new Vector2(Random.Range(-1, 1), Random.Range(-1, 1)));//重なってスポーンすることがあったので少しずらす
         transform.position = _player.transform.position +
                              new Vector3(radius * Mathf.Cos(angle), radius * Mathf.Sin(angle));
@@ -134,7 +136,7 @@ public class EnemyManager : MobBase<EnemyData>
         base.HitDamageBehaviour();
 
         _spriteRenderer.color = Color.red;
-        await Awaitable.WaitForSecondsAsync(0.2f);
+        await Awaitable.WaitForSecondsAsync(0.2f, destroyCancellationToken);
         _spriteRenderer.color = Color.white;
     }
 
