@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _data:
     _name: Arthur
-    _maxHealth: 150
+    _maxHealth: 100
     _attack: 40
     _defense: 0
     _agility: 10
     _attackCoolTime: 3
     _attackRange: 5
-  _dropExperience: 100
+  _dropExperience: 150
   _name: Arthur
