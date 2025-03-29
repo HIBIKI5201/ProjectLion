@@ -25,6 +25,7 @@ public class FadeSystem : MonoBehaviour
         else
         {
             Destroy(this);
+            return;
         }
         _fadeDict.Add(FadeMode.FadeIn, _fadeInAnimation);
         _fadeDict.Add(FadeMode.FadeOut, _fadeOutAnimation);
@@ -34,12 +35,6 @@ public class FadeSystem : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
         _stateInfo = _animator.GetCurrentAnimatorStateInfo(0);
-    }
-
-    [ContextMenu("Fade In")]
-    void testFade()
-    {
-        Fade(FadeMode.FadeOut);
     }
 
     public async Task Fade(FadeMode mode, Action callback = null, CancellationToken ct = default)
