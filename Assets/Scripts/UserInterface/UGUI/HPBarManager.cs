@@ -29,7 +29,7 @@ public class HPBarManager : MonoBehaviour
             SliderUpdate(0);
         };
     }
-    private void Update()
+    private void FixedUpdate()
     {
         if(!_player)return;
 
