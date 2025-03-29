@@ -2,17 +2,17 @@ using SymphonyFrameWork.CoreSystem;
 using UnityEngine;
 
 public class EnemyShootManager : MonoBehaviour, PauseManager.IPausable
-{//TODO:HERE NormalShootÇ∆ìùçáÇ∑ÇÈ
-    [Header("î≠éÀä‘äu")]
+{//TODO:HERE NormalShoot„Å®Áµ±Âêà„Åô„Çã
+    [Header("Áô∫Â∞ÑÈñìÈöî")]
     [SerializeField]
     private float _interval = 1;
 
-    [Header("îÚÇŒÇ∑íeä€ÇÃê›íË")]
+    [Header("È£õ„Å∞„ÅôÂºæ‰∏∏„ÅÆË®≠ÂÆö")]
     [SerializeField]
     private GameObject _bullet;
     [SerializeField]
     private float _bulletSpeed = 3;
-    [Tooltip("íeä€Ç™îÚÇ—ë±ÇØÇÈïbêî")]
+    [Tooltip("Âºæ‰∏∏„ÅåÈ£õ„Å≥Á∂ö„Åë„ÇãÁßíÊï∞")]
     [SerializeField]
     private float _bulletDuration = 2;
 
@@ -39,38 +39,37 @@ public class EnemyShootManager : MonoBehaviour, PauseManager.IPausable
         else if (_timer + _interval < Time.time)
         {
             _timer = Time.time;
+
+            if (!_playerController) return;//„Éó„É¨„Ç§„É§„Éº„ÅåÂ≠òÂú®„Åó„Å™„ÅÑ„Å®„Åç
             Shoot();
         }
     }
 
     private async void Shoot()
     {
-        if (_playerController is not null)
+        Vector2 direction = (_playerController.transform.position - _enemyManager.transform.position).normalized;
+        AsyncInstantiateOperation operation = InstantiateAsync(_bullet, transform.position, Quaternion.Euler(direction));
+        await operation;
+        foreach (GameObject obj in operation.Result)
         {
-            Vector2 direction = (_playerController.transform.position - _enemyManager.transform.position).normalized;
-            AsyncInstantiateOperation operation = InstantiateAsync(_bullet, transform.position, Quaternion.Euler(direction));
-            await operation;
-            foreach (GameObject obj in operation.Result)
+
+            if (!obj.TryGetComponent<BulletManager>(out var mg))
+                mg = obj.AddComponent<BulletManager>();
+
+            mg.SetStatus(_enemyManager.Attack);
+
+            if (obj.TryGetComponent<Rigidbody2D>(out var rb))
             {
-
-                if (!obj.TryGetComponent<BulletManager>(out var mg))
-                    mg = obj.AddComponent<BulletManager>();
-
-                mg.SetStatus(_enemyManager.Attack);
-
-                if (obj.TryGetComponent<Rigidbody2D>(out var rb))
-                {
-                    rb.gravityScale = 0;
-                    rb.linearDamping = 0;
-                    rb.linearVelocity = direction * _bulletSpeed;
-                }
-                if (obj.TryGetComponent<CircleCollider2D>(out var cc))
-                {
-                    cc.isTrigger = true;
-                }
-                await PauseManager.PausableWaitForSecondAsync(_bulletDuration);
-                Destroy(obj);
+                rb.gravityScale = 0;
+                rb.linearDamping = 0;
+                rb.linearVelocity = direction * _bulletSpeed;
             }
+            if (obj.TryGetComponent<CircleCollider2D>(out var cc))
+            {
+                cc.isTrigger = true;
+            }
+            await PauseManager.PausableWaitForSecondAsync(_bulletDuration);
+            Destroy(obj);
         }
     }
 
@@ -109,7 +108,7 @@ public class EnemyShootManager : MonoBehaviour, PauseManager.IPausable
         }
         public void Pause()
         {
-            if( _rb != null ) 
+            if (_rb != null)
                 _rb.simulated = false;
             Debug.Log(_rb.ToString());
         }

@@ -26,6 +26,6 @@ public class ExplodeObjManager : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.TryGetComponent<PlayerController>(out _))
-            StopCoroutine(_attackCoroutine);
+            if (_attackCoroutine != null) StopCoroutine(_attackCoroutine);
     }
 }
