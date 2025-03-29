@@ -30,6 +30,8 @@ public abstract class Servant_B<MobDataKind> : MobBase<MobDataKind> where MobDat
 
         void Move()
         {
+            if(!_player) return;
+            
             Vector2 direction = _player.transform.position - this.transform.position;
             if (direction.sqrMagnitude > BaseData.MoveStopDistanse * BaseData.MoveStopDistanse)
             {
