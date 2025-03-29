@@ -45,7 +45,7 @@ public class EnemyShootManager : MonoBehaviour, PauseManager.IPausable
 
     private async void Shoot()
     {
-        if (!_playerController)
+        if (_playerController)
         {
             Vector2 direction = (_playerController.transform.position - _enemyManager.transform.position).normalized;
             AsyncInstantiateOperation operation = InstantiateAsync(_bullet, transform.position, Quaternion.Euler(direction));
