@@ -35,9 +35,18 @@ public class LevelUpManager : MonoBehaviour
     public event Action<Dictionary<ItemKind, int>> OnLevelChange;
     private void Start()
     {
-        //ファインド使いすぎなのでいつかどうにかする
         foreach (ItemKind kind in Enum.GetValues(typeof(ItemKind)))
-            ItemHaveValue.TryAdd(kind, 0);
+        {
+            if (ItemHaveValue.ContainsKey(kind))
+            {
+                ItemHaveValue[kind] = 0;
+            }
+            else
+            {
+                ItemHaveValue.Add(kind, 0);
+            }
+        }
+
         player = SingletonDirector.GetSingleton<PlayerController>();
         data = player.Data;
         specialMana = FindAnyObjectByType<SpecialAttackManager>();
