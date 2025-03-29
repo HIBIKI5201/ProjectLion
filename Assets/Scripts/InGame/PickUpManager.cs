@@ -45,7 +45,7 @@ public class PickUpManager : MonoBehaviour
 
                 if (_player.MaxHealth >= _player.CurrentHealth + dropItem.Healpoint)
                 {
-                    _player.AddDamage(-dropItem.Healpoint);
+                    _player.AddHealth(dropItem.Healpoint);
                     Debug.Log($"回復しました{_player.CurrentHealth}");
                 }
                 break;

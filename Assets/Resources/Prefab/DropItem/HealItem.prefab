@@ -103,7 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _weaponType: 3
   _itemLifeTime: 10
-  _healpoint: 20
+  _healpoint: 30
 --- !u!58 &4613201317304363980
 CircleCollider2D:
   m_ObjectHideFlags: 0

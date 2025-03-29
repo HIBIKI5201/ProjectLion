@@ -57,8 +57,7 @@ public class MobBase<MobDataKind> : MonoBehaviour, PauseManager.IPausable, IHave
 
     public virtual void AddDamage(float damage)
     {
-        //_currentHealth -= Mathf.Max(0, _currentHealth);
-        _currentHealth -= damage;//オートヒールのために上記のスクリプトから切り替え、もしかしたら問題が起こるかも
+        _currentHealth -= Mathf.Max(0, damage);
         HitDamageBehaviour();
         //Debug.Log($"現在のHPは　{_currentHealth}");
 
@@ -67,12 +66,28 @@ public class MobBase<MobDataKind> : MonoBehaviour, PauseManager.IPausable, IHave
             DeathBehaviour();
         }
     }
+
+    public void AddHealth(float health)
+    {
+        if (_currentHealth + health >= MaxHealth)
+        {
+            _currentHealth = MaxHealth;
+            HealBehaviour();
+            return;
+        }
+
+        _currentHealth += Mathf.Max(0, health);
+        HealBehaviour();
+        _currentHealth = Mathf.Min(_currentHealth, MaxHealth);
+    }
+
     public void Setbuff(BuffKind kind, float latio)
     {
         _buffs[kind] = latio;
     }
 
     protected virtual void HitDamageBehaviour() { }
+    protected virtual void HealBehaviour() { }
     protected virtual void DeathBehaviour() { }
 
     protected void ChangeSprite(string category, string label)

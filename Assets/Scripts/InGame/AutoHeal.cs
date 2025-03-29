@@ -25,7 +25,7 @@ public class AutoHeal : MonoBehaviour
             controller.CurrentHealth + Healvalue <= controller.MaxHealth)
         {
             _timer = Time.time;
-            controller.AddDamage(-Healvalue);
+            controller.AddHealth(Healvalue);
         }
     }
 }

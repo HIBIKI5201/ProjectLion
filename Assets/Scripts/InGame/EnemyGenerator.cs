@@ -144,10 +144,29 @@ public class EnemyGenerator : MonoBehaviour
     public enum EnemyKind
     {
         Speed,
+        SpeedWaepon1,
+        SpeedWaepon2,
+        SpeedWaepon3,
+        SpeedHeal,
         Defense,
+        DefenseWaepon1,
+        DefenseWaepon2,
+        DefenseWaepon3,
+        DefenseHeal,
         Explode,
+        ExplodeWaepon1,
+        ExplodeWaepon2,
+        ExplodeWaepon3,
+        ExplodeHeal,
         Attack,
+        AttackWaepon1,
+        AttackWaepon2,
+        AttackWaepon3,
+        AttackHeal,
         Mini,
-        
+        MiniWaepon1,
+        MiniWaepon2,
+        MiniWaepon3,
+        MiniHeal,
     }
 }

@@ -57,6 +57,16 @@ public class PlayerController : MobBase<MobData_S>
         _spriteRenderer.color = Color.white;
     }
 
+    protected override async void HealBehaviour()
+    {
+        base.HealBehaviour();
+        OnDamage?.Invoke(CurrentHealth);
+        //AudioManager.Instance.PlaySE("SE_Heal");現在SEなし
+        _spriteRenderer.color = Color.green;
+        await Awaitable.WaitForSecondsAsync(0.2f);
+        _spriteRenderer.color = Color.white;
+    }
+
     public override void Pause()
     {
         _rigidbody.simulated = false;

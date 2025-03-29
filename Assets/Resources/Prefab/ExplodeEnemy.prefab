@@ -100,10 +100,11 @@ MonoBehaviour:
     _attack: 0
     _defense: 0
     _agility: 0
-    _attackSpeed: 0
+    _attackCoolTime: 0
     _attackRange: 0
   _experianceObj: {fileID: 3379163876735906355, guid: 8371d16512f717140a2ba29d8d3f6426, type: 3}
-  _dropObj: []
+  _dropObj:
+  - {fileID: 0}
   _explodeObj: {fileID: 6576324710281291653, guid: 88915ad5972c2c741ba5fd82723c1a2e, type: 3}
 --- !u!114 &7760151519473698185
 MonoBehaviour:
