@@ -33,7 +33,7 @@ public class GameBaseSystem : MonoBehaviour
         await FadeSystem.Instance.Fade(FadeSystem.FadeMode.FadeOut);
         LoadReset();
         await SceneLoader.LoadSceneAsync(kind);
-        //PauseManager.Pause = false;
+        PauseManager.Pause = false;
         await FadeSystem.Instance.Fade(FadeSystem.FadeMode.FadeIn);
     }    
     public async Task ChangeScene(string str)

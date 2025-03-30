@@ -6,7 +6,6 @@ using UnityEngine.U2D.Animation;
 [RequireComponent(typeof(Rigidbody2D))]
 public abstract class Servant_B<MobDataKind> : MobBase<MobDataKind> where MobDataKind : ServantData
 {
-
     protected PlayerController _player;
     protected SpriteRenderer _spriteRenderer;
     Rigidbody2D _rb;
@@ -21,7 +20,10 @@ public abstract class Servant_B<MobDataKind> : MobBase<MobDataKind> where MobDat
         FindAnyObjectByType<LevelUpManager>().OnLevelChange += x => LevelUp(x);
         Start_S();
     }
-    protected virtual void Start_S() { }
+
+    protected virtual void Start_S()
+    {
+    }
 
     // Update is called once per frame
     void FixedUpdate()
@@ -30,37 +32,44 @@ public abstract class Servant_B<MobDataKind> : MobBase<MobDataKind> where MobDat
 
         void Move()
         {
-            if(!_player) return;
-            
+            if (!_player) return;
+
             Vector2 direction = _player.transform.position - this.transform.position;
             if (direction.sqrMagnitude > BaseData.MoveStopDistanse * BaseData.MoveStopDistanse)
             {
                 var moveVec = direction - direction.normalized * BaseData.MoveStopDistanse;
-                _rb.linearVelocity = moveVec * Data.Agility * 0.1f;//移動速度調整
+                _rb.linearVelocity = moveVec * Data.Agility * 0.1f; //移動速度調整
             }
+
             ChangeSprite(direction.x >= 0 ? "Right" : "Left", BaseData.Data.Name);
         }
     }
-    protected virtual void Update_S() { }
+
+    protected virtual void Update_S()
+    {
+    }
+
     protected virtual void LevelUp(Dictionary<ItemKind, int> haveItem)
     {
         LoadData(new MobData(Data,
-                    health: BaseData.LevelScaleData.MaxHealth * BaseData.Data.MaxHealth,
-                    attack: BaseData.LevelScaleData.Attack * BaseData.Data.Attack,
-                    defense: 0,//ItemHaveValue[ItemKind.DefenseUp] * 0.1f * player.Data.Defense,
-                    agility: BaseData.LevelScaleData.Agility * BaseData.Data.Agility,
-                    attackRange: BaseData.LevelScaleData.AttackRange * BaseData.Data.AttackRange,
-                    attackCoolTime: BaseData.LevelScaleData.AttackCoolTime * BaseData.Data.AttackCoolTime));
+            health: BaseData.LevelScaleData.MaxHealth * BaseData.Data.MaxHealth,
+            attack: BaseData.LevelScaleData.Attack * BaseData.Data.Attack,
+            defense: 0, //ItemHaveValue[ItemKind.DefenseUp] * 0.1f * player.Data.Defense,
+            agility: BaseData.LevelScaleData.Agility * BaseData.Data.Agility,
+            attackRange: BaseData.LevelScaleData.AttackRange * BaseData.Data.AttackRange,
+            attackCoolTime: BaseData.LevelScaleData.AttackCoolTime * BaseData.Data.AttackCoolTime));
     }
-    
+
     public abstract void Skill();
 
     public override void Pause()
     {
-        _rb.simulated = false;
+        if (_rb)
+            _rb.simulated = false;
     }
+
     public override void Resume()
     {
-        _rb.simulated = true;
+        if (_rb) _rb.simulated = true;
     }
 }

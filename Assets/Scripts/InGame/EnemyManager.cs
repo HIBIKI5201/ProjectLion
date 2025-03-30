@@ -142,11 +142,13 @@ public class EnemyManager : MobBase<EnemyData>
 
     public override void Pause()
     {
-        _rigidBody.simulated = false;
+        if(_rigidBody)
+            _rigidBody.simulated = false;
     }
     public override void Resume()
     {
-        _rigidBody.simulated = true;
+        if(_rigidBody)
+            _rigidBody.simulated = true;
     }
 }
 
